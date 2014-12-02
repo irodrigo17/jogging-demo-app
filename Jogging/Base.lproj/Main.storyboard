@@ -42,6 +42,9 @@
                                 <state key="normal" title="Sign Up">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="f9G-ju-KiX" kind="presentation" id="Eox-RT-3na"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -61,6 +64,94 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="bCi-Dr-fkp">
+            <objects>
+                <navigationController id="f9G-ju-KiX" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Lfl-74-Ixe">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="48z-YO-bFX" kind="relationship" relationship="rootViewController" id="Sbn-QD-KFS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w8J-sD-Oad" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="748" y="372"/>
+        </scene>
+        <!--Sign Up-->
+        <scene sceneID="6Jv-ON-Hac">
+            <objects>
+                <viewController id="48z-YO-bFX" customClass="SignUpViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vb7-zI-W6H"/>
+                        <viewControllerLayoutGuide type="bottom" id="jeW-02-dvT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FlQ-ZG-xgg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Full Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5f2-Wx-Xqi">
+                                <rect key="frame" x="16" y="72" width="288" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lMZ-3g-jJ5">
+                                <rect key="frame" x="16" y="110" width="288" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kJf-Us-LTu">
+                                <rect key="frame" x="16" y="148" width="288" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S4w-Ms-d9o">
+                                <rect key="frame" x="16" y="186" width="288" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lMZ-3g-jJ5" firstAttribute="top" secondItem="5f2-Wx-Xqi" secondAttribute="bottom" constant="8" id="0y1-uv-07J"/>
+                            <constraint firstAttribute="centerX" secondItem="5f2-Wx-Xqi" secondAttribute="centerX" id="Fa7-xZ-3KF"/>
+                            <constraint firstItem="lMZ-3g-jJ5" firstAttribute="width" secondItem="FlQ-ZG-xgg" secondAttribute="width" constant="-32" id="KFY-OY-z7v"/>
+                            <constraint firstItem="S4w-Ms-d9o" firstAttribute="top" secondItem="kJf-Us-LTu" secondAttribute="bottom" constant="8" id="PyJ-RI-nJ5"/>
+                            <constraint firstAttribute="width" secondItem="kJf-Us-LTu" secondAttribute="width" constant="32" id="eWM-Wz-Gvm"/>
+                            <constraint firstItem="5f2-Wx-Xqi" firstAttribute="width" secondItem="FlQ-ZG-xgg" secondAttribute="width" constant="-32" id="isl-at-Vho"/>
+                            <constraint firstAttribute="width" secondItem="S4w-Ms-d9o" secondAttribute="width" constant="32" id="l7H-5r-emC"/>
+                            <constraint firstAttribute="centerX" secondItem="S4w-Ms-d9o" secondAttribute="centerX" id="ndV-9P-Rcj"/>
+                            <constraint firstAttribute="centerX" secondItem="kJf-Us-LTu" secondAttribute="centerX" id="rLT-bC-koM"/>
+                            <constraint firstItem="kJf-Us-LTu" firstAttribute="top" secondItem="lMZ-3g-jJ5" secondAttribute="bottom" constant="8" id="upr-zc-fZq"/>
+                            <constraint firstAttribute="centerX" secondItem="lMZ-3g-jJ5" secondAttribute="centerX" id="v9f-jl-kvG"/>
+                            <constraint firstItem="5f2-Wx-Xqi" firstAttribute="top" secondItem="vb7-zI-W6H" secondAttribute="bottom" constant="8" id="wdv-Yw-NXE"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Sign Up" id="A8X-s5-Hz0">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="sbk-q3-Kxo">
+                            <connections>
+                                <action selector="cancel:" destination="48z-YO-bFX" id="iwo-aN-mof"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Sign Up" style="done" id="P0c-KP-sL5">
+                            <connections>
+                                <action selector="signUp:" destination="48z-YO-bFX" id="qIs-zf-c34"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="email" destination="kJf-Us-LTu" id="Oj3-Am-mOY"/>
+                        <outlet property="name" destination="5f2-Wx-Xqi" id="eTz-Ou-WCl"/>
+                        <outlet property="password" destination="S4w-Ms-d9o" id="gTB-xJ-uLa"/>
+                        <outlet property="username" destination="lMZ-3g-jJ5" id="OW1-EZ-EQS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zSE-AW-zRT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1169" y="372"/>
         </scene>
     </scenes>
 </document>
