@@ -1,0 +1,10 @@
+# OX X generated files
+*.DS_Store
+
+# Xcode generated files
+Jogging.xcodeproj/xcuserdata/
+
+# CocoaPods generated files
+Pods/
+Podfile.lock
+Jogging.xcworkspace/
