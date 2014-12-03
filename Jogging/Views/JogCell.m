@@ -8,7 +8,7 @@
 
 #import "JogCell.h"
 
-static NSString * const kJogCellReuseIdentifier = @"JogCell";
+NSString * const kJogCellReuseIdentifier = @"JogCell";
 
 @implementation JogCell
 

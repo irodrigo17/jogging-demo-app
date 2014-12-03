@@ -10,7 +10,7 @@
 #import "Jog.h"
 
 
-static NSString * const kJogCellReuseIdentifier;
+extern NSString * const kJogCellReuseIdentifier;
 
 
 @interface JogCell : UITableViewCell
