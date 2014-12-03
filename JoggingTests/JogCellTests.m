@@ -33,7 +33,7 @@
     jog.time = @(1*60*60 + 23*60 + 45);
     jog.date = [NSDate date];
     [cell updateWithJog:jog];
-    XCTAssert([cell.timeAndDistanceLabel.text isEqual:@"12.35 km in 1:23:45"]);
+    XCTAssert([cell.timeAndDistanceLabel.text isEqual:[jog description]]);
     XCTAssert([cell.dateLabel.text isEqual:[jog formattedDate]]);
     
 }

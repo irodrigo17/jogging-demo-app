@@ -12,6 +12,12 @@
 		635529ED1A2E6D8500750FFE /* JogCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 635529EB1A2E6D8500750FFE /* JogCell.m */; };
 		635529EF1A2E742500750FFE /* JogTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 635529EE1A2E742500750FFE /* JogTests.m */; };
 		635529F11A2E7A3500750FFE /* JogCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 635529F01A2E7A3500750FFE /* JogCellTests.m */; };
+		635529F31A2E915F00750FFE /* UserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 635529F21A2E915F00750FFE /* UserTests.m */; };
+		635529F51A2E939700750FFE /* APIManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 635529F41A2E939700750FFE /* APIManagerTests.m */; };
+		635529F71A2E93DD00750FFE /* SessionManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 635529F61A2E93DD00750FFE /* SessionManagerTests.m */; };
+		635529F91A2E951200750FFE /* JogManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 635529F81A2E951200750FFE /* JogManagerTests.m */; };
+		635529FC1A2EC9C700750FFE /* ISO8601DateFormatter+SharedInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = 635529FB1A2EC9C700750FFE /* ISO8601DateFormatter+SharedInstance.m */; };
+		635529FD1A2EC9C700750FFE /* ISO8601DateFormatter+SharedInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = 635529FB1A2EC9C700750FFE /* ISO8601DateFormatter+SharedInstance.m */; };
 		6377E2961A2E018A00220671 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6377E2951A2E018A00220671 /* APIManager.m */; };
 		6377E2971A2E018A00220671 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6377E2951A2E018A00220671 /* APIManager.m */; };
 		6377E29B1A2E23B200220671 /* JogsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6377E29A1A2E23B200220671 /* JogsViewController.m */; };
@@ -25,7 +31,6 @@
 		63C7AF121A2DDF5E00FB9EAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63C7AF101A2DDF5E00FB9EAE /* Main.storyboard */; };
 		63C7AF141A2DDF5E00FB9EAE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63C7AF131A2DDF5E00FB9EAE /* Images.xcassets */; };
 		63C7AF171A2DDF5E00FB9EAE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63C7AF151A2DDF5E00FB9EAE /* LaunchScreen.xib */; };
-		63C7AF231A2DDF5E00FB9EAE /* JoggingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C7AF221A2DDF5E00FB9EAE /* JoggingTests.m */; };
 		63C7AF331A2DE42A00FB9EAE /* InitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C7AF321A2DE42A00FB9EAE /* InitialViewController.m */; };
 		63C7AF341A2DE42A00FB9EAE /* InitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C7AF321A2DE42A00FB9EAE /* InitialViewController.m */; };
 		63C7AF371A2DE90600FB9EAE /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C7AF361A2DE90600FB9EAE /* SignUpViewController.m */; };
@@ -54,6 +59,12 @@
 		635529EB1A2E6D8500750FFE /* JogCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JogCell.m; sourceTree = "<group>"; };
 		635529EE1A2E742500750FFE /* JogTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JogTests.m; sourceTree = "<group>"; };
 		635529F01A2E7A3500750FFE /* JogCellTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JogCellTests.m; sourceTree = "<group>"; };
+		635529F21A2E915F00750FFE /* UserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTests.m; sourceTree = "<group>"; };
+		635529F41A2E939700750FFE /* APIManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIManagerTests.m; sourceTree = "<group>"; };
+		635529F61A2E93DD00750FFE /* SessionManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionManagerTests.m; sourceTree = "<group>"; };
+		635529F81A2E951200750FFE /* JogManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JogManagerTests.m; sourceTree = "<group>"; };
+		635529FA1A2EC9C700750FFE /* ISO8601DateFormatter+SharedInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ISO8601DateFormatter+SharedInstance.h"; sourceTree = "<group>"; };
+		635529FB1A2EC9C700750FFE /* ISO8601DateFormatter+SharedInstance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ISO8601DateFormatter+SharedInstance.m"; sourceTree = "<group>"; };
 		6377E2941A2E018A00220671 /* APIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
 		6377E2951A2E018A00220671 /* APIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIManager.m; sourceTree = "<group>"; };
 		6377E2981A2E0AC200220671 /* DictionaryRepresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryRepresentation.h; sourceTree = "<group>"; };
@@ -73,7 +84,6 @@
 		63C7AF161A2DDF5E00FB9EAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		63C7AF1C1A2DDF5E00FB9EAE /* JoggingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JoggingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63C7AF211A2DDF5E00FB9EAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		63C7AF221A2DDF5E00FB9EAE /* JoggingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JoggingTests.m; sourceTree = "<group>"; };
 		63C7AF311A2DE42A00FB9EAE /* InitialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitialViewController.h; sourceTree = "<group>"; };
 		63C7AF321A2DE42A00FB9EAE /* InitialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitialViewController.m; sourceTree = "<group>"; };
 		63C7AF351A2DE90600FB9EAE /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
@@ -155,9 +165,12 @@
 			isa = PBXGroup;
 			children = (
 				63C7AF201A2DDF5E00FB9EAE /* Supporting Files */,
-				63C7AF221A2DDF5E00FB9EAE /* JoggingTests.m */,
 				635529EE1A2E742500750FFE /* JogTests.m */,
 				635529F01A2E7A3500750FFE /* JogCellTests.m */,
+				635529F21A2E915F00750FFE /* UserTests.m */,
+				635529F41A2E939700750FFE /* APIManagerTests.m */,
+				635529F61A2E93DD00750FFE /* SessionManagerTests.m */,
+				635529F81A2E951200750FFE /* JogManagerTests.m */,
 			);
 			path = JoggingTests;
 			sourceTree = "<group>";
@@ -204,6 +217,8 @@
 				63C7AF3A1A2DED7C00FB9EAE /* SessionManager.m */,
 				6377E29D1A2E260A00220671 /* JogManager.h */,
 				6377E29E1A2E260A00220671 /* JogManager.m */,
+				635529FA1A2EC9C700750FFE /* ISO8601DateFormatter+SharedInstance.h */,
+				635529FB1A2EC9C700750FFE /* ISO8601DateFormatter+SharedInstance.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -404,6 +419,7 @@
 				6377E2A31A2E2EF700220671 /* Jog.m in Sources */,
 				635529EC1A2E6D8500750FFE /* JogCell.m in Sources */,
 				63C7AF3B1A2DED7C00FB9EAE /* SessionManager.m in Sources */,
+				635529FC1A2EC9C700750FFE /* ISO8601DateFormatter+SharedInstance.m in Sources */,
 				6377E29B1A2E23B200220671 /* JogsViewController.m in Sources */,
 				63C7AF331A2DE42A00FB9EAE /* InitialViewController.m in Sources */,
 				6377E29F1A2E260A00220671 /* JogManager.m in Sources */,
@@ -419,14 +435,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				635529F51A2E939700750FFE /* APIManagerTests.m in Sources */,
 				6377E2A41A2E2EF700220671 /* Jog.m in Sources */,
 				63C7AF401A2DEDA600FB9EAE /* User.m in Sources */,
+				635529FD1A2EC9C700750FFE /* ISO8601DateFormatter+SharedInstance.m in Sources */,
 				635529EF1A2E742500750FFE /* JogTests.m in Sources */,
 				635529ED1A2E6D8500750FFE /* JogCell.m in Sources */,
 				635529F11A2E7A3500750FFE /* JogCellTests.m in Sources */,
+				635529F71A2E93DD00750FFE /* SessionManagerTests.m in Sources */,
 				6377E29C1A2E23B200220671 /* JogsViewController.m in Sources */,
 				6377E2A01A2E260A00220671 /* JogManager.m in Sources */,
-				63C7AF231A2DDF5E00FB9EAE /* JoggingTests.m in Sources */,
+				635529F31A2E915F00750FFE /* UserTests.m in Sources */,
+				635529F91A2E951200750FFE /* JogManagerTests.m in Sources */,
 				6377E2971A2E018A00220671 /* APIManager.m in Sources */,
 				63C7AF341A2DE42A00FB9EAE /* InitialViewController.m in Sources */,
 				63C7AF3C1A2DED7C00FB9EAE /* SessionManager.m in Sources */,

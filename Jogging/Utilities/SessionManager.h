@@ -48,4 +48,14 @@
  */
 - (void)signOut;
 
+/**
+ * Stores the given user in the standard user defaults.
+ */
+- (void)storeUser:(User*)user;
+
+/**
+ * Loads the stored user from the user defaults.
+ */
+- (User*)loadUser;
+
 @end

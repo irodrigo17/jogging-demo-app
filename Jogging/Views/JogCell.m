@@ -8,12 +8,14 @@
 
 #import "JogCell.h"
 
+static NSString * const kJogCellReuseIdentifier = @"JogCell";
+
 @implementation JogCell
 
 - (void)updateWithJog:(Jog*)jog
 {
     if(jog){
-        self.timeAndDistanceLabel.text = [jog formattedTimeAndDistance];
+        self.timeAndDistanceLabel.text = [jog description];
         self.dateLabel.text = [jog formattedDate];
     }
     else{

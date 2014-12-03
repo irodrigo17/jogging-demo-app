@@ -14,20 +14,25 @@
 
 - (void)updateWithDictionary:(NSDictionary *)dictionary
 {
-    if(dictionary[@"name"]){
-        self.name = dictionary[@"name"];
+    NSString *name = dictionary[@"name"];
+    if(name && [name isKindOfClass:[NSString class]]){
+        self.name = name;
     }
-    if(dictionary[@"username"]){
-        self.username = dictionary[@"username"];
+    NSString *username = dictionary[@"username"];
+    if(username && [username isKindOfClass:[NSString class]]){
+        self.username = username;
     }
-    if(dictionary[@"email"]){
-        self.email = dictionary[@"email"];
+    NSString *email = dictionary[@"email"];
+    if(email && [email isKindOfClass:[NSString class]]){
+        self.email = email;
     }
-    if(dictionary[@"password"]){
-        self.password = dictionary[@"password"];
+    NSString *password = dictionary[@"password"];
+    if(password && [password isKindOfClass:[NSString class]]){
+        self.password = password;
     }
-    if(dictionary[@"sessionToken"]){
-        self.sessionToken = dictionary[@"sessionToken"];
+    NSString *sessionToken = dictionary[@"sessionToken"];
+    if(sessionToken && [sessionToken isKindOfClass:[NSString class]]){
+        self.sessionToken = sessionToken;
     }
 }
 

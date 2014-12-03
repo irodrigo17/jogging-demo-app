@@ -9,6 +9,7 @@
 
 #import <XCTest/XCTest.h>
 #import "Jog.h"
+#import "ISO8601DateFormatter+SharedInstance.h"
 
 
 @interface JogTests : XCTestCase
@@ -61,13 +62,94 @@
     XCTAssert([[jog formattedDate] isEqual:expectedDate], @"Date should be %@", expectedDate);
 }
 
-- (void)testFormattedTimeAndDistance
+- (void)testDescription
 {
     Jog *jog = [[Jog alloc] init];
-    XCTAssert([[jog formattedTimeAndDistance] isEqual:@"0.00 km in 00:00"]);
+    XCTAssert([[jog description] isEqual:@"0.00 km in 00:00, 0.00 km/h avg"]);
     jog.distance = @(1234);
     jog.time = @(5*60 + 55);
-    XCTAssert([[jog formattedTimeAndDistance] isEqual:@"1.23 km in 05:55"]);
+    XCTAssert([[jog description] isEqual:@"1.23 km in 05:55, 12.51 km/h avg"]);
+}
+
+- (void)testAverageSpeed
+{
+    Jog *jog = [[Jog alloc] init];
+    XCTAssert([jog averageSpeed] == 0.0f);
+    jog.distance = @(12000);
+    XCTAssert([jog averageSpeed] == 0.0f);
+    jog.time = @(30*60);
+    XCTAssert([jog averageSpeed] == 24.0f);
+}
+
+- (void)testFormattedAverageSpeed
+{
+    Jog *jog = [[Jog alloc] init];
+    XCTAssert([[jog formattedAverageSpeed] isEqual:@"0.00 km/h"]);
+    jog.distance = @(1000);
+    jog.time = @(5*60);
+    XCTAssert([[jog formattedAverageSpeed] isEqual:@"12.00 km/h"]);
+}
+
+- (void)testUpdateWithDictionary
+{
+    Jog *jog = [[Jog alloc] init];
+    
+    [jog updateWithDictionary:nil];
+    XCTAssert(!jog.distance);
+    XCTAssert(!jog.time);
+    XCTAssert(!jog.date);
+    XCTAssert(!jog.objectId);
+    
+    [jog updateWithDictionary:@{}];
+    XCTAssert(!jog.distance);
+    XCTAssert(!jog.time);
+    XCTAssert(!jog.date);
+    XCTAssert(!jog.objectId);
+    
+    ISO8601DateFormatter *formatter = [ISO8601DateFormatter sharedInstance];
+    NSDate *date = [NSDate date];
+    NSString *formattedDate = [formatter stringFromDate:date];
+    NSDictionary *dic = @{@"distance": @(1), @"time": @(2), @"date": formattedDate, @"objectId": @"my_id"};
+    [jog updateWithDictionary:dic];
+    XCTAssert([jog.distance isEqual:dic[@"distance"]]);
+    XCTAssert([jog.time isEqual:dic[@"time"]]);
+    XCTAssert([jog.date isEqual:date]);
+    XCTAssert([jog.objectId isEqual:dic[@"objectId"]]);
+
+    [jog updateWithDictionary:@{}];
+    XCTAssert([jog.distance isEqual:dic[@"distance"]]);
+    XCTAssert([jog.time isEqual:dic[@"time"]]);
+    XCTAssert([jog.date isEqual:dic[@"date"]]);
+    XCTAssert([jog.objectId isEqual:dic[@"objectId"]]);
+    
+    NSDictionary *badDic = @{@"distance": @"This should be a number instead of a string"};
+    XCTAssert([jog.distance isEqual:dic[@"distance"]]);
+    
+    badDic = @{@"time": @"This should be a number instead of a string"};
+    XCTAssert([jog.time isEqual:dic[@"time"]]);
+    
+    badDic = @{@"date": @(1)};
+    XCTAssert([jog.date isEqual:date]);
+    
+    badDic = @{@"objectId": @(1)};
+    XCTAssert([jog.objectId isEqual:dic[@"objectId"]]);
+    
+}
+
+- (void)testDictionary
+{
+    Jog *jog = [[Jog alloc] init];
+    XCTAssert([[jog dictionary] isEqual:@{}]);
+    
+    jog.distance = @(1);
+    jog.time = @(1);
+    jog.date = [NSDate date];
+    jog.objectId = @"my_id";
+    
+    ISO8601DateFormatter *formatter = [ISO8601DateFormatter sharedInstance];
+    NSString *date = [formatter stringFromDate:jog.date];
+    NSDictionary *expectedDic = @{@"distance": jog.distance, @"time": jog.time, @"date": date, @"objectId": jog.objectId};
+    XCTAssert([[jog dictionary] isEqual:expectedDic]);
 }
 
 @end

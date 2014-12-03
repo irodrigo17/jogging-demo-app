@@ -23,18 +23,25 @@
 - (float)distanceInKm;
 
 /**
+ * Calculates the average speed in km/h.
+ */
+- (float)averageSpeed;
+
+/**
  * Returns the time of the receiver formatted like hh:mm:ss.
  */
 - (NSString*)formattedTime;
 
 /**
- * Returns the time and distance of the receiver formatted like [x] km in [h:mm:ss].
- */
-- (NSString*)formattedTimeAndDistance;
-
-/**
  * Returns the date of the receiver formatted for presentation.
  */
 - (NSString*)formattedDate;
+
+/**
+ * Returns the average speed in km/h of the receiver formatted for presentation.
+ */
+- (NSString*)formattedAverageSpeed;
+
+
 
 @end

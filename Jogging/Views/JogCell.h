@@ -10,11 +10,13 @@
 #import "Jog.h"
 
 
+static NSString * const kJogCellReuseIdentifier;
+
+
 @interface JogCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *timeAndDistanceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
-
 
 /**
  * Updates the reciver with the given jog by setting `timeAndDistanceLabel` and `dateLabel`'s text.

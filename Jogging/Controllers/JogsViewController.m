@@ -81,7 +81,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    JogCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JogCell" forIndexPath:indexPath];
+    JogCell *cell = [tableView dequeueReusableCellWithIdentifier:kJogCellReuseIdentifier forIndexPath:indexPath];
+    if(!cell){
+        cell = [[JogCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kJogCellReuseIdentifier];
+    }
+    
     if([self.jogs count]){
         Jog *jog = self.jogs[indexPath.row];
         [cell updateWithJog:jog];
@@ -89,6 +93,7 @@
     else{
         [cell updateWithJog:nil];
     }
+    
     return cell;
 }
 

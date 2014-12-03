@@ -7,7 +7,7 @@
 //
 
 #import "Jog.h"
-#import <ISO8601DateFormatter/ISO8601DateFormatter.h>
+#import "ISO8601DateFormatter+SharedInstance.h"
 
 
 @implementation Jog
@@ -16,19 +16,24 @@
 
 - (void)updateWithDictionary:(NSDictionary *)dictionary
 {
-    if(dictionary[@"distance"]){
-        self.distance = dictionary[@"distance"];
+    NSNumber *distance = dictionary[@"distance"];
+    if(distance && [distance isKindOfClass:[NSNumber class]]){
+        self.distance = distance;
     }
-    if(dictionary[@"time"]){
-        self.time = dictionary[@"time"];
+    NSNumber *time = dictionary[@"time"];
+    if(time && [time isKindOfClass:[NSNumber class]]){
+        self.time = time;
     }
-    if(dictionary[@"date"]){
-        NSString *date = dictionary[@"date"];
-        // TODO: use a shared date formatter
-        self.date = [[[ISO8601DateFormatter alloc] init] dateFromString:date];
+    NSString *dateString = dictionary[@"date"];
+    if(dateString && [dateString isKindOfClass:[NSString class]]){
+        NSDate *date = [[ISO8601DateFormatter sharedInstance] dateFromString:dateString];
+        if(date){
+            self.date = date;
+        }
     }
-    if(dictionary[@"objectId"]){
-        self.objectId = dictionary[@"objectId"];
+    NSString *objectId = dictionary[@"objectId"];
+    if(objectId && [objectId isKindOfClass:[NSString class]]){
+        self.objectId = objectId;
     }
 }
 
@@ -42,7 +47,10 @@
         dictionary[@"time"] = self.time;
     }
     if(self.date){
-        dictionary[@"date"] = self.date;
+        NSString *dateString = [[ISO8601DateFormatter sharedInstance] stringFromDate:self.date];
+        if(dateString){
+            dictionary[@"date"] = dateString;
+        }
     }
     if(self.objectId){
         dictionary[@"objectId"] = self.objectId;
@@ -59,6 +67,12 @@
 }
 
 
+- (float)averageSpeed
+{
+    return [self.time floatValue] > 0 ? [self distanceInKm] / ([self.time floatValue] / 60.0f / 60.0f) : 0.0f;
+}
+
+
 - (NSString*)formattedTime
 {
     NSInteger timeInSeconds = [self.time integerValue];
@@ -70,12 +84,6 @@
 }
 
 
-- (NSString*)formattedTimeAndDistance
-{
-    return [NSString stringWithFormat:@"%.2f km in %@", [self distanceInKm], [self formattedTime]];
-}
-
-
 - (NSString*)formattedDate
 {
     // TODO: use a shared date formatter
@@ -83,6 +91,17 @@
     dateFormatter.dateStyle = NSDateFormatterMediumStyle;
     dateFormatter.timeStyle = NSDateFormatterMediumStyle;
     return self.date ? [dateFormatter stringFromDate:self.date] : @"";
+}
+
+- (NSString*)formattedAverageSpeed
+{
+    return [NSString stringWithFormat:@"%.2f km/h", [self averageSpeed]];
+}
+
+
+- (NSString*)description
+{
+    return [NSString stringWithFormat:@"%.2f km in %@, %@ avg", [self distanceInKm], [self formattedTime], [self formattedAverageSpeed]];
 }
 
 
