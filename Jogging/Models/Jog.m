@@ -7,7 +7,7 @@
 //
 
 #import "Jog.h"
-#import "ISO8601DateFormatter+SharedInstance.h"
+#import <ISO8601/ISO8601.h>
 
 
 @implementation Jog
@@ -26,7 +26,7 @@
     }
     NSString *dateString = dictionary[@"date"];
     if(dateString && [dateString isKindOfClass:[NSString class]]){
-        NSDate *date = [[ISO8601DateFormatter sharedInstance] dateFromString:dateString];
+        NSDate *date = [NSDate dateWithISO8601String:dateString];
         if(date){
             self.date = date;
         }
@@ -47,7 +47,7 @@
         dictionary[@"time"] = self.time;
     }
     if(self.date){
-        NSString *dateString = [[ISO8601DateFormatter sharedInstance] stringFromDate:self.date];
+        NSString *dateString = [self.date ISO8601String];
         if(dateString){
             dictionary[@"date"] = dateString;
         }

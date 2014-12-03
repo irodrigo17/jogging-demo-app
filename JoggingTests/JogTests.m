@@ -9,7 +9,7 @@
 
 #import <XCTest/XCTest.h>
 #import "Jog.h"
-#import "ISO8601DateFormatter+SharedInstance.h"
+#import <ISO8601/ISO8601.h>
 
 
 @interface JogTests : XCTestCase
@@ -106,9 +106,8 @@
     XCTAssert(!jog.date);
     XCTAssert(!jog.objectId);
     
-    ISO8601DateFormatter *formatter = [ISO8601DateFormatter sharedInstance];
-    NSDate *date = [NSDate date];
-    NSString *formattedDate = [formatter stringFromDate:date];
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:1417624238];
+    NSString *formattedDate = [date ISO8601String];
     NSDictionary *dic = @{@"distance": @(1), @"time": @(2), @"date": formattedDate, @"objectId": @"my_id"};
     [jog updateWithDictionary:dic];
     XCTAssert([jog.distance isEqual:dic[@"distance"]]);
@@ -119,7 +118,7 @@
     [jog updateWithDictionary:@{}];
     XCTAssert([jog.distance isEqual:dic[@"distance"]]);
     XCTAssert([jog.time isEqual:dic[@"time"]]);
-    XCTAssert([jog.date isEqual:dic[@"date"]]);
+    XCTAssert([jog.date isEqual:date]);
     XCTAssert([jog.objectId isEqual:dic[@"objectId"]]);
     
     NSDictionary *badDic = @{@"distance": @"This should be a number instead of a string"};
@@ -146,8 +145,7 @@
     jog.date = [NSDate date];
     jog.objectId = @"my_id";
     
-    ISO8601DateFormatter *formatter = [ISO8601DateFormatter sharedInstance];
-    NSString *date = [formatter stringFromDate:jog.date];
+    NSString *date = [jog.date ISO8601String];
     NSDictionary *expectedDic = @{@"distance": jog.distance, @"time": jog.time, @"date": date, @"objectId": jog.objectId};
     XCTAssert([[jog dictionary] isEqual:expectedDic]);
 }
