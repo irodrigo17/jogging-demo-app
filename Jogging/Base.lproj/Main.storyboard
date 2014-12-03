@@ -79,7 +79,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w8J-sD-Oad" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="748" y="372"/>
+            <point key="canvasLocation" x="922" y="227"/>
         </scene>
         <!--Sign Up-->
         <scene sceneID="6Jv-ON-Hac">
@@ -151,7 +151,98 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zSE-AW-zRT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1169" y="372"/>
+            <point key="canvasLocation" x="1377" y="227"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="n1s-09-bNA">
+            <objects>
+                <navigationController storyboardIdentifier="JogsNavigationController" id="x39-Iv-N0v" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NZ6-eX-Rrg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="wlL-qp-gln" kind="relationship" relationship="rootViewController" id="KAL-GV-pbr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ro5-ee-81e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="440" y="950"/>
+        </scene>
+        <!--Jogs-->
+        <scene sceneID="rrP-DV-CxW">
+            <objects>
+                <tableViewController storyboardIdentifier="JogsViewController" id="wlL-qp-gln" customClass="JogsViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="67" sectionHeaderHeight="22" sectionFooterHeight="22" id="FUw-Jl-nTS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="Dqx-g4-ZSX">
+                            <rect key="frame" x="0.0" y="64" width="320" height="38"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Signed in as username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XdT-6H-muT">
+                                    <rect key="frame" x="8" y="8" width="235" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uvV-TV-uFw">
+                                    <rect key="frame" x="251" y="8" width="61" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <state key="normal" title="Sign out">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="signOut:" destination="wlL-qp-gln" eventType="touchUpInside" id="AVT-Ny-RT3"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="JogCell" rowHeight="67" id="zqy-sg-VFN" customClass="JogCell">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zqy-sg-VFN" id="24V-s8-pda">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10 km in 57'30&quot;" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xh7-Kh-tH5">
+                                            <rect key="frame" x="8" y="9" width="304" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mon, Dec 15, 2014, 08:30 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="03P-qD-fDa">
+                                            <rect key="frame" x="8" y="39" width="304" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="dateLabel" destination="03P-qD-fDa" id="EbM-Pk-WKB"/>
+                                    <outlet property="timeAndDistanceLabel" destination="xh7-Kh-tH5" id="dhJ-ab-rln"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="wlL-qp-gln" id="WgD-f8-QAV"/>
+                            <outlet property="delegate" destination="wlL-qp-gln" id="Cp2-Vi-P6v"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Jogs" id="agH-yL-yPW">
+                        <barButtonItem key="leftBarButtonItem" title="Edit" id="AVQ-tk-xND"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="NXj-Bm-Bd1"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="user" destination="XdT-6H-muT" id="iQn-fF-FKW"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sfp-PM-qKE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="922" y="948"/>
         </scene>
     </scenes>
 </document>

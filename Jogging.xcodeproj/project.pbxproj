@@ -8,8 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		2ED7CD6728FB11381E053190 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB1C1F67B3B302E70CC4BDC /* libPods.a */; };
+		635529EC1A2E6D8500750FFE /* JogCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 635529EB1A2E6D8500750FFE /* JogCell.m */; };
+		635529ED1A2E6D8500750FFE /* JogCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 635529EB1A2E6D8500750FFE /* JogCell.m */; };
+		635529EF1A2E742500750FFE /* JogTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 635529EE1A2E742500750FFE /* JogTests.m */; };
+		635529F11A2E7A3500750FFE /* JogCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 635529F01A2E7A3500750FFE /* JogCellTests.m */; };
 		6377E2961A2E018A00220671 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6377E2951A2E018A00220671 /* APIManager.m */; };
 		6377E2971A2E018A00220671 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6377E2951A2E018A00220671 /* APIManager.m */; };
+		6377E29B1A2E23B200220671 /* JogsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6377E29A1A2E23B200220671 /* JogsViewController.m */; };
+		6377E29C1A2E23B200220671 /* JogsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6377E29A1A2E23B200220671 /* JogsViewController.m */; };
+		6377E29F1A2E260A00220671 /* JogManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6377E29E1A2E260A00220671 /* JogManager.m */; };
+		6377E2A01A2E260A00220671 /* JogManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6377E29E1A2E260A00220671 /* JogManager.m */; };
+		6377E2A31A2E2EF700220671 /* Jog.m in Sources */ = {isa = PBXBuildFile; fileRef = 6377E2A21A2E2EF700220671 /* Jog.m */; };
+		6377E2A41A2E2EF700220671 /* Jog.m in Sources */ = {isa = PBXBuildFile; fileRef = 6377E2A21A2E2EF700220671 /* Jog.m */; };
 		63C7AF091A2DDF5E00FB9EAE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C7AF081A2DDF5E00FB9EAE /* main.m */; };
 		63C7AF0C1A2DDF5E00FB9EAE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C7AF0B1A2DDF5E00FB9EAE /* AppDelegate.m */; };
 		63C7AF121A2DDF5E00FB9EAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63C7AF101A2DDF5E00FB9EAE /* Main.storyboard */; };
@@ -40,9 +50,19 @@
 /* Begin PBXFileReference section */
 		2B12C731DBEC22FFC7A5E8F3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4592F275C867291200ED7356 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		635529EA1A2E6D8500750FFE /* JogCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JogCell.h; sourceTree = "<group>"; };
+		635529EB1A2E6D8500750FFE /* JogCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JogCell.m; sourceTree = "<group>"; };
+		635529EE1A2E742500750FFE /* JogTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JogTests.m; sourceTree = "<group>"; };
+		635529F01A2E7A3500750FFE /* JogCellTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JogCellTests.m; sourceTree = "<group>"; };
 		6377E2941A2E018A00220671 /* APIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
 		6377E2951A2E018A00220671 /* APIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIManager.m; sourceTree = "<group>"; };
 		6377E2981A2E0AC200220671 /* DictionaryRepresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryRepresentation.h; sourceTree = "<group>"; };
+		6377E2991A2E23B200220671 /* JogsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JogsViewController.h; sourceTree = "<group>"; };
+		6377E29A1A2E23B200220671 /* JogsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JogsViewController.m; sourceTree = "<group>"; };
+		6377E29D1A2E260A00220671 /* JogManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JogManager.h; sourceTree = "<group>"; };
+		6377E29E1A2E260A00220671 /* JogManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JogManager.m; sourceTree = "<group>"; };
+		6377E2A11A2E2EF700220671 /* Jog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Jog.h; sourceTree = "<group>"; };
+		6377E2A21A2E2EF700220671 /* Jog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Jog.m; sourceTree = "<group>"; };
 		63C7AF031A2DDF5E00FB9EAE /* Jogging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jogging.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63C7AF071A2DDF5E00FB9EAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63C7AF081A2DDF5E00FB9EAE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -134,8 +154,10 @@
 		63C7AF1F1A2DDF5E00FB9EAE /* JoggingTests */ = {
 			isa = PBXGroup;
 			children = (
-				63C7AF221A2DDF5E00FB9EAE /* JoggingTests.m */,
 				63C7AF201A2DDF5E00FB9EAE /* Supporting Files */,
+				63C7AF221A2DDF5E00FB9EAE /* JoggingTests.m */,
+				635529EE1A2E742500750FFE /* JogTests.m */,
+				635529F01A2E7A3500750FFE /* JogCellTests.m */,
 			);
 			path = JoggingTests;
 			sourceTree = "<group>";
@@ -155,6 +177,8 @@
 				63C7AF321A2DE42A00FB9EAE /* InitialViewController.m */,
 				63C7AF351A2DE90600FB9EAE /* SignUpViewController.h */,
 				63C7AF361A2DE90600FB9EAE /* SignUpViewController.m */,
+				6377E2991A2E23B200220671 /* JogsViewController.h */,
+				6377E29A1A2E23B200220671 /* JogsViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -165,6 +189,8 @@
 				63C7AF3D1A2DEDA600FB9EAE /* User.h */,
 				63C7AF3E1A2DEDA600FB9EAE /* User.m */,
 				6377E2981A2E0AC200220671 /* DictionaryRepresentation.h */,
+				6377E2A11A2E2EF700220671 /* Jog.h */,
+				6377E2A21A2E2EF700220671 /* Jog.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -172,10 +198,12 @@
 		63C7AF2F1A2DE39B00FB9EAE /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				63C7AF391A2DED7C00FB9EAE /* SessionManager.h */,
-				63C7AF3A1A2DED7C00FB9EAE /* SessionManager.m */,
 				6377E2941A2E018A00220671 /* APIManager.h */,
 				6377E2951A2E018A00220671 /* APIManager.m */,
+				63C7AF391A2DED7C00FB9EAE /* SessionManager.h */,
+				63C7AF3A1A2DED7C00FB9EAE /* SessionManager.m */,
+				6377E29D1A2E260A00220671 /* JogManager.h */,
+				6377E29E1A2E260A00220671 /* JogManager.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -183,6 +211,8 @@
 		63C7AF301A2DE39B00FB9EAE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				635529EA1A2E6D8500750FFE /* JogCell.h */,
+				635529EB1A2E6D8500750FFE /* JogCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -371,8 +401,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6377E2A31A2E2EF700220671 /* Jog.m in Sources */,
+				635529EC1A2E6D8500750FFE /* JogCell.m in Sources */,
 				63C7AF3B1A2DED7C00FB9EAE /* SessionManager.m in Sources */,
+				6377E29B1A2E23B200220671 /* JogsViewController.m in Sources */,
 				63C7AF331A2DE42A00FB9EAE /* InitialViewController.m in Sources */,
+				6377E29F1A2E260A00220671 /* JogManager.m in Sources */,
 				63C7AF3F1A2DEDA600FB9EAE /* User.m in Sources */,
 				63C7AF0C1A2DDF5E00FB9EAE /* AppDelegate.m in Sources */,
 				6377E2961A2E018A00220671 /* APIManager.m in Sources */,
@@ -385,7 +419,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6377E2A41A2E2EF700220671 /* Jog.m in Sources */,
 				63C7AF401A2DEDA600FB9EAE /* User.m in Sources */,
+				635529EF1A2E742500750FFE /* JogTests.m in Sources */,
+				635529ED1A2E6D8500750FFE /* JogCell.m in Sources */,
+				635529F11A2E7A3500750FFE /* JogCellTests.m in Sources */,
+				6377E29C1A2E23B200220671 /* JogsViewController.m in Sources */,
+				6377E2A01A2E260A00220671 /* JogManager.m in Sources */,
 				63C7AF231A2DDF5E00FB9EAE /* JoggingTests.m in Sources */,
 				6377E2971A2E018A00220671 /* APIManager.m in Sources */,
 				63C7AF341A2DE42A00FB9EAE /* InitialViewController.m in Sources */,

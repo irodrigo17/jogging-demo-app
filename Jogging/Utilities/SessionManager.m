@@ -10,6 +10,9 @@
 #import "APIManager.h"
 
 
+static NSString * const kUserKey = @"kUserKey";
+
+
 @interface SessionManager ()
 
 /**
@@ -70,6 +73,7 @@
 - (void)setCurrentUser:(User*)user
 {
     _user = user;
+    [[NSUserDefaults standardUserDefaults] setObject:[user dictionary] forKey:kUserKey];
     [[APIManager sharedInstance].requestSerializer setValue:user.sessionToken forHTTPHeaderField:@"X-Parse-Session-Token"];
 }
 

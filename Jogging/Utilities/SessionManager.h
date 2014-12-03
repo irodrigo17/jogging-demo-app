@@ -10,7 +10,7 @@
 #import "User.h"
 
 /**
- * The SessionManager class handles all session related actions like sign up and login, and stores current session information.
+ * The `SessionManager` class handles all session related actions like sign up and login, and stores current session information.
  */
 @interface SessionManager : NSObject
 

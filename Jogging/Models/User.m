@@ -23,6 +23,9 @@
     if(dictionary[@"email"]){
         self.email = dictionary[@"email"];
     }
+    if(dictionary[@"password"]){
+        self.password = dictionary[@"password"];
+    }
     if(dictionary[@"sessionToken"]){
         self.sessionToken = dictionary[@"sessionToken"];
     }
@@ -42,6 +45,9 @@
     }
     if(self.password){
         dictionary[@"password"] = self.password;
+    }
+    if(self.sessionToken){
+        dictionary[@"sessionToken"] = self.sessionToken;
     }
     return dictionary;
 }
