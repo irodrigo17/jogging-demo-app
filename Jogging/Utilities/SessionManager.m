@@ -15,11 +15,6 @@ static NSString * const kUserKey = @"kUserKey";
 
 @interface SessionManager ()
 
-/**
- * Sets the current user and updates the shared `APIManager` with the user's session token.
- */
-- (void)setCurrentUser:(User*)user;
-
 @end
 
 
@@ -55,7 +50,7 @@ static NSString * const kUserKey = @"kUserKey";
 {
     [[APIManager sharedInstance] GET:@"login" parameters:[user dictionary] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [user updateWithDictionary:responseObject];
-        _user = user;
+        [self setCurrentUser:user];
         success(user);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         fail(error);
@@ -68,13 +63,25 @@ static NSString * const kUserKey = @"kUserKey";
     [self setCurrentUser:nil];
 }
 
-#pragma mark - Private interface
-
 - (void)setCurrentUser:(User*)user
 {
     _user = user;
-    [[NSUserDefaults standardUserDefaults] setObject:[user dictionary] forKey:kUserKey];
+    [self storeUser:user];
     [[APIManager sharedInstance].requestSerializer setValue:user.sessionToken forHTTPHeaderField:@"X-Parse-Session-Token"];
+}
+
+- (void)storeUser:(User *)user
+{
+    user.password = nil;
+    [[NSUserDefaults standardUserDefaults] setObject:[user dictionary] forKey:kUserKey];
+}
+
+- (User*)loadUser
+{
+    NSDictionary *dic = [[NSUserDefaults standardUserDefaults] dictionaryForKey:kUserKey];
+    User *user = [[User alloc] init];
+    [user updateWithDictionary:dic];
+    return user;
 }
 
 @end

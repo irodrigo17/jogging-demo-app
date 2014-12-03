@@ -51,4 +51,9 @@
     XCTFail(@"Implement me");
 }
 
+- (void)testSetCurrentUser
+{
+    XCTFail(@"Implement me");
+}
+
 @end

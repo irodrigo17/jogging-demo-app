@@ -34,6 +34,10 @@
     if(sessionToken && [sessionToken isKindOfClass:[NSString class]]){
         self.sessionToken = sessionToken;
     }
+    NSString *objectId = dictionary[@"objectId"];
+    if(objectId && [objectId isKindOfClass:[NSString class]]){
+        self.objectId = objectId;
+    }
 }
 
 - (NSMutableDictionary*)dictionary
@@ -53,6 +57,9 @@
     }
     if(self.sessionToken){
         dictionary[@"sessionToken"] = self.sessionToken;
+    }
+    if(self.objectId){
+        dictionary[@"objectId"] = self.objectId;
     }
     return dictionary;
 }

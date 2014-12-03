@@ -58,4 +58,11 @@
  */
 - (User*)loadUser;
 
+
+/**
+ * Sets the current user and updates the shared `APIManager` with the user's session token.
+ * It's called automatcally upon successful sign in.
+ */
+- (void)setCurrentUser:(User*)user;
+
 @end

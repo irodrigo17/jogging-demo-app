@@ -14,18 +14,6 @@
 
 @interface JogsViewController ()
 
-@property (weak, nonatomic) IBOutlet UILabel *user;
-@property (strong, nonatomic) NSArray *jogs;
-
-/**
- * Fetch jogs for the current user from the API and reload the table view.
- */
-- (void)updateJogs;
-
-/**
- * Reload the table view with the given jogs.
- */
-- (void)reloadTableWithJogs:(NSArray*)jogs;
 
 @end
 
@@ -37,22 +25,28 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self updateJogs];
+    User *user = [SessionManager sharedInstance].user;
+    [self updateUsernameWithUser:user];
+    [self updateJogsWithUser:user];
 }
 
 
-#pragma mark - API actions
+#pragma mark - Public infterface
 
 
-- (void)updateJogs
+- (void)updateJogsWithUser:(User*)user
 {
-    User *user = [SessionManager sharedInstance].user;
     [[JogManager sharedInstance] getAllJogsForUser:user success:^(NSArray *jogs) {
         [self reloadTableWithJogs:jogs];
     } fail:^(NSError *error) {
         [[[UIAlertView alloc] initWithTitle:@"Oops!!" message:@"Can't get jogs right now" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         [self reloadTableWithJogs:nil];
     }];
+}
+
+- (void)updateUsernameWithUser:(User *)user
+{
+    self.user.text = [NSString stringWithFormat:@"Signed in as %@", user.username];
 }
 
 - (void)reloadTableWithJogs:(NSArray *)jogs
@@ -95,6 +89,13 @@
     }
     
     return cell;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    return [UIView new];
 }
 
 

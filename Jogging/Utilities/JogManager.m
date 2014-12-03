@@ -24,9 +24,11 @@
 
 - (void)getAllJogsForUser:(User *)user success:(void (^)(NSArray *jogs))success fail:(void (^)(NSError *error))fail
 {
-    [[APIManager sharedInstance] GET:@"jogs" parameters:@{@"user": user} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSString *query = [NSString stringWithFormat:@"{\"user\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\"%@\"}}", user.objectId];
+    NSDictionary *parameters = @{@"where": query};
+    [[APIManager sharedInstance] GET:@"classes/Jog" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSMutableArray *jogs = [NSMutableArray array];
-        for(NSDictionary *dic in responseObject){
+        for(NSDictionary *dic in responseObject[@"results"]){
             Jog *jog = [[Jog alloc] init];
             [jog updateWithDictionary:dic];
             [jogs addObject:jog];

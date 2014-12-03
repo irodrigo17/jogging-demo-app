@@ -17,5 +17,6 @@
 @property (strong) NSString *email;
 @property (strong) NSString *password;
 @property (strong) NSString *sessionToken;
+@property (strong) NSString *objectId;
 
 @end
