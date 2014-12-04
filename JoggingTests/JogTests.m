@@ -108,7 +108,8 @@
     
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:1417624238];
     NSString *formattedDate = [date ISO8601String];
-    NSDictionary *dic = @{@"distance": @(1), @"time": @(2), @"date": formattedDate, @"objectId": @"my_id"};
+    NSDictionary *dateDic = @{@"__type": @"Date", @"iso": formattedDate};
+    NSDictionary *dic = @{@"distance": @(1), @"time": @(2), @"date": dateDic, @"objectId": @"my_id"};
     [jog updateWithDictionary:dic];
     XCTAssert([jog.distance isEqual:dic[@"distance"]]);
     XCTAssert([jog.time isEqual:dic[@"time"]]);
@@ -146,7 +147,8 @@
     jog.objectId = @"my_id";
     
     NSString *date = [jog.date ISO8601String];
-    NSDictionary *expectedDic = @{@"distance": jog.distance, @"time": jog.time, @"date": date, @"objectId": jog.objectId};
+    NSDictionary *dateDic = @{@"__type": @"Date", @"iso": date};
+    NSDictionary *expectedDic = @{@"distance": jog.distance, @"time": jog.time, @"date": dateDic, @"objectId": jog.objectId};
     XCTAssert([[jog dictionary] isEqual:expectedDic]);
 }
 

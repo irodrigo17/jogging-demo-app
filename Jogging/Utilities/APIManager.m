@@ -42,10 +42,30 @@
                                                     success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
                                                     failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 {
-    AFHTTPRequestOperation *operation = [super HTTPRequestOperationWithRequest:request success:success failure:failure];
     // log request
     NSLog(@"request: %@", [TTTURLRequestFormatter cURLCommandFromURLRequest:request]);
-    return operation;
+    
+    // add response logging
+    void (^logResponse)(AFHTTPRequestOperation *) = ^void(AFHTTPRequestOperation *operation){
+        NSString *response = [[TTTHTTPURLResponseFormatter new] stringFromHTTPURLResponse:operation.response];
+        NSLog(@"response: %@\nheaders: %@\nbody: %@", response, operation.response.allHeaderFields, operation.responseString);
+    };
+    
+    void (^successWithLogging)(AFHTTPRequestOperation *, id) = ^void(AFHTTPRequestOperation *operation, id responseObject) {
+        logResponse(operation);
+        if(success){
+            success(operation, responseObject);
+        }
+    };
+    
+    void (^failWithLogging)(AFHTTPRequestOperation *, NSError *) = ^void(AFHTTPRequestOperation *operation, NSError *error) {
+        logResponse(operation);
+        if(failure){
+            failure(operation, error);
+        }
+    };
+    
+    return [super HTTPRequestOperationWithRequest:request success:successWithLogging failure:failWithLogging];
 }
 
 @end

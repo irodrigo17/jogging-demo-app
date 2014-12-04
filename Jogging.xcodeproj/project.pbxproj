@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2ED7CD6728FB11381E053190 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB1C1F67B3B302E70CC4BDC /* libPods.a */; };
+		633F215F1A3094BE00D3F8FC /* DateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 633F215E1A3094BE00D3F8FC /* DateHelper.m */; };
+		633F21601A3094BE00D3F8FC /* DateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 633F215E1A3094BE00D3F8FC /* DateHelper.m */; };
+		633F21621A3097B500D3F8FC /* DateHelperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 633F21611A3097B500D3F8FC /* DateHelperTests.m */; };
 		635529EC1A2E6D8500750FFE /* JogCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 635529EB1A2E6D8500750FFE /* JogCell.m */; };
 		635529ED1A2E6D8500750FFE /* JogCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 635529EB1A2E6D8500750FFE /* JogCell.m */; };
 		635529EF1A2E742500750FFE /* JogTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 635529EE1A2E742500750FFE /* JogTests.m */; };
@@ -56,6 +59,9 @@
 /* Begin PBXFileReference section */
 		2B12C731DBEC22FFC7A5E8F3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4592F275C867291200ED7356 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		633F215D1A3094BE00D3F8FC /* DateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateHelper.h; sourceTree = "<group>"; };
+		633F215E1A3094BE00D3F8FC /* DateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateHelper.m; sourceTree = "<group>"; };
+		633F21611A3097B500D3F8FC /* DateHelperTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateHelperTests.m; sourceTree = "<group>"; };
 		635529EA1A2E6D8500750FFE /* JogCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JogCell.h; sourceTree = "<group>"; };
 		635529EB1A2E6D8500750FFE /* JogCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JogCell.m; sourceTree = "<group>"; };
 		635529EE1A2E742500750FFE /* JogTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JogTests.m; sourceTree = "<group>"; };
@@ -174,6 +180,7 @@
 				635529F61A2E93DD00750FFE /* SessionManagerTests.m */,
 				635529F81A2E951200750FFE /* JogManagerTests.m */,
 				6360805D1A2F38510070D527 /* JogsViewControllerTests.m */,
+				633F21611A3097B500D3F8FC /* DateHelperTests.m */,
 			);
 			path = JoggingTests;
 			sourceTree = "<group>";
@@ -222,6 +229,8 @@
 				63C7AF3A1A2DED7C00FB9EAE /* SessionManager.m */,
 				6377E29D1A2E260A00220671 /* JogManager.h */,
 				6377E29E1A2E260A00220671 /* JogManager.m */,
+				633F215D1A3094BE00D3F8FC /* DateHelper.h */,
+				633F215E1A3094BE00D3F8FC /* DateHelper.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -428,6 +437,7 @@
 				6377E29F1A2E260A00220671 /* JogManager.m in Sources */,
 				63C7AF3F1A2DEDA600FB9EAE /* User.m in Sources */,
 				63C7AF0C1A2DDF5E00FB9EAE /* AppDelegate.m in Sources */,
+				633F215F1A3094BE00D3F8FC /* DateHelper.m in Sources */,
 				6377E2961A2E018A00220671 /* APIManager.m in Sources */,
 				63C7AF371A2DE90600FB9EAE /* SignUpViewController.m in Sources */,
 				63C7AF091A2DDF5E00FB9EAE /* main.m in Sources */,
@@ -448,6 +458,7 @@
 				635529F11A2E7A3500750FFE /* JogCellTests.m in Sources */,
 				635529F71A2E93DD00750FFE /* SessionManagerTests.m in Sources */,
 				6377E29C1A2E23B200220671 /* JogsViewController.m in Sources */,
+				633F21621A3097B500D3F8FC /* DateHelperTests.m in Sources */,
 				6377E2A01A2E260A00220671 /* JogManager.m in Sources */,
 				635529F31A2E915F00750FFE /* UserTests.m in Sources */,
 				635529F91A2E951200750FFE /* JogManagerTests.m in Sources */,
@@ -455,6 +466,7 @@
 				63C7AF341A2DE42A00FB9EAE /* InitialViewController.m in Sources */,
 				63C7AF3C1A2DED7C00FB9EAE /* SessionManager.m in Sources */,
 				63C7AF381A2DE90600FB9EAE /* SignUpViewController.m in Sources */,
+				633F21601A3094BE00D3F8FC /* DateHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

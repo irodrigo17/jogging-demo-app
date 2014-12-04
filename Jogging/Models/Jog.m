@@ -7,8 +7,7 @@
 //
 
 #import "Jog.h"
-#import <ISO8601/ISO8601.h>
-
+#import "DateHelper.h"
 
 @implementation Jog
 
@@ -24,9 +23,9 @@
     if(time && [time isKindOfClass:[NSNumber class]]){
         self.time = time;
     }
-    NSString *dateString = dictionary[@"date"];
-    if(dateString && [dateString isKindOfClass:[NSString class]]){
-        NSDate *date = [NSDate dateWithISO8601String:dateString];
+    NSDictionary *dateDic = dictionary[@"date"];
+    if(dateDic && [dateDic isKindOfClass:[NSDictionary class]]){
+        NSDate *date = [DateHelper deserializeParseDate:dateDic];
         if(date){
             self.date = date;
         }
@@ -47,9 +46,9 @@
         dictionary[@"time"] = self.time;
     }
     if(self.date){
-        NSString *dateString = [self.date ISO8601String];
-        if(dateString){
-            dictionary[@"date"] = dateString;
+        NSDictionary *dateDic = [DateHelper serializeParseDate:self.date];
+        if(dateDic){
+            dictionary[@"date"] = dateDic;
         }
     }
     if(self.objectId){

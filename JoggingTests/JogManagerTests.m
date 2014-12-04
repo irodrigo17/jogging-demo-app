@@ -44,7 +44,8 @@ static NSString * const kTestUserSessionToken = @"herOwuRBGNIeLn16GAQdKjKrd";
 
 - (void)testSharedInstance
 {
-    XCTFail(@"Implement me");
+    XCTAssert([JogManager sharedInstance] != nil);
+    XCTAssert([JogManager sharedInstance] == [JogManager sharedInstance]);
 }
 
 - (void)testGetAllJogs

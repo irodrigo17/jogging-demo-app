@@ -72,15 +72,23 @@ static NSString * const kUserKey = @"kUserKey";
 
 - (void)storeUser:(User *)user
 {
-    user.password = nil;
-    [[NSUserDefaults standardUserDefaults] setObject:[user dictionary] forKey:kUserKey];
+    if(user){
+        user.password = nil;
+        [[NSUserDefaults standardUserDefaults] setObject:[user dictionary] forKey:kUserKey];
+    }
+    else{
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:kUserKey];
+    }
 }
 
 - (User*)loadUser
 {
     NSDictionary *dic = [[NSUserDefaults standardUserDefaults] dictionaryForKey:kUserKey];
-    User *user = [[User alloc] init];
-    [user updateWithDictionary:dic];
+    User *user = nil;
+    if(dic){
+        user = [[User alloc] init];
+        [user updateWithDictionary:dic];
+    }
     return user;
 }
 

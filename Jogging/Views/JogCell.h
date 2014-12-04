@@ -17,6 +17,7 @@ extern NSString * const kJogCellReuseIdentifier;
 
 @property (weak, nonatomic) IBOutlet UILabel *timeAndDistanceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (strong, nonatomic, readonly) Jog *jog;
 
 /**
  * Updates the reciver with the given jog by setting `timeAndDistanceLabel` and `dateLabel`'s text.
