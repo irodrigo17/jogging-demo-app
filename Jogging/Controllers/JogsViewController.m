@@ -25,11 +25,25 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setupTableView];
     User *user = [SessionManager sharedInstance].user;
     [self updateUsernameWithUser:user];
     [self updateJogsWithUser:user];
 }
 
+
+#pragma mark - Private interface
+
+- (void)setupTableView
+{
+    [self.refreshControl addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
+}
+
+- (void)handleRefresh:(UIRefreshControl*)refreshControl
+{
+    User *user = [SessionManager sharedInstance].user;
+    [self updateJogsWithUser:user];
+}
 
 #pragma mark - Public infterface
 
@@ -38,9 +52,15 @@
 {
     [[JogManager sharedInstance] getAllJogsForUser:user success:^(NSArray *jogs) {
         [self reloadTableWithJogs:jogs];
+        if(self.refreshControl.refreshing){
+            [self.refreshControl endRefreshing];
+        }
     } fail:^(NSError *error) {
         [[[UIAlertView alloc] initWithTitle:@"Oops!!" message:@"Can't get jogs right now" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         [self reloadTableWithJogs:nil];
+        if(self.refreshControl.refreshing){
+            [self.refreshControl endRefreshing];
+        }
     }];
 }
 

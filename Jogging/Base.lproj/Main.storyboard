@@ -255,7 +255,7 @@
         <scene sceneID="rrP-DV-CxW">
             <objects>
                 <tableViewController storyboardIdentifier="JogsViewController" id="wlL-qp-gln" customClass="JogsViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="55" sectionHeaderHeight="22" sectionFooterHeight="22" id="FUw-Jl-nTS">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="55" sectionHeaderHeight="22" sectionFooterHeight="22" id="FUw-Jl-nTS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -323,6 +323,9 @@
                         <barButtonItem key="leftBarButtonItem" title="Edit" id="AVQ-tk-xND"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="NXj-Bm-Bd1"/>
                     </navigationItem>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="RUh-ji-OCI">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </refreshControl>
                     <connections>
                         <outlet property="user" destination="XdT-6H-muT" id="iQn-fF-FKW"/>
                     </connections>
