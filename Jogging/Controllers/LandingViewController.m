@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 Ignacio Rodrigo. All rights reserved.
 //
 
-#import "InitialViewController.h"
+#import "LandingViewController.h"
 
-@interface InitialViewController ()
+@interface LandingViewController ()
 
 @end
 
-@implementation InitialViewController
+@implementation LandingViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

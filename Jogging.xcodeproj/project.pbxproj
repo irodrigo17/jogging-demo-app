@@ -35,8 +35,8 @@
 		63C7AF121A2DDF5E00FB9EAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63C7AF101A2DDF5E00FB9EAE /* Main.storyboard */; };
 		63C7AF141A2DDF5E00FB9EAE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63C7AF131A2DDF5E00FB9EAE /* Images.xcassets */; };
 		63C7AF171A2DDF5E00FB9EAE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63C7AF151A2DDF5E00FB9EAE /* LaunchScreen.xib */; };
-		63C7AF331A2DE42A00FB9EAE /* InitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C7AF321A2DE42A00FB9EAE /* InitialViewController.m */; };
-		63C7AF341A2DE42A00FB9EAE /* InitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C7AF321A2DE42A00FB9EAE /* InitialViewController.m */; };
+		63C7AF331A2DE42A00FB9EAE /* LandingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C7AF321A2DE42A00FB9EAE /* LandingViewController.m */; };
+		63C7AF341A2DE42A00FB9EAE /* LandingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C7AF321A2DE42A00FB9EAE /* LandingViewController.m */; };
 		63C7AF371A2DE90600FB9EAE /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C7AF361A2DE90600FB9EAE /* SignUpViewController.m */; };
 		63C7AF381A2DE90600FB9EAE /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C7AF361A2DE90600FB9EAE /* SignUpViewController.m */; };
 		63C7AF3B1A2DED7C00FB9EAE /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C7AF3A1A2DED7C00FB9EAE /* SessionManager.m */; };
@@ -92,8 +92,8 @@
 		63C7AF161A2DDF5E00FB9EAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		63C7AF1C1A2DDF5E00FB9EAE /* JoggingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JoggingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63C7AF211A2DDF5E00FB9EAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		63C7AF311A2DE42A00FB9EAE /* InitialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitialViewController.h; sourceTree = "<group>"; };
-		63C7AF321A2DE42A00FB9EAE /* InitialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitialViewController.m; sourceTree = "<group>"; };
+		63C7AF311A2DE42A00FB9EAE /* LandingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandingViewController.h; sourceTree = "<group>"; };
+		63C7AF321A2DE42A00FB9EAE /* LandingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandingViewController.m; sourceTree = "<group>"; };
 		63C7AF351A2DE90600FB9EAE /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		63C7AF361A2DE90600FB9EAE /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		63C7AF391A2DED7C00FB9EAE /* SessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionManager.h; sourceTree = "<group>"; };
@@ -196,8 +196,8 @@
 		63C7AF2D1A2DE39B00FB9EAE /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				63C7AF311A2DE42A00FB9EAE /* InitialViewController.h */,
-				63C7AF321A2DE42A00FB9EAE /* InitialViewController.m */,
+				63C7AF311A2DE42A00FB9EAE /* LandingViewController.h */,
+				63C7AF321A2DE42A00FB9EAE /* LandingViewController.m */,
 				63C7AF351A2DE90600FB9EAE /* SignUpViewController.h */,
 				63C7AF361A2DE90600FB9EAE /* SignUpViewController.m */,
 				636080591A2F30600070D527 /* SignInViewController.h */,
@@ -433,7 +433,7 @@
 				63C7AF3B1A2DED7C00FB9EAE /* SessionManager.m in Sources */,
 				6360805B1A2F30600070D527 /* SignInViewController.m in Sources */,
 				6377E29B1A2E23B200220671 /* JogsViewController.m in Sources */,
-				63C7AF331A2DE42A00FB9EAE /* InitialViewController.m in Sources */,
+				63C7AF331A2DE42A00FB9EAE /* LandingViewController.m in Sources */,
 				6377E29F1A2E260A00220671 /* JogManager.m in Sources */,
 				63C7AF3F1A2DEDA600FB9EAE /* User.m in Sources */,
 				63C7AF0C1A2DDF5E00FB9EAE /* AppDelegate.m in Sources */,
@@ -463,7 +463,7 @@
 				635529F31A2E915F00750FFE /* UserTests.m in Sources */,
 				635529F91A2E951200750FFE /* JogManagerTests.m in Sources */,
 				6377E2971A2E018A00220671 /* APIManager.m in Sources */,
-				63C7AF341A2DE42A00FB9EAE /* InitialViewController.m in Sources */,
+				63C7AF341A2DE42A00FB9EAE /* LandingViewController.m in Sources */,
 				63C7AF3C1A2DED7C00FB9EAE /* SessionManager.m in Sources */,
 				63C7AF381A2DE90600FB9EAE /* SignUpViewController.m in Sources */,
 				633F21601A3094BE00D3F8FC /* DateHelper.m in Sources */,

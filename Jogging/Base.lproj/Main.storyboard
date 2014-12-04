@@ -5,10 +5,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Initial View Controller-->
+        <!--Landing View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController storyboardIdentifier="InitialViewController" id="vXZ-lx-hvc" customClass="InitialViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LandingViewController" id="vXZ-lx-hvc" customClass="LandingViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -17,20 +17,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Welcome to the Jogging App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gtR-rL-MYv">
-                                <rect key="frame" x="16" y="233" width="288" height="52"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to the Jogging App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gtR-rL-MYv">
+                                <rect key="frame" x="16" y="271" width="288" height="26"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="This is a demo app for Toptal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="VOU-tt-XgJ">
-                                <rect key="frame" x="16" y="293" width="288" height="42"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jbw-Ty-bhL">
-                                <rect key="frame" x="204" y="513" width="100" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jbw-Ty-bhL">
+                                <rect key="frame" x="228" y="506" width="76" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Sign In">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -39,9 +33,9 @@
                                     <segue destination="n9S-pD-eV7" kind="presentation" id="ap5-EI-q9e"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qwR-wD-a7t">
-                                <rect key="frame" x="16" y="513" width="100" height="35"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qwR-wD-a7t">
+                                <rect key="frame" x="16" y="506" width="88" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Sign Up">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -49,17 +43,24 @@
                                     <segue destination="f9G-ju-KiX" kind="presentation" id="Eox-RT-3na"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a demo app for Toptal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="VOU-tt-XgJ">
+                                <rect key="frame" x="16" y="305" width="288" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="gtR-rL-MYv" secondAttribute="centerX" id="8cc-0F-psk"/>
+                            <constraint firstAttribute="centerY" secondItem="gtR-rL-MYv" secondAttribute="centerY" id="AG0-BA-uG3"/>
                             <constraint firstAttribute="centerX" secondItem="VOU-tt-XgJ" secondAttribute="centerX" id="DOh-NQ-Ivt"/>
-                            <constraint firstItem="VOU-tt-XgJ" firstAttribute="top" secondItem="gtR-rL-MYv" secondAttribute="bottom" constant="8" id="I2k-x2-mEZ"/>
+                            <constraint firstAttribute="width" secondItem="VOU-tt-XgJ" secondAttribute="width" constant="32" id="Grf-Gs-XrT"/>
                             <constraint firstItem="jbw-Ty-bhL" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="ITU-9M-EHd"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="qwR-wD-a7t" secondAttribute="bottom" constant="20" id="SME-zJ-bri"/>
-                            <constraint firstItem="VOU-tt-XgJ" firstAttribute="width" secondItem="gtR-rL-MYv" secondAttribute="width" id="fRS-ve-hdf"/>
                             <constraint firstItem="qwR-wD-a7t" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="hJ0-Uh-Hew"/>
-                            <constraint firstAttribute="centerY" secondItem="gtR-rL-MYv" secondAttribute="centerY" constant="25" id="mHw-nU-1H4"/>
+                            <constraint firstItem="VOU-tt-XgJ" firstAttribute="top" secondItem="gtR-rL-MYv" secondAttribute="bottom" constant="8" id="kRd-bw-mEi"/>
+                            <constraint firstItem="gtR-rL-MYv" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" constant="-32" id="q7n-bE-OGV"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="jbw-Ty-bhL" secondAttribute="bottom" constant="20" id="vIM-9b-Ixh"/>
                         </constraints>
                     </view>
@@ -67,6 +68,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="317" y="227"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PuA-5U-DaS">
@@ -247,7 +249,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ro5-ee-81e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="440" y="950"/>
+            <point key="canvasLocation" x="317" y="936"/>
         </scene>
         <!--Jogs-->
         <scene sceneID="rrP-DV-CxW">
@@ -261,14 +263,14 @@
                             <rect key="frame" x="0.0" y="64" width="320" height="38"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Signed in as username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XdT-6H-muT">
-                                    <rect key="frame" x="8" y="8" width="235" height="21"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signed in as username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XdT-6H-muT">
+                                    <rect key="frame" x="8" y="10" width="157" height="18"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uvV-TV-uFw">
-                                    <rect key="frame" x="251" y="8" width="61" height="21"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uvV-TV-uFw">
+                                    <rect key="frame" x="261" y="5" width="51" height="28"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <state key="normal" title="Sign out">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -319,7 +321,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Jogs" id="agH-yL-yPW">
                         <barButtonItem key="leftBarButtonItem" title="Edit" id="AVQ-tk-xND"/>
-                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="NXj-Bm-Bd1"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="NXj-Bm-Bd1"/>
                     </navigationItem>
                     <connections>
                         <outlet property="user" destination="XdT-6H-muT" id="iQn-fF-FKW"/>
@@ -327,7 +329,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sfp-PM-qKE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="922" y="948"/>
+            <point key="canvasLocation" x="922" y="936"/>
         </scene>
     </scenes>
 </document>

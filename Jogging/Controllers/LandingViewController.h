@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface InitialViewController : UIViewController
+@interface LandingViewController : UIViewController
 
 @end
