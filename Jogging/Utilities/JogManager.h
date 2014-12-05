@@ -39,4 +39,13 @@
  */
 - (void)postJog:(Jog *)jog success:(void (^)(Jog *jog))success fail:(void (^)(NSError *error))fail;
 
+
+/**
+ * Delete the given jog and executes the proper code block upon completion.
+ * @param jog The jog to delete.
+ * @param success The code block to be executed if the jog is deleted successfully, it receives the updated jog as a parameter.
+ * @param fail The code block to be executed if there's any error deleting the jog, it receives an NSError instance as a parameter.
+ */
+- (void)deleteJog:(Jog *)jog success:(void (^)(Jog *jog))success fail:(void (^)(NSError *error))fail;
+
 @end

@@ -8,14 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "User.h"
-#import "NewJogViewController.h"
+#import "EditJogViewController.h"
 
 
-@interface JogsViewController : UITableViewController <NewJogViewControllerDelegate>
+@interface JogsViewController : UITableViewController <EditJogViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *user;
 
-@property (strong, nonatomic) NSArray *jogs;
+@property (strong, nonatomic) NSMutableArray *jogs;
 
 
 /**

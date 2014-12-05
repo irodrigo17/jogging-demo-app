@@ -353,7 +353,6 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Jogs" id="agH-yL-yPW">
                         <barButtonItem key="backBarButtonItem" title="Back" id="UPj-Ms-x3I"/>
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="AVQ-tk-xND"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="NXj-Bm-Bd1">
                             <connections>
                                 <segue destination="4AT-6P-FUY" kind="show" identifier="ShowNewJogViewController" id="RkB-a7-GcK"/>
@@ -371,10 +370,10 @@
             </objects>
             <point key="canvasLocation" x="922" y="936"/>
         </scene>
-        <!--New Jog View Controller-->
+        <!--Edit Jog View Controller-->
         <scene sceneID="3p1-qt-JVi">
             <objects>
-                <viewController storyboardIdentifier="NewJogViewController" id="4AT-6P-FUY" customClass="NewJogViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewJogViewController" id="4AT-6P-FUY" customClass="EditJogViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="95z-VI-0bt"/>
                         <viewControllerLayoutGuide type="bottom" id="Vr0-7Z-Pnc"/>

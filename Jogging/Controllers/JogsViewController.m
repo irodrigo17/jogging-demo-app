@@ -10,6 +10,7 @@
 #import "JogManager.h"
 #import "SessionManager.h"
 #import "JogCell.h"
+#import <JGProgressHUD/JGProgressHUD.h>
 
 
 @interface JogsViewController ()
@@ -33,8 +34,8 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if([segue.destinationViewController isKindOfClass:[NewJogViewController class]]){
-        NewJogViewController *vc = segue.destinationViewController;
+    if([segue.destinationViewController isKindOfClass:[EditJogViewController class]]){
+        EditJogViewController *vc = segue.destinationViewController;
         vc.delegate = self;
     }
 }
@@ -44,6 +45,11 @@
 
 - (void)setupTableView
 {
+    // setup edit button
+    self.editing = NO;
+    self.navigationItem.leftBarButtonItem = [self editButtonItem];
+    
+    // setup refresh control
     [self.refreshControl addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
 }
 
@@ -65,15 +71,9 @@
 {
     [[JogManager sharedInstance] getAllJogsForUser:user success:^(NSArray *jogs) {
         [self reloadTableWithJogs:jogs];
-        if(self.refreshControl.refreshing){
-            [self.refreshControl endRefreshing];
-        }
     } fail:^(NSError *error) {
         [[[UIAlertView alloc] initWithTitle:@"Oops!!" message:@"Can't get jogs right now" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         [self reloadTableWithJogs:nil];
-        if(self.refreshControl.refreshing){
-            [self.refreshControl endRefreshing];
-        }
     }];
 }
 
@@ -84,8 +84,37 @@
 
 - (void)reloadTableWithJogs:(NSArray *)jogs
 {
+    // end editing if needed
+    if([self isEditing]){
+        [self setEditing:NO animated:YES];
+    }
+    
+    // store jogs
     self.jogs = jogs;
+    
+    // reload data
     [self.tableView reloadData];
+    
+    // update refresh control state if needed
+    if(self.refreshControl.refreshing){
+        [self.refreshControl endRefreshing];
+    }
+}
+
+- (void)deleteJog:(Jog*)jog
+{
+    JGProgressHUD *progressHUD = [[JGProgressHUD alloc] initWithStyle:JGProgressHUDStyleDark];
+    [progressHUD showInView:self.view];
+    
+    [[JogManager sharedInstance] deleteJog:jog success:^(Jog *jog){
+        NSLog(@"Deleted jog: %@", jog);
+        [progressHUD dismiss];
+    } fail:^(NSError *error){
+        [[[UIAlertView alloc] initWithTitle:@"Oops!" message:@"Can't delete jog" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        NSLog(@"Can't delete jog: %@\nError: %@", jog, error);
+        [self updateJogsForCurrentUser];
+        [progressHUD dismiss];
+    }];
 }
 
 
@@ -121,6 +150,26 @@
     }
     
     return cell;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [self.jogs count] > 0;
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [self.jogs count] > 0 ? UITableViewCellEditingStyleDelete : UITableViewCellEditingStyleNone;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(editingStyle == UITableViewCellEditingStyleDelete){
+        JogCell *cell = (JogCell*)[tableView cellForRowAtIndexPath:indexPath];
+        [self.jogs removeObject:cell.jog];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self deleteJog:cell.jog];
+    }
 }
 
 #pragma mark - UITableViewDelegate

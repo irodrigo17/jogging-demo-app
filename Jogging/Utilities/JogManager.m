@@ -50,4 +50,15 @@
     }];
 }
 
+- (void)deleteJog:(Jog *)jog success:(void (^)(Jog *jog))success fail:(void (^)(NSError *error))fail
+{
+    NSString *path = [NSString stringWithFormat:@"classes/Jog/%@", jog.objectId];
+    [[APIManager sharedInstance] DELETE:path parameters:[jog dictionary] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [jog updateWithDictionary:responseObject];
+        success(jog);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        fail(error);
+    }];
+}
+
 @end

@@ -6,17 +6,17 @@
 //  Copyright (c) 2014 Ignacio Rodrigo. All rights reserved.
 //
 
-#import "NewJogViewController.h"
+#import "EditJogViewController.h"
 #import "JogManager.h"
 #import "SessionManager.h"
 #import <JGProgressHUD/JGProgressHUD.h>
 
 
-@interface NewJogViewController ()
+@interface EditJogViewController ()
 
 @end
 
-@implementation NewJogViewController
+@implementation EditJogViewController
 
 - (void)viewDidLoad
 {

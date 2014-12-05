@@ -13,7 +13,7 @@
 @class Jog;
 
 
-@protocol NewJogViewControllerDelegate <NSObject>
+@protocol EditJogViewControllerDelegate <NSObject>
 
 @required
 
@@ -23,9 +23,9 @@
 
 
 
-@interface NewJogViewController : XLFormViewController
+@interface EditJogViewController : XLFormViewController
 
-@property (weak, nonatomic) id<NewJogViewControllerDelegate> delegate;
+@property (weak, nonatomic) id<EditJogViewControllerDelegate> delegate;
 
 // TODO: document me
 - (int)timeFromFormValues:(NSDictionary*)formValues;
