@@ -27,6 +27,7 @@
 
 @property (weak, nonatomic) id<NewJogViewControllerDelegate> delegate;
 
+// TODO: document me
 - (int)timeFromFormValues:(NSDictionary*)formValues;
 
 - (XLFormDescriptor*)createForm;
