@@ -31,4 +31,12 @@
  */
 - (void)getAllJogsForUser:(User *)user success:(void (^)(NSArray *jogs))success fail:(void (^)(NSError *error))fail;
 
+/**
+ * Saves the given jog and executes the proper code block upon completion.
+ * @param jog The jog to save.
+ * @param success The code block to be executed if the jog is saved successfully, it receives the updated jog as a parameter.
+ * @param fail The code block to be executed if there's any error saving the jog, it receives an NSError instance as a parameter.
+ */
+- (void)postJog:(Jog *)jog success:(void (^)(Jog *jog))success fail:(void (^)(NSError *error))fail;
+
 @end

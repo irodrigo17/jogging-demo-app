@@ -31,6 +31,14 @@
     [self updateJogsWithUser:user];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.destinationViewController isKindOfClass:[NewJogViewController class]]){
+        NewJogViewController *vc = segue.destinationViewController;
+        vc.delegate = self;
+    }
+}
+
 
 #pragma mark - Private interface
 
@@ -40,6 +48,11 @@
 }
 
 - (void)handleRefresh:(UIRefreshControl*)refreshControl
+{
+    [self updateJogsForCurrentUser];
+}
+
+- (void)updateJogsForCurrentUser
 {
     User *user = [SessionManager sharedInstance].user;
     [self updateJogsWithUser:user];
@@ -79,9 +92,8 @@
 #pragma mark - Actions
 
 - (IBAction)signOut:(id)sender {
-    // TODO: update root view controller to avoid keeping uneccessary view controllers in the stack.
-    UIViewController *vc = [self.storyboard instantiateInitialViewController];
-    [self presentViewController:vc animated:YES completion:nil];
+    [[SessionManager sharedInstance] signOut];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
@@ -115,7 +127,16 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
+    // Avoid getting extra lines on the screen
     return [UIView new];
+}
+
+
+#pragma mark - NewJogViewControllerDelegate
+
+- (void)didSaveJog:(Jog *)jog
+{
+    [self updateJogsForCurrentUser];
 }
 
 

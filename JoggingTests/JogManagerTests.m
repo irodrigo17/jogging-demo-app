@@ -86,4 +86,9 @@ static NSString * const kTestUserSessionToken = @"herOwuRBGNIeLn16GAQdKjKrd";
     }];
 }
 
+- (void)testSaveJog
+{
+    XCTFail(@"Implement me");
+}
+
 @end

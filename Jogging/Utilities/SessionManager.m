@@ -28,6 +28,8 @@ static NSString * const kUserKey = @"kUserKey";
     static SessionManager *sharedInstance;
     dispatch_once(&onceToken, ^{
         sharedInstance = [[self alloc] init];
+        // TODO: optimize this, user is unnecessarily stored again
+        [sharedInstance setCurrentUser:[sharedInstance loadUser]];
     });
     return sharedInstance;
 }

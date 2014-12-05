@@ -99,28 +99,33 @@
     XCTAssert(!jog.time);
     XCTAssert(!jog.date);
     XCTAssert(!jog.objectId);
+    XCTAssert(!jog.userId);
     
     [jog updateWithDictionary:@{}];
     XCTAssert(!jog.distance);
     XCTAssert(!jog.time);
     XCTAssert(!jog.date);
     XCTAssert(!jog.objectId);
+    XCTAssert(!jog.userId);
     
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:1417624238];
     NSString *formattedDate = [date ISO8601String];
     NSDictionary *dateDic = @{@"__type": @"Date", @"iso": formattedDate};
-    NSDictionary *dic = @{@"distance": @(1), @"time": @(2), @"date": dateDic, @"objectId": @"my_id"};
+    NSDictionary *userDic = @{@"__type": @"Pointer", @"class": @"_User", @"objectId": @"my-user-id"};
+    NSDictionary *dic = @{@"distance": @(1), @"time": @(2), @"date": dateDic, @"objectId": @"my_id", @"user": userDic};
     [jog updateWithDictionary:dic];
     XCTAssert([jog.distance isEqual:dic[@"distance"]]);
     XCTAssert([jog.time isEqual:dic[@"time"]]);
     XCTAssert([jog.date isEqual:date]);
     XCTAssert([jog.objectId isEqual:dic[@"objectId"]]);
+    XCTAssert([jog.userId isEqual:dic[@"user"][@"objectId"]]);
 
     [jog updateWithDictionary:@{}];
     XCTAssert([jog.distance isEqual:dic[@"distance"]]);
     XCTAssert([jog.time isEqual:dic[@"time"]]);
     XCTAssert([jog.date isEqual:date]);
     XCTAssert([jog.objectId isEqual:dic[@"objectId"]]);
+    XCTAssert([jog.userId isEqual:dic[@"user"][@"objectId"]]);
     
     NSDictionary *badDic = @{@"distance": @"This should be a number instead of a string"};
     XCTAssert([jog.distance isEqual:dic[@"distance"]]);
@@ -134,6 +139,9 @@
     badDic = @{@"objectId": @(1)};
     XCTAssert([jog.objectId isEqual:dic[@"objectId"]]);
     
+    badDic = @{@"user": @(1)};
+    XCTAssert([jog.userId isEqual:dic[@"user"][@"objectId"]]);
+    
 }
 
 - (void)testDictionary
@@ -145,10 +153,12 @@
     jog.time = @(1);
     jog.date = [NSDate date];
     jog.objectId = @"my_id";
+    jog.userId = @"my-user-id";
     
     NSString *date = [jog.date ISO8601String];
     NSDictionary *dateDic = @{@"__type": @"Date", @"iso": date};
-    NSDictionary *expectedDic = @{@"distance": jog.distance, @"time": jog.time, @"date": dateDic, @"objectId": jog.objectId};
+    NSDictionary *userDic = @{@"__type": @"Pointer", @"class": @"_User", @"objectId": jog.userId};
+    NSDictionary *expectedDic = @{@"distance": jog.distance, @"time": jog.time, @"date": dateDic, @"objectId": jog.objectId, @"user": userDic};
     XCTAssert([[jog dictionary] isEqual:expectedDic]);
 }
 

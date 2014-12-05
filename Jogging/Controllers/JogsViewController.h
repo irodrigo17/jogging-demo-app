@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "User.h"
+#import "NewJogViewController.h"
 
 
-@interface JogsViewController : UITableViewController
+@interface JogsViewController : UITableViewController <NewJogViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *user;
 

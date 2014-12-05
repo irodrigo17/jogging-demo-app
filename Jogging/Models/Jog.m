@@ -8,6 +8,8 @@
 
 #import "Jog.h"
 #import "DateHelper.h"
+#import "User.h"
+
 
 @implementation Jog
 
@@ -34,6 +36,10 @@
     if(objectId && [objectId isKindOfClass:[NSString class]]){
         self.objectId = objectId;
     }
+    NSString *userId = dictionary[@"user"][@"objectId"];
+    if(userId && [userId isKindOfClass:[NSString class]]){
+        self.userId = userId;
+    }
 }
 
 - (NSMutableDictionary*)dictionary
@@ -53,6 +59,13 @@
     }
     if(self.objectId){
         dictionary[@"objectId"] = self.objectId;
+    }
+    if(self.userId){
+        dictionary[@"user"] = @{
+            @"__type": @"Pointer",
+            @"className": @"_User",
+            @"objectId": self.userId
+        };
     }
     return dictionary;
 }

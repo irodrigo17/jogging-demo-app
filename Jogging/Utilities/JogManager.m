@@ -24,6 +24,7 @@
 
 - (void)getAllJogsForUser:(User *)user success:(void (^)(NSArray *jogs))success fail:(void (^)(NSError *error))fail
 {
+    // TODO: add pagination
     NSString *query = [NSString stringWithFormat:@"{\"user\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\"%@\"}}", user.objectId];
     NSDictionary *parameters = @{@"where": query};
     [[APIManager sharedInstance] GET:@"classes/Jog" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -34,6 +35,16 @@
             [jogs addObject:jog];
         }
         success(jogs);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        fail(error);
+    }];
+}
+
+- (void)postJog:(Jog *)jog success:(void (^)(Jog *jog))success fail:(void (^)(NSError *error))fail
+{
+    [[APIManager sharedInstance] POST:@"classes/Jog" parameters:[jog dictionary] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [jog updateWithDictionary:responseObject];
+        success(jog);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         fail(error);
     }];

@@ -9,12 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "DictionaryRepresentation.h"
 
+
 @interface Jog : NSObject <DictionaryRepresentation>
 
 @property (strong) NSNumber *distance;
 @property (strong) NSNumber *time;
 @property (strong) NSDate *date;
 @property (strong) NSString *objectId;
+
+@property (strong) NSString *userId;
 
 
 /**
