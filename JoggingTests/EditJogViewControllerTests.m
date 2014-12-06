@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 
-@interface NewJogViewControllerTests : XCTestCase
+@interface EditJogViewControllerTests : XCTestCase
 
 @end
 
-@implementation NewJogViewControllerTests
+@implementation EditJogViewControllerTests
 
 - (void)tests
 {

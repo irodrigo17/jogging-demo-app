@@ -157,7 +157,7 @@
     
     NSString *date = [jog.date ISO8601String];
     NSDictionary *dateDic = @{@"__type": @"Date", @"iso": date};
-    NSDictionary *userDic = @{@"__type": @"Pointer", @"class": @"_User", @"objectId": jog.userId};
+    NSDictionary *userDic = @{@"__type": @"Pointer", @"className": @"_User", @"objectId": jog.userId};
     NSDictionary *expectedDic = @{@"distance": jog.distance, @"time": jog.time, @"date": dateDic, @"objectId": jog.objectId, @"user": userDic};
     XCTAssert([[jog dictionary] isEqual:expectedDic]);
 }

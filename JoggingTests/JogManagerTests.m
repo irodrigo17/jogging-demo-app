@@ -64,7 +64,7 @@ static NSString * const kTestUserSessionToken = @"herOwuRBGNIeLn16GAQdKjKrd";
     XCTestExpectation *successExpectation = [self expectationWithDescription:@"Valid user ID"];
     
     [[JogManager sharedInstance] getAllJogsForUser:self.testUser success:^(NSArray *jogs) {
-        XCTAssert([jogs count] == 2);
+        XCTAssert([jogs count] > 0);
         for(Jog *jog in jogs){
             XCTAssert(jog.distance);
             XCTAssert(jog.time);
@@ -90,5 +90,16 @@ static NSString * const kTestUserSessionToken = @"herOwuRBGNIeLn16GAQdKjKrd";
 {
     XCTFail(@"Implement me");
 }
+
+- (void)testDeleteJog
+{
+    XCTFail(@"Implement me");
+}
+
+- (void)testUpdateJog
+{
+    XCTFail(@"Implement me");
+}
+
 
 @end
