@@ -37,6 +37,9 @@
     if([segue.destinationViewController isKindOfClass:[EditJogViewController class]]){
         EditJogViewController *vc = segue.destinationViewController;
         vc.delegate = self;
+        if([sender isKindOfClass:[Jog class]]){
+            vc.jog = sender;
+        }
     }
 }
 
@@ -69,7 +72,7 @@
 
 - (void)updateJogsWithUser:(User*)user
 {
-    [[JogManager sharedInstance] getAllJogsForUser:user success:^(NSArray *jogs) {
+    [[JogManager sharedInstance] getAllJogsForUser:user success:^(NSMutableArray *jogs) {
         [self reloadTableWithJogs:jogs];
     } fail:^(NSError *error) {
         [[[UIAlertView alloc] initWithTitle:@"Oops!!" message:@"Can't get jogs right now" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
@@ -82,7 +85,7 @@
     self.user.text = [NSString stringWithFormat:@"Signed in as %@", user.username];
 }
 
-- (void)reloadTableWithJogs:(NSArray *)jogs
+- (void)reloadTableWithJogs:(NSMutableArray *)jogs
 {
     // end editing if needed
     if([self isEditing]){
@@ -178,6 +181,14 @@
 {
     // Avoid getting extra lines on the screen
     return [UIView new];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if([self.jogs count] > 0){
+        JogCell *cell = (JogCell*)[tableView cellForRowAtIndexPath:indexPath];
+        [self performSegueWithIdentifier:@"ShowEditJogViewController" sender:cell.jog];
+    }
 }
 
 

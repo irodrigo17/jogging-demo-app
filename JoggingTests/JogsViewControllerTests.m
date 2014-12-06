@@ -40,7 +40,7 @@
     
     XCTAssert([vc tableView:vc.tableView numberOfRowsInSection:0] == 1);
     
-    vc.jogs = @[[Jog new], [Jog new]];
+    vc.jogs = [NSMutableArray arrayWithObjects:[Jog new], [Jog new], nil];
     XCTAssert([vc tableView:vc.tableView numberOfRowsInSection:0] == 2);
 }
 

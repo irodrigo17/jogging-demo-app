@@ -29,7 +29,7 @@
  * @param success The code block to be executed if the jogs are retrieved successfully, it receives an array of Jog instances as a parameter.
  * @param fail The code block to be executed if there's any error retrieving the jogs, it receives an NSError instance as a parameter.
  */
-- (void)getAllJogsForUser:(User *)user success:(void (^)(NSArray *jogs))success fail:(void (^)(NSError *error))fail;
+- (void)getAllJogsForUser:(User *)user success:(void (^)(NSMutableArray *jogs))success fail:(void (^)(NSError *error))fail;
 
 /**
  * Saves the given jog and executes the proper code block upon completion.
@@ -47,5 +47,15 @@
  * @param fail The code block to be executed if there's any error deleting the jog, it receives an NSError instance as a parameter.
  */
 - (void)deleteJog:(Jog *)jog success:(void (^)(Jog *jog))success fail:(void (^)(NSError *error))fail;
+
+/**
+ * Update the given jog and executes the proper code block upon completion.
+ * @param jog The jog to update.
+ * @param success The code block to be executed if the jog is updated successfully, it receives the updated jog as a parameter.
+ * @param fail The code block to be executed if there's any error updating the jog, it receives an NSError instance as a parameter.
+ */
+- (void)updateJog:(Jog *)jog success:(void (^)(Jog *jog))success fail:(void (^)(NSError *error))fail;
+
+
 
 @end

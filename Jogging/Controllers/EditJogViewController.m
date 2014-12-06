@@ -1,5 +1,5 @@
 //
-//  NewJogViewController.m
+//  EditJogViewController.m
 //  Jogging
 //
 //  Created by Ignacio Rodrigo on 12/4/14.
@@ -43,24 +43,28 @@
     [form addFormSection:section];
     
     // time rows
-    // TODO: use a double picker
+    // TODO: use a picker
     XLFormRowDescriptor *hoursRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"hours" rowType:XLFormRowDescriptorTypeInteger title:@"Hours"];
+    hoursRow.value = [self.jog hours] > 0 ? @([self.jog hours]) : nil;
     [section addFormRow:hoursRow];
     XLFormRowDescriptor *minutesRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"minutes" rowType:XLFormRowDescriptorTypeInteger title:@"Minutes"];
+    minutesRow.value = [self.jog minutes] > 0 ? @([self.jog minutes]) : nil;
     [section addFormRow:minutesRow];
     XLFormRowDescriptor *secondsRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"seconds" rowType:XLFormRowDescriptorTypeInteger title:@"Seconds"];
+    secondsRow.value = [self.jog seconds] ? @([self.jog seconds]) : nil;
     [section addFormRow:secondsRow];
     
     // distance row
     XLFormRowDescriptor *distanceRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"distance" rowType:XLFormRowDescriptorTypeInteger title:@"Distance"];
     [distanceRow.cellConfigAtConfigure setObject:@"in meters" forKey:@"textField.placeholder"];
     distanceRow.required = YES;
+    distanceRow.value = self.jog.distance;
     [section addFormRow:distanceRow];
     
     // date row
     XLFormRowDescriptor *dateRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"date" rowType:XLFormRowDescriptorTypeDateTimeInline title:@"Date"];
     dateRow.required = YES;
-    dateRow.value = [NSDate date];
+    dateRow.value = self.jog.date ?: [NSDate date];
     [section addFormRow:dateRow];
     
     return form;
@@ -76,23 +80,31 @@
         return;
     }
     
-    // create jog
-    NSDictionary *formValues = [self.form formValues];
-    Jog *jog = [self newJogWithFormValues:formValues];
-    
     // show progress HUD
     JGProgressHUD *progressHUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
     [progressHUD showInView:self.view animated:YES];
     
-    // save jog
-    [[JogManager sharedInstance] postJog:jog success:^(Jog *jog) {
+    // setup blocks
+    void (^success)(Jog *jog) = ^void(Jog *jog){
         [self.delegate didSaveJog:jog];
         [progressHUD dismissAnimated:YES];
         [self.navigationController popViewControllerAnimated:YES];
-    } fail:^(NSError *error) {
+    };
+    void (^fail)(NSError *error) = ^void(NSError *error){
         [progressHUD dismissAnimated:YES];
         [[[UIAlertView alloc] initWithTitle:@"Oops!" message:@"Can't save jog right now" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-    }];
+    };
+    
+    // create jog
+    NSDictionary *formValues = [self.form formValues];
+    if(self.jog){
+        [self updateJog:self.jog withFormValues:formValues];
+        [[JogManager sharedInstance] updateJog:self.jog success:success fail:fail];
+    }
+    else{
+        Jog *jog = [self newJogWithFormValues:formValues];
+        [[JogManager sharedInstance] postJog:jog success:success fail:fail];
+    }
 }
 
 - (int)timeFromFormValues:(NSDictionary*)formValues
@@ -116,12 +128,17 @@
 - (Jog*)newJogWithFormValues:(NSDictionary*)formValues
 {
     Jog *jog = [[Jog alloc] init];
+    [self updateJog:jog withFormValues:formValues];
+    return jog;
+}
+
+- (void)updateJog:(Jog*)jog withFormValues:(NSDictionary*)formValues
+{
     int time = [self timeFromFormValues:formValues];
     jog.time = @(time);
     jog.distance = formValues[@"distance"];
     jog.date = formValues[@"date"];
     jog.userId = [SessionManager sharedInstance].user.objectId;
-    return jog;
 }
 
 @end

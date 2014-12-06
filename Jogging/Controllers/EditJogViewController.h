@@ -1,5 +1,5 @@
 //
-//  NewJogViewController.h
+//  EditJogViewController.h
 //  Jogging
 //
 //  Created by Ignacio Rodrigo on 12/4/14.
@@ -26,6 +26,7 @@
 @interface EditJogViewController : XLFormViewController
 
 @property (weak, nonatomic) id<EditJogViewControllerDelegate> delegate;
+@property (strong, nonatomic) Jog *jog;
 
 // TODO: document me
 - (int)timeFromFormValues:(NSDictionary*)formValues;
@@ -35,5 +36,6 @@
 - (void)setupForm;
 
 - (Jog*)newJogWithFormValues:(NSDictionary*)formValues;
+- (void)updateJog:(Jog*)jog withFormValues:(NSDictionary*)formValues;
 
 @end

@@ -78,6 +78,20 @@
     return self.distance ? [self.distance floatValue] / 1000.0f : 0.0f;
 }
 
+- (int)hours
+{
+    return [self.time intValue] / 60 / 60;
+}
+
+- (int)minutes
+{
+    return ([self.time intValue] / 60) % 60;
+}
+
+- (int)seconds
+{
+    return [self.time intValue] % 60;
+}
 
 - (float)averageSpeed
 {
@@ -109,7 +123,6 @@
 {
     return [NSString stringWithFormat:@"%.2f km/h", [self averageSpeed]];
 }
-
 
 - (NSString*)description
 {

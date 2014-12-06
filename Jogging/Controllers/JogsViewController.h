@@ -31,6 +31,6 @@
 /**
  * Reload the table view with the given jogs.
  */
-- (void)reloadTableWithJogs:(NSArray*)jogs;
+- (void)reloadTableWithJogs:(NSMutableArray*)jogs;
 
 @end

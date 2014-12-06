@@ -22,7 +22,7 @@
     return sharedInstance;
 }
 
-- (void)getAllJogsForUser:(User *)user success:(void (^)(NSArray *jogs))success fail:(void (^)(NSError *error))fail
+- (void)getAllJogsForUser:(User *)user success:(void (^)(NSMutableArray *jogs))success fail:(void (^)(NSError *error))fail
 {
     // TODO: add pagination
     NSString *query = [NSString stringWithFormat:@"{\"user\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\"%@\"}}", user.objectId];
@@ -54,6 +54,17 @@
 {
     NSString *path = [NSString stringWithFormat:@"classes/Jog/%@", jog.objectId];
     [[APIManager sharedInstance] DELETE:path parameters:[jog dictionary] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [jog updateWithDictionary:responseObject];
+        success(jog);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        fail(error);
+    }];
+}
+
+- (void)updateJog:(Jog *)jog success:(void (^)(Jog *jog))success fail:(void (^)(NSError *error))fail
+{
+    NSString *path = [NSString stringWithFormat:@"classes/Jog/%@", jog.objectId];
+    [[APIManager sharedInstance] PUT:path parameters:[jog dictionary] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [jog updateWithDictionary:responseObject];
         success(jog);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

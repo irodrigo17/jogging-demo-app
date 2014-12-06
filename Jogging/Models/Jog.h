@@ -26,6 +26,21 @@
 - (float)distanceInKm;
 
 /**
+ * Returns the hours component of the receiver's `time`.
+ */
+- (int)hours;
+
+/**
+ * Returns the minutes component of the receiver's `time`.
+ */
+- (int)minutes;
+
+/**
+ * Returns the seconds component of the receiver's `time`.
+ */
+- (int)seconds;
+
+/**
  * Calculates the average speed in km/h.
  */
 - (float)averageSpeed;
@@ -44,7 +59,6 @@
  * Returns the average speed in km/h of the receiver formatted for presentation.
  */
 - (NSString*)formattedAverageSpeed;
-
 
 
 @end
