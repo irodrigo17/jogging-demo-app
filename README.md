@@ -33,38 +33,27 @@ There are several improvements for this app in the readmap:
 ##### Offline mode
 
 The app doesn’t have any local storage yet, so it works in online mode only for now.
-In a real world project, offline mode would be a very useful feature for this kind of app, and implementation is pretty straightforward using [CoreData](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CoreData/cdProgrammingGuide.html).
+In a real world project, offline mode would be a very useful feature for this kind of app, and implementation is pretty straightforward using [CoreData](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CoreData/cdProgrammingGuide.html), and even more straightforward using an [ActiveRecord](http://www.martinfowler.com/eaaCatalog/activeRecord.html) implementation for CoreData like [MagicalRecord](https://github.com/magicalpanda/MagicalRecord).
 
 ##### Auth
 
-As an user of a real world app, I love being able to login with services like Facebook or Twitter. I'll also add email validation and password recovery features.
+As an user of a real world app, I love being able to login with services like Facebook or Twitter. Email validation and password recovery are default features too.
 
 ##### Analytics
 
-In a real world project I would add analysis from the first beta build, by using some external service like [Google Analytics](https://developers.google.com/analytics/devguides/collection/ios/v3/) or [Flurry](http://www.flurry.com/solutions/analytics).
+Analytics should be in place from the first beta build in a real world project, using some external service like [Google Analytics](https://developers.google.com/analytics/devguides/collection/ios/v3/) or [Flurry](http://www.flurry.com/solutions/analytics) makes it an easy task.
 
 
 ##### Location Services
 
 It’d be great to track actual jogs using and display them by using  [CoreLocation and MapKit](https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/LocationAwarenessPG/Introduction/Introduction.html#//apple_ref/doc/uid/TP40009497-CH1-SW1).
 
-##### Security
-
-The API now uses token based authentication, ACL authorisation and SSL. Security is reasonable, but in a real world project I’ll probably invest more time on it and do more testing.
-
-##### Scalability
-
-The API should scale pretty well right now as it’s using [Parse](https://www.parse.com), but in a real world project I’ll probably make some tests and see if it can deal with the expected usage scenario, and probably build a custom RESTful API from the ground up.
-
 ##### Beta build distribution
 
 Normally, I would setup beta build distribution from the first sprint and start delivering as soon as possible, probably using [TestFlight](https://developer.apple.com/app-store/testflight/).
 
-##### Documentation
 
-The app code, and most importantly the API interface should be really well documented on a real project.
-
-##### Localisation
+##### Localization
 
 [Internationalization and Localization](https://developer.apple.com/library/ios/documentation/MacOSX/Conceptual/BPInternational/Introduction/Introduction.html) is really important for a real world app, even if it doesn’t support multiple languages in the first releases, but the plumbing should be in place from the beginning of the project.
 
@@ -72,7 +61,7 @@ The app code, and most importantly the API interface should be really well docum
 
 [Accessibility](https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/iPhoneAccessibility/Introduction/Introduction.html) is one of the greatest things about iOS, and yet it’s overlooked by many apps.
 
-##### UI/UX design
+##### UI/UX 
 
 Default iOS controls are great, but an app with good graphics and [animations](https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreAnimation_guide/Introduction/Introduction.html) truly stands out from the crowd.
 
@@ -88,7 +77,18 @@ Crash logs should be properly stored to be useful to the developer (easily dSYMd
 
 Logging should be handled using a good extensible framework like [CocoaLumberjack](https://github.com/CocoaLumberjack/CocoaLumberjack), to easily manage different log levels and log destinations (like a remote server for errors).
 
-
 ##### Custom RESTful API
 
 Having a custom RESTful API would be great for showing backend development skills.
+
+##### Security
+
+The API now uses token based authentication, ACL authorization and SSL. Security is reasonable, but in a real world project I’ll probably invest more time on it and do more testing.
+
+##### Scalability
+
+The API should scale pretty well right now as it’s using [Parse](https://www.parse.com), but in a real world project I’ll probably make some tests and see if it can deal with the expected usage scenario, and probably build a custom RESTful API from the ground up.
+
+##### Documentation
+
+The app code, and most importantly the API interface should be really well documented on a real project.
