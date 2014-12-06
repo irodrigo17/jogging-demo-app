@@ -48,58 +48,66 @@ static NSString * const kTestUserSessionToken = @"herOwuRBGNIeLn16GAQdKjKrd";
     XCTAssert([JogManager sharedInstance] == [JogManager sharedInstance]);
 }
 
-- (void)testGetAllJogs
+- (void)testCRUDOperations
 {
-    XCTestExpectation *failExpectation = [self expectationWithDescription:@"Missing user ID"];
+    XCTestExpectation *successExpectation = [self expectationWithDescription:@"Valid Jog"];
     
-    User *badUser = [[User alloc] init];
-    [[JogManager sharedInstance] getAllJogsForUser:badUser success:^(NSArray *jogs) {
-        XCTAssert([jogs count] == 0);
-        [failExpectation fulfill];
+    // create jog
+    Jog *jog = [Jog new];
+    jog.time = @(12);
+    jog.distance = @(12);
+    jog.date = [NSDate date];
+    jog.userId = kTestUserId;
+    
+    [[JogManager sharedInstance] postJog:jog success:^(Jog *createdJog) {
+        XCTAssert(createdJog.objectId);
+        
+        [[JogManager sharedInstance] getAllJogsForUser:self.testUser success:^(NSMutableArray *jogs) {
+            
+            // find jog
+            __block Jog *jog = nil;
+            [jogs enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                Jog *j = obj;
+                if([j.objectId isEqualToString:createdJog.objectId]){
+                    jog = j;
+                    *stop = YES;
+                }
+            }];
+            XCTAssert(jog != nil);
+            
+            // update jog
+            NSNumber *distance = @(15);
+            jog.distance = @(15);
+            [[JogManager sharedInstance] updateJog:jog success:^(Jog *jog) {
+                XCTAssert([jog.distance isEqual:distance]);
+                
+                // delete jog
+                [[JogManager sharedInstance] deleteJog:jog success:^(Jog *jog) {
+                    [successExpectation fulfill];
+                } fail:^(NSError *error) {
+                    XCTFail(@"Should have deleted the jog successfuly");
+                    [successExpectation fulfill];
+                }];
+                
+            } fail:^(NSError *error) {
+                XCTFail(@"Should have updated the jog");
+                [successExpectation fulfill];
+            }];
+        } fail:^(NSError *error) {
+            XCTFail(@"Should have retrieved the jogs");
+            [successExpectation fulfill];
+        }];
+
     } fail:^(NSError *error) {
-        XCTFail(@"User has no ID set");
-        [failExpectation fulfill];
+        XCTFail(@"Should have created the jog");
+        [successExpectation fulfill];
     }];
     
-    XCTestExpectation *successExpectation = [self expectationWithDescription:@"Valid user ID"];
-    
-    [[JogManager sharedInstance] getAllJogsForUser:self.testUser success:^(NSArray *jogs) {
-        XCTAssert([jogs count] > 0);
-        for(Jog *jog in jogs){
-            XCTAssert(jog.distance);
-            XCTAssert(jog.time);
-            XCTAssert(jog.date);
-            XCTAssert(jog.objectId);
-        }
-        [successExpectation fulfill];
-    } fail:^(NSError *error) {
-        XCTFail(@"User has a valid ID set");
-        [successExpectation fulfill];
-    }];
-    
-    // The test will pause here, running the run loop, until the timeout is hit
-    // or all expectations are fulfilled.
     [self waitForExpectationsWithTimeout:kDefaultTimeout handler:^(NSError *error) {
         if(error){
             XCTFail(@"error: %@", error);
         }
     }];
 }
-
-- (void)testSaveJog
-{
-    XCTFail(@"Implement me");
-}
-
-- (void)testDeleteJog
-{
-    XCTFail(@"Implement me");
-}
-
-- (void)testUpdateJog
-{
-    XCTFail(@"Implement me");
-}
-
 
 @end
