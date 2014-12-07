@@ -15,7 +15,6 @@
 static NSTimeInterval const kDefaultTimeout = 20.0f;
 static NSString * const kTestUserId = @"fxszRIECBm";
 
-// TODO: call login instead to get a valid sesison token, this is fragile
 static NSString * const kTestUserSessionToken = @"herOwuRBGNIeLn16GAQdKjKrd";
 
 
@@ -39,7 +38,7 @@ static NSString * const kTestUserSessionToken = @"herOwuRBGNIeLn16GAQdKjKrd";
 
 - (void)tearDown
 {
-    [[SessionManager sharedInstance] setCurrentUser:nil];
+    [[SessionManager sharedInstance] signOut];
 }
 
 - (void)testSharedInstance
