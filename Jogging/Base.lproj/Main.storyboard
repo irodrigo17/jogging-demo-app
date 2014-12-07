@@ -295,8 +295,8 @@
                             <rect key="frame" x="0.0" y="64" width="320" height="38"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signed in as username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XdT-6H-muT">
-                                    <rect key="frame" x="8" y="10" width="157" height="18"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signed in as username1234567890" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="XdT-6H-muT">
+                                    <rect key="frame" x="8" y="10" width="242" height="18"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
@@ -317,6 +317,7 @@
                                 <constraint firstAttribute="trailing" secondItem="uvV-TV-uFw" secondAttribute="trailing" constant="8" id="BWV-5J-Gyc"/>
                                 <constraint firstAttribute="centerY" secondItem="XdT-6H-muT" secondAttribute="centerY" constant="0.5" id="LGt-CM-itZ"/>
                                 <constraint firstAttribute="centerY" secondItem="uvV-TV-uFw" secondAttribute="centerY" constant="0.5" id="cQT-dh-ppM"/>
+                                <constraint firstItem="uvV-TV-uFw" firstAttribute="leading" secondItem="XdT-6H-muT" secondAttribute="trailing" constant="11" id="eJk-P4-pxq"/>
                                 <constraint firstItem="XdT-6H-muT" firstAttribute="leading" secondItem="Dqx-g4-ZSX" secondAttribute="leading" constant="8" id="yb1-33-FhE"/>
                             </constraints>
                         </view>
