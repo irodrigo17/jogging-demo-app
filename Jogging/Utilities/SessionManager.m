@@ -28,8 +28,7 @@ static NSString * const kUserKey = @"kUserKey";
     static SessionManager *sharedInstance;
     dispatch_once(&onceToken, ^{
         sharedInstance = [[self alloc] init];
-        // TODO: optimize this, user is unnecessarily stored again
-        [sharedInstance setCurrentUser:[sharedInstance loadUser]];
+        [sharedInstance setCurrentUser:[sharedInstance loadUser] store:NO];
     });
     return sharedInstance;
 }
@@ -67,9 +66,16 @@ static NSString * const kUserKey = @"kUserKey";
 
 - (void)setCurrentUser:(User*)user
 {
+    return [self setCurrentUser:user store:YES];
+}
+
+- (void)setCurrentUser:(User*)user store:(BOOL)store
+{
     _user = user;
-    [self storeUser:user];
     [[APIManager sharedInstance].requestSerializer setValue:user.sessionToken forHTTPHeaderField:@"X-Parse-Session-Token"];
+    if(store){
+        [self storeUser:user];
+    }
 }
 
 - (void)storeUser:(User *)user
