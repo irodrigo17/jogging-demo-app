@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2ED7CD6728FB11381E053190 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB1C1F67B3B302E70CC4BDC /* libPods.a */; };
 		40B58E7CD4DE85CA8D584916 /* libPods-Jogging.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 25A306E6D0C1BAD1242BC93A /* libPods-Jogging.a */; };
 		633F215F1A3094BE00D3F8FC /* DateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 633F215E1A3094BE00D3F8FC /* DateHelper.m */; };
 		633F21601A3094BE00D3F8FC /* DateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 633F215E1A3094BE00D3F8FC /* DateHelper.m */; };
@@ -36,8 +35,6 @@
 		63855B451A3103C6003998BD /* InitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63855B441A3103C6003998BD /* InitialViewController.m */; };
 		63855B461A3103C6003998BD /* InitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63855B441A3103C6003998BD /* InitialViewController.m */; };
 		63855B481A314B66003998BD /* EditJogViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63855B471A314B66003998BD /* EditJogViewControllerTests.m */; };
-		639208EA1A332FE000FF48CD /* Pods-Jogging.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 639208E81A332FE000FF48CD /* Pods-Jogging.debug.xcconfig */; };
-		639208EB1A332FE000FF48CD /* Pods-Jogging.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 639208E91A332FE000FF48CD /* Pods-Jogging.release.xcconfig */; };
 		63C7AF091A2DDF5E00FB9EAE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C7AF081A2DDF5E00FB9EAE /* main.m */; };
 		63C7AF0C1A2DDF5E00FB9EAE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C7AF0B1A2DDF5E00FB9EAE /* AppDelegate.m */; };
 		63C7AF121A2DDF5E00FB9EAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63C7AF101A2DDF5E00FB9EAE /* Main.storyboard */; };
@@ -51,7 +48,6 @@
 		63C7AF3C1A2DED7C00FB9EAE /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C7AF3A1A2DED7C00FB9EAE /* SessionManager.m */; };
 		63C7AF3F1A2DEDA600FB9EAE /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C7AF3E1A2DEDA600FB9EAE /* User.m */; };
 		63C7AF401A2DEDA600FB9EAE /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C7AF3E1A2DEDA600FB9EAE /* User.m */; };
-		BCD3E63FFC94C6EF58498A11 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB1C1F67B3B302E70CC4BDC /* libPods.a */; };
 		CBAACB64DC8D5930A4CA2989 /* libPods-JoggingTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F91709DCF721D74FA614069 /* libPods-JoggingTests.a */; };
 /* End PBXBuildFile section */
 
@@ -118,7 +114,6 @@
 		63C7AF3D1A2DEDA600FB9EAE /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		63C7AF3E1A2DEDA600FB9EAE /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		69C850E8144CA5E52D507333 /* Pods-JoggingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JoggingTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JoggingTests/Pods-JoggingTests.release.xcconfig"; sourceTree = "<group>"; };
-		CEB1C1F67B3B302E70CC4BDC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,7 +121,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCD3E63FFC94C6EF58498A11 /* libPods.a in Frameworks */,
 				40B58E7CD4DE85CA8D584916 /* libPods-Jogging.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -135,7 +129,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2ED7CD6728FB11381E053190 /* libPods.a in Frameworks */,
 				CBAACB64DC8D5930A4CA2989 /* libPods-JoggingTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,7 +276,6 @@
 		BA5FA922E07CAA7D51CFECB7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CEB1C1F67B3B302E70CC4BDC /* libPods.a */,
 				25A306E6D0C1BAD1242BC93A /* libPods-Jogging.a */,
 				2F91709DCF721D74FA614069 /* libPods-JoggingTests.a */,
 			);
@@ -376,9 +368,7 @@
 			files = (
 				63C7AF121A2DDF5E00FB9EAE /* Main.storyboard in Resources */,
 				63C7AF171A2DDF5E00FB9EAE /* LaunchScreen.xib in Resources */,
-				639208EB1A332FE000FF48CD /* Pods-Jogging.release.xcconfig in Resources */,
 				63C7AF141A2DDF5E00FB9EAE /* Images.xcassets in Resources */,
-				639208EA1A332FE000FF48CD /* Pods-Jogging.debug.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
