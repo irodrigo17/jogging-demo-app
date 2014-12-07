@@ -67,6 +67,10 @@
 
 - (void)updateJogsWithUser:(User*)user
 {
+    if(!self.refreshControl.refreshing){
+        [self.refreshControl beginRefreshing];
+    }
+    
     [[JogManager sharedInstance] getAllJogsForUser:user success:^(NSMutableArray *jogs) {
         [self reloadTableWithJogs:jogs];
     } fail:^(NSError *error) {
@@ -131,7 +135,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // if there are no jogs there is a cell to communicates it to the user
-    return [self.jogs count] ?: 1;
+    return self.jogs ? MAX([self.jogs count], 1) : 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

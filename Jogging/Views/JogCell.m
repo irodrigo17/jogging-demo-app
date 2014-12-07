@@ -18,10 +18,14 @@ NSString * const kJogCellReuseIdentifier = @"JogCell";
     if(jog){
         self.timeAndDistanceLabel.text = [jog description];
         self.dateLabel.text = [jog formattedDate];
+        self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        self.selectionStyle = UITableViewCellSelectionStyleDefault;
     }
     else{
         self.timeAndDistanceLabel.text = @"No jogs yet, go for a run!";
         self.dateLabel.text = @"";
+        self.accessoryType = UITableViewCellAccessoryNone;
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
 }
 
