@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+- (void)setRootViewController:(UIViewController*)viewController animated:(BOOL)animated;
 
 @end
 

@@ -18,36 +18,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *email;
 @property (weak, nonatomic) IBOutlet UITextField *password;
 
-/**
- * Shows the jogs view controller.
- */
-- (void)showJogsViewController;
-
 @end
 
 @implementation SignUpViewController
-
-#pragma mark - View lifecycle
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 #pragma mark - Actions
 
@@ -71,10 +44,10 @@
     [progressHUD showInView:self.view animated:YES];
     
     // sign up using the session manager
-    __weak SignUpViewController *selfRef = self;
+    __weak SignUpViewController *selfBlockRef = self;
     [[SessionManager sharedInstance] signUpWithUser:user success:^(User *user) {
         [progressHUD dismissAnimated:YES];
-        [selfRef showJogsViewController];
+        [selfBlockRef performSegueWithIdentifier:@"ShowJogsFromSignUp" sender:nil];
     } fail:^(NSError *user) {
         // TODO: check internet connection and expected API errors
         [[[UIAlertView alloc] initWithTitle:@"Oops!" message:@"Can't sign up" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
@@ -90,15 +63,6 @@
 {
     // TODO: move to the next text field or sign up
     return YES;
-}
-
-#pragma mark - Private interface
-
-- (void)showJogsViewController
-{
-    // TODO: change the root view controller or something to avoid keeping unnecessary view controllers in the stack.
-    UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"JogsNavigationController"];
-    [self presentViewController:vc animated:YES completion:nil];
 }
 
 @end

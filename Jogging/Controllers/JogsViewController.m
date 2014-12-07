@@ -11,12 +11,7 @@
 #import "SessionManager.h"
 #import "JogCell.h"
 #import <JGProgressHUD/JGProgressHUD.h>
-
-
-@interface JogsViewController ()
-
-
-@end
+#import "AppDelegate.h"
 
 
 @implementation JogsViewController
@@ -125,7 +120,9 @@
 
 - (IBAction)signOut:(id)sender {
     [[SessionManager sharedInstance] signOut];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    UIViewController *landingVC = [self.storyboard instantiateViewControllerWithIdentifier:@"LandingViewController"];
+    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    [appDelegate setRootViewController:landingVC animated:YES];
 }
 
 

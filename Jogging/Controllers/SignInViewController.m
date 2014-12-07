@@ -9,6 +9,7 @@
 #import "SignInViewController.h"
 #import <JGProgressHUD/JGProgressHUD.h>
 #import "SessionManager.h"
+#import "AppDelegate.h"
 
 
 @interface SignInViewController ()
@@ -39,10 +40,10 @@
     [progressHUD showInView:self.view animated:YES];
     
     // sign up using the session manager
-    __weak SignInViewController *selfRef = self;
+    __weak SignInViewController *selfBlockRef = self;
     [[SessionManager sharedInstance] signInWithUser:user success:^(User *user) {
         [progressHUD dismissAnimated:YES];
-        [selfRef showJogsViewController];
+        [selfBlockRef performSegueWithIdentifier:@"ShowJogsFromSignIn" sender:nil];
     } fail:^(NSError *user) {
         // TODO: check internet connection and expected API errors
         [[[UIAlertView alloc] initWithTitle:@"Oops!" message:@"Can't sign in" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
@@ -56,15 +57,6 @@
 {
     // TODO: move to the next text field or sign in
     return YES;
-}
-
-#pragma mark - Private interface
-
-- (void)showJogsViewController
-{
-    // TODO: change the root view controller or something to avoid keeping unnecessary view controllers in the stack.
-    UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"JogsNavigationController"];
-    [self presentViewController:vc animated:YES completion:nil];
 }
 
 @end

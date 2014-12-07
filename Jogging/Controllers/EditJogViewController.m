@@ -12,10 +12,6 @@
 #import <JGProgressHUD/JGProgressHUD.h>
 
 
-@interface EditJogViewController ()
-
-@end
-
 @implementation EditJogViewController
 
 - (void)viewDidLoad

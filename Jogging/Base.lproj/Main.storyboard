@@ -1,42 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="16d-47-SW1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Initial View Controller-->
-        <scene sceneID="G5e-Vv-Cp9">
-            <objects>
-                <viewController storyboardIdentifier="InitialViewController" id="16d-47-SW1" customClass="InitialViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Reg-Jl-bal"/>
-                        <viewControllerLayoutGuide type="bottom" id="czA-HS-NV5"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="z7E-2e-aqp" customClass="I">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="4nN-58-ekq">
-                                <rect key="frame" x="150" y="274" width="20" height="20"/>
-                            </activityIndicatorView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="centerY" secondItem="4nN-58-ekq" secondAttribute="centerY" id="3TD-Ew-b0c"/>
-                            <constraint firstAttribute="centerX" secondItem="4nN-58-ekq" secondAttribute="centerX" id="PKc-Xa-woI"/>
-                        </constraints>
-                    </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <connections>
-                        <segue destination="vXZ-lx-hvc" kind="presentation" identifier="ShowLandingViewController" id="xYb-El-EoY"/>
-                        <segue destination="x39-Iv-N0v" kind="presentation" identifier="ShowJogsNavigationViewController" id="6aj-dO-c1d"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Yam-GT-30H" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-282" y="575"/>
-        </scene>
         <!--Landing View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
@@ -100,7 +68,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="317" y="227"/>
+            <point key="canvasLocation" x="-833" y="936"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PuA-5U-DaS">
@@ -116,7 +84,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S5e-cd-DvK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="922" y="-427"/>
+            <point key="canvasLocation" x="-372" y="609"/>
         </scene>
         <!--Sign In-->
         <scene sceneID="uDY-wP-l8O">
@@ -172,11 +140,12 @@
                     <connections>
                         <outlet property="password" destination="RmA-0F-tyU" id="sgO-gN-M2N"/>
                         <outlet property="username" destination="Hdy-Pd-NjV" id="SB4-Ew-F33"/>
+                        <segue destination="x39-Iv-N0v" kind="custom" identifier="ShowJogsFromSignIn" customClass="ReplaceRootViewControllerSegue" id="Cab-Ce-zg0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TyE-0l-lY7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1377" y="-427"/>
+            <point key="canvasLocation" x="21" y="609"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bCi-Dr-fkp">
@@ -192,7 +161,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w8J-sD-Oad" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="922" y="227"/>
+            <point key="canvasLocation" x="-372" y="1263"/>
         </scene>
         <!--Sign Up-->
         <scene sceneID="6Jv-ON-Hac">
@@ -260,11 +229,12 @@
                         <outlet property="name" destination="5f2-Wx-Xqi" id="eTz-Ou-WCl"/>
                         <outlet property="password" destination="S4w-Ms-d9o" id="gTB-xJ-uLa"/>
                         <outlet property="username" destination="lMZ-3g-jJ5" id="OW1-EZ-EQS"/>
+                        <segue destination="x39-Iv-N0v" kind="showDetail" identifier="ShowJogsFromSignUp" id="Q3C-c1-xoW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zSE-AW-zRT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1377" y="227"/>
+            <point key="canvasLocation" x="21" y="1263"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="n1s-09-bNA">
@@ -281,7 +251,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ro5-ee-81e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="317" y="936"/>
+            <point key="canvasLocation" x="499" y="936"/>
         </scene>
         <!--Jogs-->
         <scene sceneID="rrP-DV-CxW">
@@ -317,7 +287,7 @@
                                 <constraint firstAttribute="trailing" secondItem="uvV-TV-uFw" secondAttribute="trailing" constant="8" id="BWV-5J-Gyc"/>
                                 <constraint firstAttribute="centerY" secondItem="XdT-6H-muT" secondAttribute="centerY" constant="0.5" id="LGt-CM-itZ"/>
                                 <constraint firstAttribute="centerY" secondItem="uvV-TV-uFw" secondAttribute="centerY" constant="0.5" id="cQT-dh-ppM"/>
-                                <constraint firstItem="uvV-TV-uFw" firstAttribute="leading" secondItem="XdT-6H-muT" secondAttribute="trailing" constant="11" id="eJk-P4-pxq"/>
+                                <constraint firstAttribute="trailing" secondItem="XdT-6H-muT" secondAttribute="trailing" constant="70" id="qDU-F7-NFU"/>
                                 <constraint firstItem="XdT-6H-muT" firstAttribute="leading" secondItem="Dqx-g4-ZSX" secondAttribute="leading" constant="8" id="yb1-33-FhE"/>
                             </constraints>
                         </view>
@@ -387,7 +357,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aqW-G1-3lb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1425" y="936"/>
+            <point key="canvasLocation" x="1341" y="936"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Cab-Ce-zg0"/>
+    </inferredMetricsTieBreakers>
 </document>
