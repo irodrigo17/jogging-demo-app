@@ -112,11 +112,7 @@
 
 - (NSString*)formattedDate
 {
-    // TODO: use a shared date formatter
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateStyle = NSDateFormatterMediumStyle;
-    dateFormatter.timeStyle = NSDateFormatterMediumStyle;
-    return self.date ? [dateFormatter stringFromDate:self.date] : @"";
+    return self.date ? [[Jog sharedDateFormatter] stringFromDate:self.date] : @"";
 }
 
 - (NSString*)formattedAverageSpeed
@@ -129,5 +125,16 @@
     return [NSString stringWithFormat:@"%.2f km in %@, %@ avg", [self distanceInKm], [self formattedTime], [self formattedAverageSpeed]];
 }
 
++ (NSDateFormatter*)sharedDateFormatter
+{
+    static dispatch_once_t onceToken;
+    static NSDateFormatter *sharedInstance;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[NSDateFormatter alloc] init];
+        sharedInstance.dateStyle = NSDateFormatterMediumStyle;
+        sharedInstance.timeStyle = NSDateFormatterMediumStyle;
+    });
+    return sharedInstance;
+}
 
 @end
