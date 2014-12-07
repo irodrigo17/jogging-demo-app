@@ -31,6 +31,11 @@ static NSTimeInterval const kDefaultTimeout = 20.0f;
     self.testUser.password = @"password";
 }
 
+- (void)tearDown
+{
+    [[SessionManager sharedInstance] signOut];
+}
+
 - (void)testSharedInstance
 {
     XCTAssert([SessionManager sharedInstance] != nil);
@@ -111,6 +116,7 @@ static NSTimeInterval const kDefaultTimeout = 20.0f;
 
 - (void)testSignOut
 {
+    [[SessionManager sharedInstance] setCurrentUser:self.testUser];
     XCTAssert([SessionManager sharedInstance].user);
     [[SessionManager sharedInstance] signOut];
     XCTAssert(![SessionManager sharedInstance].user);
