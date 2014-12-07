@@ -33,8 +33,6 @@
 
 - (XLFormDescriptor*)createForm
 {
-    // TODO: add validation
-    
     // form
     XLFormDescriptor *form = [XLFormDescriptor formDescriptorWithTitle:@"Add Jog"];
     
