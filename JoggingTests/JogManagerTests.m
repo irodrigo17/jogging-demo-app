@@ -69,7 +69,7 @@ static NSString * const kTestUserSessionToken = @"herOwuRBGNIeLn16GAQdKjKrd";
         [[JogManager sharedInstance] postJog:jog success:^(Jog *createdJog) {
             XCTAssert(createdJog.objectId);
             
-            [[JogManager sharedInstance] getJogsForUser:self.testUser limit:1 skip:0 success:^(NSMutableArray *jogs) {
+            [[JogManager sharedInstance] getJogsForUser:self.testUser limit:1 skip:0 filters:nil success:^(NSMutableArray *jogs) {
                 
                 // find jog
                 XCTAssert([jogs count] == 1);

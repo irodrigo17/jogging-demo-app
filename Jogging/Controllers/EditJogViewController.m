@@ -132,7 +132,6 @@
     jog.time = @(time);
     jog.distance = formValues[@"distance"];
     jog.date = formValues[@"date"];
-    jog.userId = [SessionManager sharedInstance].user.objectId;
 }
 
 @end

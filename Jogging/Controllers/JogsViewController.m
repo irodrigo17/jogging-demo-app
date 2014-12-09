@@ -24,6 +24,10 @@ static const NSInteger kLimit = 50;
  */
 @property (assign, nonatomic) NSInteger skip;
 
+@property (assign, nonatomic) BOOL noMoreJogs;
+
+@property (strong, nonatomic) NSDictionary *filters;
+
 @end
 
 
@@ -37,7 +41,7 @@ static const NSInteger kLimit = 50;
     [self setupTableView];
     User *user = [SessionManager sharedInstance].user;
     [self updateUsernameWithUser:user];
-    [self loadFirstJogsWithUser:user];
+    [self loadFirstJogsForCurrentUser];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -49,17 +53,18 @@ static const NSInteger kLimit = 50;
             vc.jog = sender;
         }
     }
+    else if([segue.destinationViewController isKindOfClass:[FiltersViewController class]]){
+        FiltersViewController *vc = segue.destinationViewController;
+        vc.delegate = self;
+        vc.filters = self.filters;
+    }
 }
 
 
 #pragma mark - Initialization
 
 - (void)setupTableView
-{
-    // setup edit button
-    self.editing = NO;
-    self.navigationItem.leftBarButtonItem = [self editButtonItem];
-    
+{   
     // setup refresh control
     [self.refreshControl addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
 }
@@ -71,37 +76,63 @@ static const NSInteger kLimit = 50;
 
 #pragma mark - Loading jogs
 
-- (void)loadFirstJogsForCurrentUser
+- (void)loadJogsWithUser:(User*)user filters:(NSDictionary*)filters initial:(BOOL)initial
 {
-    User *user = [SessionManager sharedInstance].user;
-    [self loadFirstJogsWithUser:user];
-}
-
-- (void)loadFirstJogsWithUser:(User*)user
-{
-    if(!self.refreshControl.refreshing){
-        [self.refreshControl beginRefreshing];
+    
+    // end editing if needed
+    if([self isEditing]){
+        [self setEditing:NO animated:YES];
     }
     
-    self.skip = 0;
-    [self loadJogsWithUser:user append:NO];
-}
-
-- (void)loadJogsWithUser:(User*)user append:(BOOL)append
-{
-    [[JogManager sharedInstance] getJogsForUser:user limit:kLimit skip:self.skip success:^(NSMutableArray *jogs){
+    // initial setup
+    if(initial){
+        self.noMoreJogs = NO;
+        self.skip = 0;
+        // update refresh control state if needed
+        if(!self.refreshControl.refreshing){
+            [self.refreshControl beginRefreshing];
+        }
+    }
+    
+    // store filters
+    self.filters = filters;
+    
+    // get jogs
+    [[JogManager sharedInstance] getJogsForUser:user limit:kLimit skip:self.skip filters:filters success:^(NSMutableArray *jogs){
+        
+        if([jogs count] < kLimit){
+            self.noMoreJogs = YES;
+        }
         self.skip += [jogs count];
-        if(append){
-            [self appendJogs:jogs];
+        
+        if(initial){
+            [self reloadTableWithJogs:jogs];
+            // update refresh control state if needed
+            if(self.refreshControl.refreshing){
+                [self.refreshControl endRefreshing];
+            }
         }
         else{
-            [self reloadTableWithJogs:jogs];
+            [self appendJogs:jogs];
         }
+        
     } fail:^(NSError *error) {
         [[[UIAlertView alloc] initWithTitle:@"Oops!!" message:@"Can't get jogs right now" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         self.skip = 0;
         [self reloadTableWithJogs:nil];
     }];
+}
+
+- (void)loadFirstJogsForCurrentUser
+{
+    User *user = [SessionManager sharedInstance].user;
+    [self loadJogsWithUser:user filters:nil initial:YES];
+}
+
+- (void)loadNextJogsForCurrentUser
+{
+    User *user = [SessionManager sharedInstance].user;
+    [self loadJogsWithUser:user filters:self.filters initial:NO];
 }
 
 
@@ -132,21 +163,8 @@ static const NSInteger kLimit = 50;
 
 - (void)reloadTableWithJogs:(NSMutableArray *)jogs
 {
-    // end editing if needed
-    if([self isEditing]){
-        [self setEditing:NO animated:YES];
-    }
-    
-    // store jogs
     self.jogs = jogs;
-    
-    // reload data
     [self.tableView reloadData];
-    
-    // update refresh control state if needed
-    if(self.refreshControl.refreshing){
-        [self.refreshControl endRefreshing];
-    }
 }
 
 - (void)appendJogs:(NSMutableArray*)jogs
@@ -176,7 +194,6 @@ static const NSInteger kLimit = 50;
     AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
     [appDelegate setRootViewController:landingVC animated:YES];
 }
-
 
 #pragma mark - UITableViewDataSource
 
@@ -242,13 +259,13 @@ static const NSInteger kLimit = 50;
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.row == [self.jogs count] - 1){
+    if(!self.noMoreJogs && indexPath.row == [self.jogs count] - 1){
+        NSLog(@"willDisplayCell");
         // load more jogs
         // TODO: show activity indicator?
-        [self loadJogsWithUser:[SessionManager sharedInstance].user append:YES];
+        [self loadNextJogsForCurrentUser];
     }
 }
-
 
 #pragma mark - NewJogViewControllerDelegate
 
@@ -257,5 +274,19 @@ static const NSInteger kLimit = 50;
     [self loadFirstJogsForCurrentUser];
 }
 
+
+#pragma mark - FiltersViewControllerDelegate
+
+- (void)filtersViewControllerDidCancel:(FiltersViewController *)viewController
+{
+    [self.navigationController popToViewController:self animated:YES];
+}
+
+- (void)filtersViewController:(FiltersViewController *)viewController didApplyFilters:(NSDictionary *)filters
+{
+    [self.navigationController popToViewController:self animated:YES];
+    User *user = [SessionManager sharedInstance].user;
+    [self loadJogsWithUser:user filters:filters initial:YES];
+}
 
 @end

@@ -324,6 +324,11 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Jogs" id="agH-yL-yPW">
                         <barButtonItem key="backBarButtonItem" title="Back" id="UPj-Ms-x3I"/>
+                        <barButtonItem key="leftBarButtonItem" title="Filter" id="cvM-MF-Yiz">
+                            <connections>
+                                <segue destination="JIW-Cj-rob" kind="show" id="KlB-gC-Rsh"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="NXj-Bm-Bd1">
                             <connections>
                                 <segue destination="4AT-6P-FUY" kind="show" identifier="ShowEditJogViewController" id="RkB-a7-GcK"/>
@@ -340,6 +345,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sfp-PM-qKE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="922" y="936"/>
+        </scene>
+        <!--Filters View Controller-->
+        <scene sceneID="QPT-zI-TbS">
+            <objects>
+                <viewController storyboardIdentifier="FiltersViewController" id="JIW-Cj-rob" customClass="FiltersViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GpH-ni-egQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="P7t-WF-Xxp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XbF-UA-waI">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aRn-i9-o0O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="922" y="1645"/>
         </scene>
         <!--Edit Jog View Controller-->
         <scene sceneID="3p1-qt-JVi">

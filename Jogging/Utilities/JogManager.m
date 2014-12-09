@@ -8,6 +8,8 @@
 
 #import "JogManager.h"
 #import "APIManager.h"
+#import <ISO8601/ISO8601.h>
+#import "DateHelper.h"
 
 
 @implementation JogManager
@@ -22,11 +24,29 @@
     return sharedInstance;
 }
 
-- (void)getJogsForUser:(User *)user limit:(NSInteger)limit skip:(NSInteger)skip success:(void (^)(NSMutableArray *jogs))success fail:(void (^)(NSError *error))fail;
+- (void)getJogsForUser:(User *)user limit:(NSInteger)limit skip:(NSInteger)skip filters:(NSDictionary *)filters success:(void (^)(NSMutableArray *))success fail:(void (^)(NSError *))fail
 {
+    // create query JSON
+    NSMutableDictionary *query = [NSMutableDictionary dictionary];
+    query[@"user"] = @{@"__type": @"Pointer", @"className": @"_User", @"objectId": user.objectId};
+    NSMutableDictionary *date = [NSMutableDictionary dictionary];
+    NSDate *from = filters[@"from"];
+    if(from){
+        date[@"$gte"] = [DateHelper serializeParseDate:from];
+    }
+    NSDate *to = filters[@"to"];
+    if(to){
+        date[@"$lte"] = [DateHelper serializeParseDate:to];
+    }
+    if([date count]){
+        query[@"date"] = date;
+    }
+    NSError *err = nil;
+    NSData *JSONData = [NSJSONSerialization dataWithJSONObject:query options:0 error:&err];
+    NSString *JSONString = [[NSString alloc] initWithData:JSONData encoding:NSUTF8StringEncoding];
     
-    NSString *query = [NSString stringWithFormat:@"{\"user\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\"%@\"}}", user.objectId];
-    NSDictionary *parameters = @{@"where": query, @"limit": @(limit), @"skip": @(skip)};
+    // perform request
+    NSDictionary *parameters = @{@"where": JSONString, @"limit": @(limit), @"skip": @(skip)};
     [[APIManager sharedInstance] GET:@"classes/Jog" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSMutableArray *jogs = [NSMutableArray array];
         for(NSDictionary *dic in responseObject[@"results"]){

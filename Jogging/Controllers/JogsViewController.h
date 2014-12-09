@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "User.h"
 #import "EditJogViewController.h"
+#import "FiltersViewController.h"
 
 
-@interface JogsViewController : UITableViewController <EditJogViewControllerDelegate>
+@interface JogsViewController : UITableViewController <EditJogViewControllerDelegate, FiltersViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *user;
 
