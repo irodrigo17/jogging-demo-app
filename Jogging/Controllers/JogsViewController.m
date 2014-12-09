@@ -14,6 +14,19 @@
 #import "AppDelegate.h"
 
 
+static const NSInteger kLimit = 50;
+
+
+@interface JogsViewController ()
+
+/**
+ * The number of jogs to skip in the next fetch.
+ */
+@property (assign, nonatomic) NSInteger skip;
+
+@end
+
+
 @implementation JogsViewController
 
 #pragma mark - View lifecycle
@@ -24,7 +37,7 @@
     [self setupTableView];
     User *user = [SessionManager sharedInstance].user;
     [self updateUsernameWithUser:user];
-    [self updateJogsWithUser:user];
+    [self loadFirstJogsWithUser:user];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -39,7 +52,7 @@
 }
 
 
-#pragma mark - Private interface
+#pragma mark - Initialization
 
 - (void)setupTableView
 {
@@ -51,37 +64,70 @@
     [self.refreshControl addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
 }
 
-- (void)handleRefresh:(UIRefreshControl*)refreshControl
+- (void)updateUsernameWithUser:(User *)user
 {
-    [self updateJogsForCurrentUser];
+    self.user.text = [NSString stringWithFormat:@"Signed in as %@", user.username];
 }
 
-- (void)updateJogsForCurrentUser
+#pragma mark - Loading jogs
+
+- (void)loadFirstJogsForCurrentUser
 {
     User *user = [SessionManager sharedInstance].user;
-    [self updateJogsWithUser:user];
+    [self loadFirstJogsWithUser:user];
 }
 
-#pragma mark - Public infterface
-
-
-- (void)updateJogsWithUser:(User*)user
+- (void)loadFirstJogsWithUser:(User*)user
 {
     if(!self.refreshControl.refreshing){
         [self.refreshControl beginRefreshing];
     }
     
-    [[JogManager sharedInstance] getAllJogsForUser:user success:^(NSMutableArray *jogs) {
-        [self reloadTableWithJogs:jogs];
+    self.skip = 0;
+    [self loadJogsWithUser:user append:NO];
+}
+
+- (void)loadJogsWithUser:(User*)user append:(BOOL)append
+{
+    [[JogManager sharedInstance] getJogsForUser:user limit:kLimit skip:self.skip success:^(NSMutableArray *jogs){
+        self.skip += [jogs count];
+        if(append){
+            [self appendJogs:jogs];
+        }
+        else{
+            [self reloadTableWithJogs:jogs];
+        }
     } fail:^(NSError *error) {
         [[[UIAlertView alloc] initWithTitle:@"Oops!!" message:@"Can't get jogs right now" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        self.skip = 0;
         [self reloadTableWithJogs:nil];
     }];
 }
 
-- (void)updateUsernameWithUser:(User *)user
+
+#pragma mark - Deleting jogs
+
+- (void)deleteJog:(Jog*)jog
 {
-    self.user.text = [NSString stringWithFormat:@"Signed in as %@", user.username];
+    JGProgressHUD *progressHUD = [[JGProgressHUD alloc] initWithStyle:JGProgressHUDStyleDark];
+    [progressHUD showInView:self.view];
+    
+    [[JogManager sharedInstance] deleteJog:jog success:^(Jog *jog){
+        NSLog(@"Deleted jog: %@", jog);
+        [progressHUD dismiss];
+    } fail:^(NSError *error){
+        [[[UIAlertView alloc] initWithTitle:@"Oops!" message:@"Can't delete jog" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        NSLog(@"Can't delete jog: %@\nError: %@", jog, error);
+        [self loadFirstJogsForCurrentUser];
+        [progressHUD dismiss];
+    }];
+}
+
+#pragma mark - Updating UI
+
+- (void)handleRefresh:(UIRefreshControl*)refreshControl
+{
+    [self loadFirstJogsForCurrentUser];
 }
 
 - (void)reloadTableWithJogs:(NSMutableArray *)jogs
@@ -103,20 +149,22 @@
     }
 }
 
-- (void)deleteJog:(Jog*)jog
+- (void)appendJogs:(NSMutableArray*)jogs
 {
-    JGProgressHUD *progressHUD = [[JGProgressHUD alloc] initWithStyle:JGProgressHUDStyleDark];
-    [progressHUD showInView:self.view];
+    if(!self.jogs){
+        self.jogs = [NSMutableArray array];
+    }
     
-    [[JogManager sharedInstance] deleteJog:jog success:^(Jog *jog){
-        NSLog(@"Deleted jog: %@", jog);
-        [progressHUD dismiss];
-    } fail:^(NSError *error){
-        [[[UIAlertView alloc] initWithTitle:@"Oops!" message:@"Can't delete jog" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-        NSLog(@"Can't delete jog: %@\nError: %@", jog, error);
-        [self updateJogsForCurrentUser];
-        [progressHUD dismiss];
-    }];
+    NSUInteger prevCount = [self.jogs count];
+    [self.jogs addObjectsFromArray:jogs];
+    
+    NSMutableArray *indexes = [NSMutableArray array];
+    for (NSUInteger i = prevCount; i < [self.jogs count]; i++) {
+        NSIndexPath *indexPath= [NSIndexPath indexPathForRow:i inSection:0];
+        [indexes addObject:indexPath];
+    }
+    
+    [self.tableView insertRowsAtIndexPaths:indexes withRowAnimation:UITableViewRowAnimationNone];
 }
 
 
@@ -192,12 +240,21 @@
     }
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(indexPath.row == [self.jogs count] - 1){
+        // load more jogs
+        // TODO: show activity indicator?
+        [self loadJogsWithUser:[SessionManager sharedInstance].user append:YES];
+    }
+}
+
 
 #pragma mark - NewJogViewControllerDelegate
 
 - (void)didSaveJog:(Jog *)jog
 {
-    [self updateJogsForCurrentUser];
+    [self loadFirstJogsForCurrentUser];
 }
 
 

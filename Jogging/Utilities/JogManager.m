@@ -22,11 +22,11 @@
     return sharedInstance;
 }
 
-- (void)getAllJogsForUser:(User *)user success:(void (^)(NSMutableArray *jogs))success fail:(void (^)(NSError *error))fail
+- (void)getJogsForUser:(User *)user limit:(NSInteger)limit skip:(NSInteger)skip success:(void (^)(NSMutableArray *jogs))success fail:(void (^)(NSError *error))fail;
 {
-    // TODO: add pagination
+    
     NSString *query = [NSString stringWithFormat:@"{\"user\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\"%@\"}}", user.objectId];
-    NSDictionary *parameters = @{@"where": query};
+    NSDictionary *parameters = @{@"where": query, @"limit": @(limit), @"skip": @(skip)};
     [[APIManager sharedInstance] GET:@"classes/Jog" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSMutableArray *jogs = [NSMutableArray array];
         for(NSDictionary *dic in responseObject[@"results"]){

@@ -26,6 +26,7 @@
 		6360805B1A2F30600070D527 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6360805A1A2F30600070D527 /* SignInViewController.m */; };
 		6360805C1A2F30600070D527 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6360805A1A2F30600070D527 /* SignInViewController.m */; };
 		6360805E1A2F38510070D527 /* JogsViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6360805D1A2F38510070D527 /* JogsViewControllerTests.m */; };
+		637157431A366D7200E7F5A6 /* StressTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 637157421A366D7200E7F5A6 /* StressTests.m */; };
 		6377E2961A2E018A00220671 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6377E2951A2E018A00220671 /* APIManager.m */; };
 		6377E2971A2E018A00220671 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6377E2951A2E018A00220671 /* APIManager.m */; };
 		6377E29B1A2E23B200220671 /* JogsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6377E29A1A2E23B200220671 /* JogsViewController.m */; };
@@ -83,6 +84,7 @@
 		636080591A2F30600070D527 /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
 		6360805A1A2F30600070D527 /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
 		6360805D1A2F38510070D527 /* JogsViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JogsViewControllerTests.m; sourceTree = "<group>"; };
+		637157421A366D7200E7F5A6 /* StressTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StressTests.m; sourceTree = "<group>"; };
 		6377E2941A2E018A00220671 /* APIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
 		6377E2951A2E018A00220671 /* APIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIManager.m; sourceTree = "<group>"; };
 		6377E2981A2E0AC200220671 /* DictionaryRepresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryRepresentation.h; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				6360805D1A2F38510070D527 /* JogsViewControllerTests.m */,
 				633F21611A3097B500D3F8FC /* DateHelperTests.m */,
 				63855B471A314B66003998BD /* EditJogViewControllerTests.m */,
+				637157421A366D7200E7F5A6 /* StressTests.m */,
 			);
 			path = JoggingTests;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				635529F71A2E93DD00750FFE /* SessionManagerTests.m in Sources */,
 				6377E29C1A2E23B200220671 /* JogsViewController.m in Sources */,
 				633F21621A3097B500D3F8FC /* DateHelperTests.m in Sources */,
+				637157431A366D7200E7F5A6 /* StressTests.m in Sources */,
 				6377E2A01A2E260A00220671 /* JogManager.m in Sources */,
 				635529F31A2E915F00750FFE /* UserTests.m in Sources */,
 				635529F91A2E951200750FFE /* JogManagerTests.m in Sources */,

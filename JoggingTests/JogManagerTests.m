@@ -51,52 +51,58 @@ static NSString * const kTestUserSessionToken = @"herOwuRBGNIeLn16GAQdKjKrd";
 {
     XCTestExpectation *successExpectation = [self expectationWithDescription:@"Valid Jog"];
     
-    // create jog
-    Jog *jog = [Jog new];
-    jog.time = @(12);
-    jog.distance = @(12);
-    jog.date = [NSDate date];
-    jog.userId = kTestUserId;
-    
-    [[JogManager sharedInstance] postJog:jog success:^(Jog *createdJog) {
-        XCTAssert(createdJog.objectId);
+    User *user = [User new];
+    user.username = [NSString stringWithFormat:@"test-CRUD-%li", (long)[[NSDate date] timeIntervalSince1970]];
+    user.password = @"password";
+    [[SessionManager sharedInstance] signUpWithUser:user success:^(User *user) {
+        XCTAssert(user.sessionToken);
         
-        [[JogManager sharedInstance] getAllJogsForUser:self.testUser success:^(NSMutableArray *jogs) {
+        
+    
+        // create jog
+        Jog *jog = [Jog new];
+        jog.time = @(12);
+        jog.distance = @(12);
+        jog.date = [NSDate date];
+        jog.userId = user.objectId;
+        
+        [[JogManager sharedInstance] postJog:jog success:^(Jog *createdJog) {
+            XCTAssert(createdJog.objectId);
             
-            // find jog
-            __block Jog *jog = nil;
-            [jogs enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                Jog *j = obj;
-                if([j.objectId isEqualToString:createdJog.objectId]){
-                    jog = j;
-                    *stop = YES;
-                }
-            }];
-            XCTAssert(jog != nil);
-            
-            // update jog
-            NSNumber *distance = @(15);
-            jog.distance = @(15);
-            [[JogManager sharedInstance] updateJog:jog success:^(Jog *jog) {
-                XCTAssert([jog.distance isEqual:distance]);
+            [[JogManager sharedInstance] getJogsForUser:self.testUser limit:1 skip:0 success:^(NSMutableArray *jogs) {
                 
-                // delete jog
-                [[JogManager sharedInstance] deleteJog:jog success:^(Jog *jog) {
-                    [successExpectation fulfill];
+                // find jog
+                XCTAssert([jogs count] == 1);
+                Jog *jog = jogs[0];
+                XCTAssert(jog.objectId);
+                
+                // update jog
+                NSNumber *distance = @(15);
+                jog.distance = @(15);
+                [[JogManager sharedInstance] updateJog:jog success:^(Jog *jog) {
+                    XCTAssert([jog.distance isEqual:distance]);
+                    
+                    // delete jog
+                    [[JogManager sharedInstance] deleteJog:jog success:^(Jog *jog) {
+                        [successExpectation fulfill];
+                    } fail:^(NSError *error) {
+                        XCTFail(@"Should have deleted the jog successfuly");
+                        [successExpectation fulfill];
+                    }];
+                    
                 } fail:^(NSError *error) {
-                    XCTFail(@"Should have deleted the jog successfuly");
+                    XCTFail(@"Should have updated the jog");
                     [successExpectation fulfill];
                 }];
-                
             } fail:^(NSError *error) {
-                XCTFail(@"Should have updated the jog");
+                XCTFail(@"Should have retrieved the jogs");
                 [successExpectation fulfill];
             }];
+
         } fail:^(NSError *error) {
-            XCTFail(@"Should have retrieved the jogs");
+            XCTFail(@"Should have created the jog");
             [successExpectation fulfill];
         }];
-
     } fail:^(NSError *error) {
         XCTFail(@"Should have created the jog");
         [successExpectation fulfill];

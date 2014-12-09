@@ -24,12 +24,15 @@
 
 
 /**
- * Gets all jogs for the given user, and executes the proper code block upon completion.
+ * Gets jogs for the given user, and executes the proper code block upon completion.
+ * @param user The user to get the jogs for.
+ * @param limit The maximum number of jogs to get per request.
+ * @param skip The skip value used for pagination.
  * @param user The user to get the jogs for.
  * @param success The code block to be executed if the jogs are retrieved successfully, it receives an array of Jog instances as a parameter.
  * @param fail The code block to be executed if there's any error retrieving the jogs, it receives an NSError instance as a parameter.
  */
-- (void)getAllJogsForUser:(User *)user success:(void (^)(NSMutableArray *jogs))success fail:(void (^)(NSError *error))fail;
+- (void)getJogsForUser:(User *)user limit:(NSInteger)limit skip:(NSInteger)skip success:(void (^)(NSMutableArray *jogs))success fail:(void (^)(NSError *error))fail;
 
 /**
  * Saves the given jog and executes the proper code block upon completion.

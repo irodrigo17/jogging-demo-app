@@ -34,14 +34,4 @@
     XCTAssert([vc.user.text isEqualToString:expectedText]);
 }
 
-- (void)testNumberOfRowsInSection
-{
-    JogsViewController *vc = [[JogsViewController alloc] init];
-    
-    XCTAssert([vc tableView:vc.tableView numberOfRowsInSection:0] == 1);
-    
-    vc.jogs = [NSMutableArray arrayWithObjects:[Jog new], [Jog new], nil];
-    XCTAssert([vc tableView:vc.tableView numberOfRowsInSection:0] == 2);
-}
-
 @end
