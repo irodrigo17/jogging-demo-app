@@ -12,6 +12,7 @@
 #import "JogCell.h"
 #import <JGProgressHUD/JGProgressHUD.h>
 #import "AppDelegate.h"
+#import "NSError+AFNetworking.h"
 
 
 static const NSInteger kLimit = 50;
@@ -122,7 +123,27 @@ static const NSInteger kLimit = 50;
         }
         
     } fail:^(NSError *error) {
-        [[[UIAlertView alloc] initWithTitle:@"Oops!!" message:@"Can't get jogs right now" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        
+        // end refreshing if needed
+        if(self.refreshControl.refreshing){
+            [self.refreshControl endRefreshing];
+        }
+        
+        // check error
+        NSString *title = nil;
+        NSString *message = nil;
+        if([error isNetworkError]){
+            title = @"No network connection";
+            message = @"It seems like you are offline, please check your network connection status";
+        }
+        else{
+            title = @"Oops!";
+            message = @"This is an unexpected error, we have been notified and are already working to fix it";
+            
+        }
+        [[[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        
+        // reset jogs
         self.skip = 0;
         [self reloadTableWithJogs:nil];
     }];
