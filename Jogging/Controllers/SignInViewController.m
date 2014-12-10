@@ -11,6 +11,8 @@
 #import "SessionManager.h"
 #import "AppDelegate.h"
 #import "NSDictionary+XLForm.h"
+#import "NSError+AFNetworking.h"
+#import <AFNetworking/AFURLResponseSerialization.h>
 
 
 @interface SignInViewController ()
@@ -62,10 +64,44 @@
     [[SessionManager sharedInstance] signInWithUser:user success:^(User *user) {
         [progressHUD dismissAnimated:YES];
         [selfBlockRef performSegueWithIdentifier:@"ShowJogsFromSignIn" sender:nil];
-    } fail:^(NSError *user) {
-        // TODO: check internet connection and expected API errors
-        [[[UIAlertView alloc] initWithTitle:@"Oops!" message:@"Can't sign in" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+    } fail:^(NSError *error) {
+        
+        NSLog(@"Can't sign in: %@", error);
+        
         [progressHUD dismissAnimated:YES];
+        
+        NSString *title = nil;
+        NSString *message = nil;
+        
+        // check for network error
+        if([error isNetworkError]){
+            title = @"No network connection";
+            message = @"It seems like you are offline, please check your network connection status";
+        }
+        else{
+            // check bad login
+            NSDictionary *userInfo = [error userInfo];
+            NSHTTPURLResponse *response = userInfo[AFNetworkingOperationFailingURLResponseErrorKey];
+            if(response && response.statusCode == 404){
+                NSData *responseData = userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
+                if(responseData){
+                    NSDictionary *responseDic = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
+                    int code = [responseDic[@"code"] intValue];
+                    if(code == 101){
+                        title = @"Please try again";
+                        message = @"The username and password you entered did not match our records. Please double-check and try again";
+                    }
+                }
+            }
+            
+            if(!title){
+                title = @"Oops!";
+            }
+            if(!message){
+                message = @"This is an unexpected error, we have been notified and are already working to fix it";
+            }
+        }
+        [[[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
     }];
 }
 
