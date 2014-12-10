@@ -10,6 +10,8 @@
 #import "JogManager.h"
 #import "SessionManager.h"
 #import <JGProgressHUD/JGProgressHUD.h>
+#import "NSError+AFNetworking.h"
+#import <AFNetworking/AFURLResponseSerialization.h>
 
 
 @implementation EditJogViewController
@@ -85,8 +87,22 @@
         [self.navigationController popViewControllerAnimated:YES];
     };
     void (^fail)(NSError *error) = ^void(NSError *error){
+        
         [progressHUD dismissAnimated:YES];
-        [[[UIAlertView alloc] initWithTitle:@"Oops!" message:@"Can't save jog right now" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        
+        NSLog(@"Can't save jog: %@", error);
+        
+        NSString *title = nil;
+        NSString *message = nil;
+        if([error isNetworkError]){
+            title = @"No network connection";
+            message = @"It seems like you are offline, please check your network connection status";
+        }
+        else{
+            title = @"Oops!";
+            message = @"This is an unexpected error, we have been notified and are already working to fix it";
+        }
+        [[[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
     };
     
     // create jog
