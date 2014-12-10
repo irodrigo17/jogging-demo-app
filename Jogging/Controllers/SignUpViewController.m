@@ -10,6 +10,8 @@
 #import "SessionManager.h"
 #import <JGProgressHUD/JGProgressHUD.h>
 #import "NSDictionary+XLForm.h"
+#import "NSError+AFNetworking.h"
+#import <AFNetworking/AFURLResponseSerialization.h>
 
 
 @interface SignUpViewController ()
@@ -60,10 +62,44 @@
     [[SessionManager sharedInstance] signUpWithUser:user success:^(User *user) {
         [progressHUD dismissAnimated:YES];
         [selfBlockRef performSegueWithIdentifier:@"ShowJogsFromSignUp" sender:nil];
-    } fail:^(NSError *user) {
-        // TODO: check internet connection and expected API errors
-        [[[UIAlertView alloc] initWithTitle:@"Oops!" message:@"Can't sign up" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+    } fail:^(NSError *error) {
+        
+        NSLog(@"Can't sign up: %@", error);
+        
         [progressHUD dismissAnimated:YES];
+        
+        NSString *title = nil;
+        NSString *message = nil;
+        
+        // check for network error
+        if([error isNetworkError]){
+            title = @"No network connection";
+            message = @"It seems like you are offline, please check your network connection status";
+        }
+        else{
+            // check duplicated username or email
+            NSDictionary *userInfo = [error userInfo];
+            NSHTTPURLResponse *response = userInfo[AFNetworkingOperationFailingURLResponseErrorKey];
+            if(response && response.statusCode == 400){
+                NSData *responseData = userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
+                if(responseData){
+                    NSDictionary *responseDic = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
+                    int code = [responseDic[@"code"] intValue];
+                    if(code == 202 || code == 203){
+                        title = @"Please check the following information";
+                        message = responseDic[@"error"];
+                    }
+                }
+            }
+            
+            if(!title){
+                title = @"Oops!";
+            }
+            if(!message){
+                message = @"This is an unexpected error, we have been notified and are already working to fix it";
+            }
+        }
+        [[[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
     }];
 }
 

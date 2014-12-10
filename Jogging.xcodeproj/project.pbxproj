@@ -43,6 +43,8 @@
 		6377E2A41A2E2EF700220671 /* Jog.m in Sources */ = {isa = PBXBuildFile; fileRef = 6377E2A21A2E2EF700220671 /* Jog.m */; };
 		637B654F1A376BCA00E34A93 /* FiltersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 637B654E1A376BCA00E34A93 /* FiltersViewController.m */; };
 		637B65501A376BCA00E34A93 /* FiltersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 637B654E1A376BCA00E34A93 /* FiltersViewController.m */; };
+		63815CC81A38A87B002B8794 /* NSError+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 63815CC71A38A87B002B8794 /* NSError+AFNetworking.m */; };
+		63815CC91A38A87B002B8794 /* NSError+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 63815CC71A38A87B002B8794 /* NSError+AFNetworking.m */; };
 		63855B481A314B66003998BD /* EditJogViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63855B471A314B66003998BD /* EditJogViewControllerTests.m */; };
 		63C7AF091A2DDF5E00FB9EAE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C7AF081A2DDF5E00FB9EAE /* main.m */; };
 		63C7AF0C1A2DDF5E00FB9EAE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C7AF0B1A2DDF5E00FB9EAE /* AppDelegate.m */; };
@@ -109,6 +111,8 @@
 		6377E2A21A2E2EF700220671 /* Jog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Jog.m; sourceTree = "<group>"; };
 		637B654D1A376BCA00E34A93 /* FiltersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FiltersViewController.h; sourceTree = "<group>"; };
 		637B654E1A376BCA00E34A93 /* FiltersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FiltersViewController.m; sourceTree = "<group>"; };
+		63815CC61A38A87B002B8794 /* NSError+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+AFNetworking.h"; sourceTree = "<group>"; };
+		63815CC71A38A87B002B8794 /* NSError+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+AFNetworking.m"; sourceTree = "<group>"; };
 		63855B471A314B66003998BD /* EditJogViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditJogViewControllerTests.m; sourceTree = "<group>"; };
 		639208E81A332FE000FF48CD /* Pods-Jogging.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-Jogging.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Jogging/Pods-Jogging.debug.xcconfig"; sourceTree = "<group>"; };
 		639208E91A332FE000FF48CD /* Pods-Jogging.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-Jogging.release.xcconfig"; path = "Pods/Target Support Files/Pods-Jogging/Pods-Jogging.release.xcconfig"; sourceTree = "<group>"; };
@@ -272,6 +276,8 @@
 				633F215E1A3094BE00D3F8FC /* DateHelper.m */,
 				6348BA541A388572002309F2 /* NSDictionary+XLForm.h */,
 				6348BA551A388572002309F2 /* NSDictionary+XLForm.m */,
+				63815CC61A38A87B002B8794 /* NSError+AFNetworking.h */,
+				63815CC71A38A87B002B8794 /* NSError+AFNetworking.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -486,6 +492,7 @@
 				6377E29B1A2E23B200220671 /* JogsViewController.m in Sources */,
 				63C7AF331A2DE42A00FB9EAE /* LandingViewController.m in Sources */,
 				6377E29F1A2E260A00220671 /* JogManager.m in Sources */,
+				63815CC81A38A87B002B8794 /* NSError+AFNetworking.m in Sources */,
 				6348BA561A388572002309F2 /* NSDictionary+XLForm.m in Sources */,
 				63C7AF3F1A2DEDA600FB9EAE /* User.m in Sources */,
 				637B654F1A376BCA00E34A93 /* FiltersViewController.m in Sources */,
@@ -505,6 +512,7 @@
 				6377E2A41A2E2EF700220671 /* Jog.m in Sources */,
 				63C7AF401A2DEDA600FB9EAE /* User.m in Sources */,
 				6360805C1A2F30600070D527 /* SignInViewController.m in Sources */,
+				63815CC91A38A87B002B8794 /* NSError+AFNetworking.m in Sources */,
 				635529EF1A2E742500750FFE /* JogTests.m in Sources */,
 				635529ED1A2E6D8500750FFE /* JogCell.m in Sources */,
 				635B39741A37D9A50034FC58 /* StatsViewController.m in Sources */,
