@@ -124,6 +124,8 @@ static const NSInteger kLimit = 50;
         
     } fail:^(NSError *error) {
         
+        NSLog(@"Can't get jogs: %@", error);
+        
         // end refreshing if needed
         if(self.refreshControl.refreshing){
             [self.refreshControl endRefreshing];
@@ -164,19 +166,35 @@ static const NSInteger kLimit = 50;
 
 #pragma mark - Deleting jogs
 
-- (void)deleteJog:(Jog*)jog
+- (void)deleteJog:(Jog*)jog success:(void (^)())success
 {
     JGProgressHUD *progressHUD = [[JGProgressHUD alloc] initWithStyle:JGProgressHUDStyleDark];
-    [progressHUD showInView:self.view];
+    [progressHUD showInView:self.view animated:YES];
     
     [[JogManager sharedInstance] deleteJog:jog success:^(Jog *jog){
         NSLog(@"Deleted jog: %@", jog);
-        [progressHUD dismiss];
+        [progressHUD dismissAnimated:YES];
+        success();
     } fail:^(NSError *error){
-        [[[UIAlertView alloc] initWithTitle:@"Oops!" message:@"Can't delete jog" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-        NSLog(@"Can't delete jog: %@\nError: %@", jog, error);
-        [self loadFirstJogsForCurrentUser];
-        [progressHUD dismiss];
+        
+        [progressHUD dismissAnimated:YES];
+        
+        NSLog(@"Can't delete jog: %@", error);
+
+        // check error
+        NSString *title = nil;
+        NSString *message = nil;
+        if([error isNetworkError]){
+            title = @"No network connection";
+            message = @"It seems like you are offline, please check your network connection status";
+        }
+        else{
+            title = @"Oops!";
+            message = @"This is an unexpected error, we have been notified and are already working to fix it";
+            
+        }
+        [[[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        
     }];
 }
 
@@ -275,9 +293,10 @@ static const NSInteger kLimit = 50;
 {
     if(editingStyle == UITableViewCellEditingStyleDelete){
         JogCell *cell = (JogCell*)[tableView cellForRowAtIndexPath:indexPath];
-        [self.jogs removeObject:cell.jog];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-        [self deleteJog:cell.jog];
+        [self deleteJog:cell.jog success:^{
+            [self.jogs removeObject:cell.jog];
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        }];
     }
 }
 
