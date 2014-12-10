@@ -253,6 +253,46 @@
             </objects>
             <point key="canvasLocation" x="499" y="936"/>
         </scene>
+        <!--Stats View Controller-->
+        <scene sceneID="Wgv-sQ-0Io">
+            <objects>
+                <tableViewController storyboardIdentifier="StatsViewController" id="nni-u7-CQj" customClass="StatsViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="9l8-k4-pNr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="StatsCell" textLabel="MwK-M2-onA" detailTextLabel="lF8-2x-C5R" style="IBUITableViewCellStyleValue2" id="5CK-NI-Kmx">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5CK-NI-Kmx" id="Xq4-M0-2o8">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MwK-M2-onA">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lF8-2x-C5R">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="nni-u7-CQj" id="PSh-W1-1Lq"/>
+                            <outlet property="delegate" destination="nni-u7-CQj" id="6e6-kR-IzZ"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yr9-JP-C4n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="922" y="262"/>
+        </scene>
         <!--Jogs-->
         <scene sceneID="rrP-DV-CxW">
             <objects>
@@ -324,11 +364,6 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Jogs" id="agH-yL-yPW">
                         <barButtonItem key="backBarButtonItem" title="Back" id="UPj-Ms-x3I"/>
-                        <barButtonItem key="leftBarButtonItem" title="Filter" id="cvM-MF-Yiz">
-                            <connections>
-                                <segue destination="JIW-Cj-rob" kind="show" id="KlB-gC-Rsh"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="NXj-Bm-Bd1">
                             <connections>
                                 <segue destination="4AT-6P-FUY" kind="show" identifier="ShowEditJogViewController" id="RkB-a7-GcK"/>
@@ -340,6 +375,8 @@
                     </refreshControl>
                     <connections>
                         <outlet property="user" destination="XdT-6H-muT" id="iQn-fF-FKW"/>
+                        <segue destination="nni-u7-CQj" kind="show" identifier="ShowStats" id="1lM-27-wDB"/>
+                        <segue destination="JIW-Cj-rob" kind="show" identifier="ShowFilters" id="sRs-kc-bnZ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sfp-PM-qKE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -362,7 +399,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aRn-i9-o0O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="922" y="1645"/>
+            <point key="canvasLocation" x="922" y="1642"/>
         </scene>
         <!--Edit Jog View Controller-->
         <scene sceneID="3p1-qt-JVi">

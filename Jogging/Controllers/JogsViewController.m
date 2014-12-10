@@ -67,6 +67,11 @@ static const NSInteger kLimit = 50;
 {   
     // setup refresh control
     [self.refreshControl addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
+    
+    // setup navigation
+    UIBarButtonItem *filter = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStylePlain target:self action:@selector(showFilters)];
+    UIBarButtonItem *stats = [[UIBarButtonItem alloc] initWithTitle:@"Stats" style:UIBarButtonItemStylePlain target:self action:@selector(showStats)];
+    self.navigationItem.leftBarButtonItems = @[filter, stats];
 }
 
 - (void)updateUsernameWithUser:(User *)user
@@ -194,6 +199,20 @@ static const NSInteger kLimit = 50;
     AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
     [appDelegate setRootViewController:landingVC animated:YES];
 }
+
+
+#pragma mark - Navigation
+
+- (void)showFilters
+{
+    [self performSegueWithIdentifier:@"ShowFilters" sender:nil];
+}
+
+- (void)showStats
+{
+    [self performSegueWithIdentifier:@"ShowStats" sender:nil];
+}
+
 
 #pragma mark - UITableViewDataSource
 

@@ -23,6 +23,8 @@
 		635529F51A2E939700750FFE /* APIManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 635529F41A2E939700750FFE /* APIManagerTests.m */; };
 		635529F71A2E93DD00750FFE /* SessionManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 635529F61A2E93DD00750FFE /* SessionManagerTests.m */; };
 		635529F91A2E951200750FFE /* JogManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 635529F81A2E951200750FFE /* JogManagerTests.m */; };
+		635B39731A37D9A50034FC58 /* StatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 635B39721A37D9A50034FC58 /* StatsViewController.m */; };
+		635B39741A37D9A50034FC58 /* StatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 635B39721A37D9A50034FC58 /* StatsViewController.m */; };
 		6360805B1A2F30600070D527 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6360805A1A2F30600070D527 /* SignInViewController.m */; };
 		6360805C1A2F30600070D527 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6360805A1A2F30600070D527 /* SignInViewController.m */; };
 		6360805E1A2F38510070D527 /* JogsViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6360805D1A2F38510070D527 /* JogsViewControllerTests.m */; };
@@ -83,6 +85,8 @@
 		635529F41A2E939700750FFE /* APIManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIManagerTests.m; sourceTree = "<group>"; };
 		635529F61A2E93DD00750FFE /* SessionManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionManagerTests.m; sourceTree = "<group>"; };
 		635529F81A2E951200750FFE /* JogManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JogManagerTests.m; sourceTree = "<group>"; };
+		635B39711A37D9A50034FC58 /* StatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsViewController.h; sourceTree = "<group>"; };
+		635B39721A37D9A50034FC58 /* StatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsViewController.m; sourceTree = "<group>"; };
 		636080591A2F30600070D527 /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
 		6360805A1A2F30600070D527 /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
 		6360805D1A2F38510070D527 /* JogsViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JogsViewControllerTests.m; sourceTree = "<group>"; };
@@ -229,6 +233,8 @@
 				633F21681A30B78E00D3F8FC /* EditJogViewController.m */,
 				637B654D1A376BCA00E34A93 /* FiltersViewController.h */,
 				637B654E1A376BCA00E34A93 /* FiltersViewController.m */,
+				635B39711A37D9A50034FC58 /* StatsViewController.h */,
+				635B39721A37D9A50034FC58 /* StatsViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -462,6 +468,7 @@
 				635529EC1A2E6D8500750FFE /* JogCell.m in Sources */,
 				633F21691A30B78E00D3F8FC /* EditJogViewController.m in Sources */,
 				63C7AF3B1A2DED7C00FB9EAE /* SessionManager.m in Sources */,
+				635B39731A37D9A50034FC58 /* StatsViewController.m in Sources */,
 				6360805B1A2F30600070D527 /* SignInViewController.m in Sources */,
 				63511B7A1A347A3700F3766C /* ReplaceRootViewControllerSegue.m in Sources */,
 				6377E29B1A2E23B200220671 /* JogsViewController.m in Sources */,
@@ -487,6 +494,7 @@
 				6360805C1A2F30600070D527 /* SignInViewController.m in Sources */,
 				635529EF1A2E742500750FFE /* JogTests.m in Sources */,
 				635529ED1A2E6D8500750FFE /* JogCell.m in Sources */,
+				635B39741A37D9A50034FC58 /* StatsViewController.m in Sources */,
 				6360805E1A2F38510070D527 /* JogsViewControllerTests.m in Sources */,
 				63511B7B1A347A3700F3766C /* ReplaceRootViewControllerSegue.m in Sources */,
 				635529F11A2E7A3500750FFE /* JogCellTests.m in Sources */,
