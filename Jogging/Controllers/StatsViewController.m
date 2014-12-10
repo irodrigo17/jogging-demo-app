@@ -56,16 +56,23 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [self.stats count];
+    return MAX([self.stats count], 1);
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return [self.stats count] ? 2 : 0;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
+    if(!self.stats){
+        return nil;
+    }
+    else if(![self.stats count]){
+        return @"No jogs yet, go for a run!";
+    }
+    
     NSDictionary *stats = self.stats[section];
     
     NSDate *startDate = [DateHelper deserializeParseDate:stats[@"startDate"]];
