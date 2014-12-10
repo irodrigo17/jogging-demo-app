@@ -9,6 +9,7 @@
 #import "SignUpViewController.h"
 #import "SessionManager.h"
 #import <JGProgressHUD/JGProgressHUD.h>
+#import "NSDictionary+XLForm.h"
 
 
 @interface SignUpViewController ()
@@ -22,6 +23,16 @@
 
 @implementation SignUpViewController
 
+#pragma mark - View lifecycle
+
+- (void)viewDidLoad
+{
+    [self setupForm];
+    [super viewDidLoad];
+}
+
+
+
 #pragma mark - Actions
 
 - (IBAction)cancel:(id)sender {
@@ -30,14 +41,16 @@
 
 - (IBAction)signUp:(id)sender {
     
-    // TODO: validate user information
+    // validate
+    NSArray *validationErrors = [self formValidationErrors];
+    if (validationErrors.count > 0){
+        [self showFormValidationError:[validationErrors firstObject]];
+        return;
+    }
     
-    // create user from fields
-    User *user = [[User alloc] init];
-    user.name = self.name.text;
-    user.username = self.username.text;
-    user.email = self.email.text;
-    user.password = self.password.text;
+    // create user
+    NSDictionary *formValues = [self formValues];
+    User *user = [self userWithFormValues:formValues];
     
     // show progress indicator
     JGProgressHUD *progressHUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
@@ -53,16 +66,52 @@
         [[[UIAlertView alloc] initWithTitle:@"Oops!" message:@"Can't sign up" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         [progressHUD dismissAnimated:YES];
     }];
+}
+
+
+#pragma mark - Helpers
+
+- (void)setupForm
+{
+    self.form = [XLFormDescriptor formDescriptorWithTitle:@"Sign Up"];
     
+    // section
+    XLFormSectionDescriptor *section = [XLFormSectionDescriptor formSection];
+    [self.form addFormSection:section];
+    
+    // rows
+    XLFormRowDescriptor *nameRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"name" rowType:XLFormRowDescriptorTypeText];
+    [nameRow.cellConfigAtConfigure setObject:@"Name" forKey:@"textField.placeholder"];
+    [section addFormRow:nameRow];
+    
+    XLFormRowDescriptor *usernameRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"username" rowType:XLFormRowDescriptorTypeText];
+    [usernameRow.cellConfigAtConfigure setObject:@"Username" forKey:@"textField.placeholder"];
+    usernameRow.required = YES;
+    usernameRow.requireMsg = @"Username can't be empty";
+    [section addFormRow:usernameRow];
+    
+    XLFormRowDescriptor *emailRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"email" rowType:XLFormRowDescriptorTypeEmail];
+    [emailRow.cellConfigAtConfigure setObject:@"E-Mail" forKey:@"textField.placeholder"];
+    [emailRow addValidator:[XLFormValidator emailValidator]];
+    [section addFormRow:emailRow];
+    
+    XLFormRowDescriptor *passwordRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"password" rowType:XLFormRowDescriptorTypePassword];
+    [passwordRow.cellConfigAtConfigure setObject:@"Password" forKey:@"textField.placeholder"];
+    passwordRow.required = YES;
+    passwordRow.requireMsg = @"Password can't be empty";
+    [section addFormRow:passwordRow];
     
 }
 
-#pragma mark - UITextFieldDelegate
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
+- (User*)userWithFormValues:(NSDictionary*)formValues
 {
-    // TODO: move to the next text field or sign up
-    return YES;
+    formValues = [formValues dictionaryWithoutNulls];
+    User *user = [[User alloc] init];
+    user.name = formValues[@"name"];
+    user.username = formValues[@"username"];
+    user.email = formValues[@"email"];
+    user.password = formValues[@"password"];
+    return user;
 }
 
 @end

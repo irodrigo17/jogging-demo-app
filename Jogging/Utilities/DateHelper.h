@@ -10,6 +10,8 @@
 
 @interface DateHelper : NSObject
 
+// TODO: Use an NSDate category instead
+
 /**
  * Desearileze the given date.
  * @param date A Parse.com date dictionary, the value for the 'iso' key is deserialized as an ISO8601 formatted string as described in https://www.parse.com/docs/rest#objects-types

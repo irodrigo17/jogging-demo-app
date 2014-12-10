@@ -8,6 +8,8 @@
 
 #import "FiltersViewController.h"
 #import <XLForm/XLForm.h>
+#import "NSDictionary+XLForm.h"
+
 
 @interface FiltersViewController ()
 
@@ -46,16 +48,10 @@
 - (void)done
 {
     // remove NSNull values
-    NSDictionary *values = [self.form formValues];
-    NSMutableDictionary *nonNullValues = [NSMutableDictionary dictionary];
-    for(NSString *key in values){
-        if(values[key] != [NSNull null]){
-            nonNullValues[key] = values[key];
-        }
-    }
+    NSDictionary *formValues = [[self.form formValues] dictionaryWithoutNulls];
     
     // notify delegate
-    [self.delegate filtersViewController:self didApplyFilters:nonNullValues];
+    [self.delegate filtersViewController:self didApplyFilters:formValues];
 }
 
 

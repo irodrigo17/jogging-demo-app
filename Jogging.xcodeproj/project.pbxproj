@@ -13,6 +13,10 @@
 		633F21621A3097B500D3F8FC /* DateHelperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 633F21611A3097B500D3F8FC /* DateHelperTests.m */; };
 		633F21691A30B78E00D3F8FC /* EditJogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 633F21681A30B78E00D3F8FC /* EditJogViewController.m */; };
 		633F216A1A30B78E00D3F8FC /* EditJogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 633F21681A30B78E00D3F8FC /* EditJogViewController.m */; };
+		6348BA561A388572002309F2 /* NSDictionary+XLForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 6348BA551A388572002309F2 /* NSDictionary+XLForm.m */; };
+		6348BA571A388572002309F2 /* NSDictionary+XLForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 6348BA551A388572002309F2 /* NSDictionary+XLForm.m */; };
+		6348BA591A388783002309F2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6348BA581A388783002309F2 /* Localizable.strings */; };
+		6348BA5A1A388783002309F2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6348BA581A388783002309F2 /* Localizable.strings */; };
 		63511B7A1A347A3700F3766C /* ReplaceRootViewControllerSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 63511B791A347A3700F3766C /* ReplaceRootViewControllerSegue.m */; };
 		63511B7B1A347A3700F3766C /* ReplaceRootViewControllerSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 63511B791A347A3700F3766C /* ReplaceRootViewControllerSegue.m */; };
 		635529EC1A2E6D8500750FFE /* JogCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 635529EB1A2E6D8500750FFE /* JogCell.m */; };
@@ -75,6 +79,9 @@
 		633F21611A3097B500D3F8FC /* DateHelperTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateHelperTests.m; sourceTree = "<group>"; };
 		633F21671A30B78E00D3F8FC /* EditJogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditJogViewController.h; sourceTree = "<group>"; };
 		633F21681A30B78E00D3F8FC /* EditJogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditJogViewController.m; sourceTree = "<group>"; };
+		6348BA541A388572002309F2 /* NSDictionary+XLForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+XLForm.h"; sourceTree = "<group>"; };
+		6348BA551A388572002309F2 /* NSDictionary+XLForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+XLForm.m"; sourceTree = "<group>"; };
+		6348BA581A388783002309F2 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		63511B781A347A3700F3766C /* ReplaceRootViewControllerSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReplaceRootViewControllerSegue.h; path = ../Utilities/ReplaceRootViewControllerSegue.h; sourceTree = "<group>"; };
 		63511B791A347A3700F3766C /* ReplaceRootViewControllerSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReplaceRootViewControllerSegue.m; path = ../Utilities/ReplaceRootViewControllerSegue.m; sourceTree = "<group>"; };
 		635529EA1A2E6D8500750FFE /* JogCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JogCell.h; sourceTree = "<group>"; };
@@ -188,6 +195,7 @@
 			children = (
 				63C7AF071A2DDF5E00FB9EAE /* Info.plist */,
 				63C7AF081A2DDF5E00FB9EAE /* main.m */,
+				6348BA581A388783002309F2 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -262,6 +270,8 @@
 				6377E29E1A2E260A00220671 /* JogManager.m */,
 				633F215D1A3094BE00D3F8FC /* DateHelper.h */,
 				633F215E1A3094BE00D3F8FC /* DateHelper.m */,
+				6348BA541A388572002309F2 /* NSDictionary+XLForm.h */,
+				6348BA551A388572002309F2 /* NSDictionary+XLForm.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -382,6 +392,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63C7AF121A2DDF5E00FB9EAE /* Main.storyboard in Resources */,
+				6348BA591A388783002309F2 /* Localizable.strings in Resources */,
 				63C7AF171A2DDF5E00FB9EAE /* LaunchScreen.xib in Resources */,
 				63C7AF141A2DDF5E00FB9EAE /* Images.xcassets in Resources */,
 			);
@@ -391,6 +402,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6348BA5A1A388783002309F2 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,6 +486,7 @@
 				6377E29B1A2E23B200220671 /* JogsViewController.m in Sources */,
 				63C7AF331A2DE42A00FB9EAE /* LandingViewController.m in Sources */,
 				6377E29F1A2E260A00220671 /* JogManager.m in Sources */,
+				6348BA561A388572002309F2 /* NSDictionary+XLForm.m in Sources */,
 				63C7AF3F1A2DEDA600FB9EAE /* User.m in Sources */,
 				637B654F1A376BCA00E34A93 /* FiltersViewController.m in Sources */,
 				63C7AF0C1A2DDF5E00FB9EAE /* AppDelegate.m in Sources */,
@@ -502,6 +515,7 @@
 				6377E29C1A2E23B200220671 /* JogsViewController.m in Sources */,
 				633F21621A3097B500D3F8FC /* DateHelperTests.m in Sources */,
 				637157431A366D7200E7F5A6 /* StressTests.m in Sources */,
+				6348BA571A388572002309F2 /* NSDictionary+XLForm.m in Sources */,
 				6377E2A01A2E260A00220671 /* JogManager.m in Sources */,
 				635529F31A2E915F00750FFE /* UserTests.m in Sources */,
 				635529F91A2E951200750FFE /* JogManagerTests.m in Sources */,
