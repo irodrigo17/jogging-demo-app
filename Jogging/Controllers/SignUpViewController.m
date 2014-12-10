@@ -73,8 +73,8 @@
         
         // check for network error
         if([error isNetworkError]){
-            title = @"No network connection";
-            message = @"It seems like you are offline, please check your network connection status";
+            title = NSLocalizedString(@"NoConnectionAlertTitle", nil);
+            message = NSLocalizedString(@"NoConnectionAlertMessage", nil);
         }
         else{
             // check duplicated username or email
@@ -86,17 +86,17 @@
                     NSDictionary *responseDic = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
                     int code = [responseDic[@"code"] intValue];
                     if(code == 202 || code == 203){
-                        title = @"Please check the following information";
+                        title = NSLocalizedString(@"BadSignUpDataAlertTitle", nil);
                         message = responseDic[@"error"];
                     }
                 }
             }
             
             if(!title){
-                title = @"Oops!";
+                title = NSLocalizedString(@"UnexpectedErrorAlertTitle", nil);
             }
             if(!message){
-                message = @"This is an unexpected error, we have been notified and are already working to fix it";
+                message = NSLocalizedString(@"UnexpectedErrorAlertMessage", nil);
             }
         }
         [[[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
@@ -108,7 +108,7 @@
 
 - (void)setupForm
 {
-    self.form = [XLFormDescriptor formDescriptorWithTitle:@"Sign Up"];
+    self.form = [XLFormDescriptor formDescriptorWithTitle:NSLocalizedString(@"SignUpFormTitle", nil)];
     self.form.assignFirstResponderOnShow = YES;
     
     // section
@@ -117,24 +117,24 @@
     
     // rows
     XLFormRowDescriptor *nameRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"name" rowType:XLFormRowDescriptorTypeText];
-    [nameRow.cellConfigAtConfigure setObject:@"Name" forKey:@"textField.placeholder"];
+    [nameRow.cellConfigAtConfigure setObject:NSLocalizedString(@"UserFormNamePlaceholder", nil) forKey:@"textField.placeholder"];
     [section addFormRow:nameRow];
     
     XLFormRowDescriptor *usernameRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"username" rowType:XLFormRowDescriptorTypeText];
-    [usernameRow.cellConfigAtConfigure setObject:@"Username" forKey:@"textField.placeholder"];
+    [usernameRow.cellConfigAtConfigure setObject:NSLocalizedString(@"UserFormUsernamePlaceholder", nil) forKey:@"textField.placeholder"];
     usernameRow.required = YES;
-    usernameRow.requireMsg = @"Username can't be empty";
+    usernameRow.requireMsg = NSLocalizedString(@"UserFormUsernameRequiredMessage", nil);
     [section addFormRow:usernameRow];
     
     XLFormRowDescriptor *emailRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"email" rowType:XLFormRowDescriptorTypeEmail];
-    [emailRow.cellConfigAtConfigure setObject:@"E-Mail" forKey:@"textField.placeholder"];
+    [emailRow.cellConfigAtConfigure setObject:NSLocalizedString(@"UserFormEmailPlaceholder", nil) forKey:@"textField.placeholder"];
     [emailRow addValidator:[XLFormValidator emailValidator]];
     [section addFormRow:emailRow];
     
     XLFormRowDescriptor *passwordRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"password" rowType:XLFormRowDescriptorTypePassword];
-    [passwordRow.cellConfigAtConfigure setObject:@"Password" forKey:@"textField.placeholder"];
+    [passwordRow.cellConfigAtConfigure setObject:NSLocalizedString(@"UserFormPasswordPlaceholder", nil) forKey:@"textField.placeholder"];
     passwordRow.required = YES;
-    passwordRow.requireMsg = @"Password can't be empty";
+    passwordRow.requireMsg = NSLocalizedString(@"UserFormPasswordRequiredMessage", nil);
     [section addFormRow:passwordRow];
     
 }

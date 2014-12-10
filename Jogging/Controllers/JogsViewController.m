@@ -135,12 +135,12 @@ static const NSInteger kLimit = 50;
         NSString *title = nil;
         NSString *message = nil;
         if([error isNetworkError]){
-            title = @"No network connection";
-            message = @"It seems like you are offline, please check your network connection status";
+            title = NSLocalizedString(@"NoConnectionAlertTitle", nil);
+            message = NSLocalizedString(@"NoConnectionAlertMessage", nil);
         }
         else{
-            title = @"Oops!";
-            message = @"This is an unexpected error, we have been notified and are already working to fix it";
+            title = NSLocalizedString(@"UnexpectedErrorAlertTitle", nil);
+            message = NSLocalizedString(@"UnexpectedErrorAlertMessage", nil);
             
         }
         [[[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
@@ -185,12 +185,12 @@ static const NSInteger kLimit = 50;
         NSString *title = nil;
         NSString *message = nil;
         if([error isNetworkError]){
-            title = @"No network connection";
-            message = @"It seems like you are offline, please check your network connection status";
+            title = NSLocalizedString(@"NoConnectionAlertTitle", nil);
+            message = NSLocalizedString(@"NoConnectionAlertMessage", nil);
         }
         else{
-            title = @"Oops!";
-            message = @"This is an unexpected error, we have been notified and are already working to fix it";
+            title = NSLocalizedString(@"UnexpectedErrorAlertTitle", nil);
+            message = NSLocalizedString(@"UnexpectedErrorAlertMessage", nil);
             
         }
         [[[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];

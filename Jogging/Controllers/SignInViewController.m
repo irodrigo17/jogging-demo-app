@@ -75,8 +75,8 @@
         
         // check for network error
         if([error isNetworkError]){
-            title = @"No network connection";
-            message = @"It seems like you are offline, please check your network connection status";
+            title = NSLocalizedString(@"NoConnectionAlertTitle", nil);
+            message = NSLocalizedString(@"NoConnectionAlertMessage", nil);
         }
         else{
             // check bad login
@@ -95,10 +95,10 @@
             }
             
             if(!title){
-                title = @"Oops!";
+                title = NSLocalizedString(@"UnexpectedErrorAlertTitle", nil);
             }
             if(!message){
-                message = @"This is an unexpected error, we have been notified and are already working to fix it";
+                message = NSLocalizedString(@"UnexpectedErrorAlertMessage", nil);
             }
         }
         [[[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];

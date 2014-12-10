@@ -45,6 +45,7 @@
         self.stats = responseObject[@"result"];
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+#warning Improve error handling
         [progressHUD dismissAnimated:YES];
         [[[UIAlertView alloc] initWithTitle:@"Oops!" message:@"Can't get stats" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         NSLog(@"Can't get stats: %@", error);

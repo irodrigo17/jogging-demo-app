@@ -7,3 +7,17 @@
 */
 
 "XLFormViewController_ValidationErrorTitle" = "Please check your data";
+
+"NoConnectionAlertTitle" = "No internet connection";
+"NoConnectionAlertMessage" = "It seems like you are offline, please check your network connection status";
+"UnexpectedErrorAlertTitle" = "Oops!";
+"UnexpectedErrorAlertMessage" = "This is an unexpected error, we have been notified and are already working to fix it";
+
+"SignUpFormTitle" = "Sign up";
+"UserFormNamePlaceholder" = "Name";
+"UserFormUsernamePlaceholder" = "Username";
+"UserFormUsernameRequiredMessage" = "Username can't be empty";
+"UserFormEmailPlaceholder" = "E-Mail";
+"UserFormPasswordPlaceholder" = "Password";
+"UserFormPasswordRequiredMessage" = "Password can't be empty";
+"BadSignUpDataAlertTitle" = "Please check your sign up information";
