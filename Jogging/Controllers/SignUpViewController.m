@@ -14,11 +14,6 @@
 
 @interface SignUpViewController ()
 
-@property (weak, nonatomic) IBOutlet UITextField *name;
-@property (weak, nonatomic) IBOutlet UITextField *username;
-@property (weak, nonatomic) IBOutlet UITextField *email;
-@property (weak, nonatomic) IBOutlet UITextField *password;
-
 @end
 
 @implementation SignUpViewController
@@ -48,9 +43,13 @@
         return;
     }
     
+    // end editing
+    [self.tableView endEditing:NO];
+    
     // create user
-    NSDictionary *formValues = [self formValues];
-    User *user = [self userWithFormValues:formValues];
+    NSDictionary *formValues = [[self formValues] dictionaryWithoutNulls];
+    User *user = [[User alloc] init];
+    [user updateWithDictionary:formValues];
     
     // show progress indicator
     JGProgressHUD *progressHUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
@@ -74,6 +73,7 @@
 - (void)setupForm
 {
     self.form = [XLFormDescriptor formDescriptorWithTitle:@"Sign Up"];
+    self.form.assignFirstResponderOnShow = YES;
     
     // section
     XLFormSectionDescriptor *section = [XLFormSectionDescriptor formSection];
@@ -101,17 +101,6 @@
     passwordRow.requireMsg = @"Password can't be empty";
     [section addFormRow:passwordRow];
     
-}
-
-- (User*)userWithFormValues:(NSDictionary*)formValues
-{
-    formValues = [formValues dictionaryWithoutNulls];
-    User *user = [[User alloc] init];
-    user.name = formValues[@"name"];
-    user.username = formValues[@"username"];
-    user.email = formValues[@"email"];
-    user.password = formValues[@"password"];
-    return user;
 }
 
 @end

@@ -10,30 +10,48 @@
 #import <JGProgressHUD/JGProgressHUD.h>
 #import "SessionManager.h"
 #import "AppDelegate.h"
+#import "NSDictionary+XLForm.h"
 
 
 @interface SignInViewController ()
 
-@property (weak, nonatomic) IBOutlet UITextField *username;
-@property (weak, nonatomic) IBOutlet UITextField *password;
-
 @end
+
 
 @implementation SignInViewController
 
+#pragma mark - View lifecycle
+
+- (void)viewDidLoad
+{
+    [self setupForm];
+    [super viewDidLoad];
+}
+
+
 #pragma mark - Actions
 
-- (IBAction)cancel:(id)sender {
+- (IBAction)cancel:(id)sender
+{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)signIn:(id)sender {
-    // TODO: validate user information
+- (IBAction)signIn:(id)sender
+{
+    // validate
+    NSArray *validationErrors = [self formValidationErrors];
+    if (validationErrors.count > 0){
+        [self showFormValidationError:[validationErrors firstObject]];
+        return;
+    }
+    
+    // end editing
+    [self.tableView endEditing:NO];
     
     // create user from fields
+    NSDictionary *formValues = [[self formValues] dictionaryWithoutNulls];
     User *user = [[User alloc] init];
-    user.username = self.username.text;
-    user.password = self.password.text;
+    [user updateWithDictionary:formValues];
     
     // show progress indicator
     JGProgressHUD *progressHUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
@@ -51,12 +69,27 @@
     }];
 }
 
-#pragma mark - UITextFieldDelegate
+#pragma mark - Helpers
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
+- (void)setupForm
 {
-    // TODO: move to the next text field or sign in
-    return YES;
+    self.form = [XLFormDescriptor formDescriptorWithTitle:@"Sign In"];
+    self.form.assignFirstResponderOnShow = YES;
+    
+    XLFormSectionDescriptor *section = [XLFormSectionDescriptor formSection];
+    [self.form addFormSection:section];
+    
+    XLFormRowDescriptor *usernameRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"username" rowType:XLFormRowDescriptorTypeText];
+    [usernameRow.cellConfigAtConfigure setObject:@"Username" forKey:@"textField.placeholder"];
+    usernameRow.required = YES;
+    usernameRow.requireMsg = @"Username can't be empty";
+    [section addFormRow:usernameRow];
+    
+    XLFormRowDescriptor *passwordRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"password" rowType:XLFormRowDescriptorTypePassword];
+    [passwordRow.cellConfigAtConfigure setObject:@"Password" forKey:@"textField.placeholder"];
+    passwordRow.required = YES;
+    passwordRow.requireMsg = @"Password can't be empty";
+    [section addFormRow:passwordRow];
 }
 
 @end

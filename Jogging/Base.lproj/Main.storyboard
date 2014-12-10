@@ -97,33 +97,7 @@
                     <view key="view" contentMode="scaleToFill" id="JKk-S5-Zq8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hdy-Pd-NjV">
-                                <rect key="frame" x="16" y="80" width="288" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
-                                <connections>
-                                    <outlet property="delegate" destination="zxd-wG-Tmr" id="0yq-9p-69h"/>
-                                </connections>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RmA-0F-tyU">
-                                <rect key="frame" x="16" y="118" width="288" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
-                                <connections>
-                                    <outlet property="delegate" destination="zxd-wG-Tmr" id="NuT-4W-8h2"/>
-                                </connections>
-                            </textField>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Hdy-Pd-NjV" firstAttribute="width" secondItem="JKk-S5-Zq8" secondAttribute="width" constant="-32" id="3Ng-lX-hSQ"/>
-                            <constraint firstAttribute="centerX" secondItem="RmA-0F-tyU" secondAttribute="centerX" id="GXi-6z-o2X"/>
-                            <constraint firstItem="RmA-0F-tyU" firstAttribute="top" secondItem="Hdy-Pd-NjV" secondAttribute="bottom" constant="8" id="ftN-Eb-6IH"/>
-                            <constraint firstItem="RmA-0F-tyU" firstAttribute="width" secondItem="JKk-S5-Zq8" secondAttribute="width" constant="-32" id="q6V-gN-1qT"/>
-                            <constraint firstItem="Hdy-Pd-NjV" firstAttribute="top" secondItem="fGG-nF-dON" secondAttribute="bottom" constant="16" id="wll-HK-RMe"/>
-                            <constraint firstAttribute="centerX" secondItem="Hdy-Pd-NjV" secondAttribute="centerX" id="yHA-Bp-kuv"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Sign In" id="z8y-KN-KDb">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="T3f-gz-LWh">
@@ -138,8 +112,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="password" destination="RmA-0F-tyU" id="sgO-gN-M2N"/>
-                        <outlet property="username" destination="Hdy-Pd-NjV" id="SB4-Ew-F33"/>
                         <segue destination="x39-Iv-N0v" kind="custom" identifier="ShowJogsFromSignIn" customClass="ReplaceRootViewControllerSegue" id="Cab-Ce-zg0"/>
                     </connections>
                 </viewController>

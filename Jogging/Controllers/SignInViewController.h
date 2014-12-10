@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <XLForm/XLForm.h>
 
-@interface SignInViewController : UIViewController <UITextFieldDelegate>
+
+@interface SignInViewController : XLFormViewController <UITextFieldDelegate>
 
 @end
