@@ -11,6 +11,7 @@
 #import "SessionManager.h"
 #import <JGProgressHUD/JGProgressHUD.h>
 #import "DateHelper.h"
+#import "NSError+AFNetworking.h"
 
 
 @interface StatsViewController ()
@@ -45,10 +46,22 @@
         self.stats = responseObject[@"result"];
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-#warning Improve error handling
+
         [progressHUD dismissAnimated:YES];
-        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"UnexpectedErrorAlertTitle", nil) message:NSLocalizedString(@"UnexpectedErrorAlertMessage", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OKButtonTitle", nil) otherButtonTitles:nil] show];
+        
         NSLog(@"Can't get stats: %@", error);
+        
+        NSString *title = nil;
+        NSString *message = nil;
+        if([error isNetworkError]){
+            title = NSLocalizedString(@"NoConnectionAlertTitle", nil);
+            message = NSLocalizedString(@"NoConnectionAlertMessage", nil);
+        }
+        else{
+            title = NSLocalizedString(@"UnexpectedErrorAlertTitle", nil);
+            message = NSLocalizedString(@"UnexpectedErrorAlertMessage", nil);
+        }
+        [[[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:NSLocalizedString(@"OKButtonTitle", nil) otherButtonTitles:nil] show];
     }];
 }
 
