@@ -99,7 +99,7 @@ Users like sharing stuff, it would be nice to have some very basic social featur
 
 ##### Challanges
 
-It would be nice to have some kind of challenges to keep the user engaged with the app, user created routes with ranking, and a global jogger ranking (maybe with the ability to split it by location) so users can compete against eachother.
+It would be nice to have some kind of challenges to keep the user engaged with the app, user created routes with ranking, and a global jogger ranking (maybe with the ability to split it by location) so users can compete against each other.
 
 ##### HealthKit
 
