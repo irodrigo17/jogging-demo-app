@@ -108,6 +108,8 @@
     NSDictionary *stats = self.stats[indexPath.section];
     int jogs = [stats[@"jogs"] intValue];
     
+    // TODO: improve stats (time and distance units, average speed)
+    // TODO: sort weeks
     switch (indexPath.row) {
         case 0:
             cell.textLabel.text = @"Avg Time";
