@@ -25,9 +25,7 @@
     cell.timeAndDistanceLabel = timeAndDistanceLabel;
     UILabel *dateLabel = [[UILabel alloc] init];
     cell.dateLabel = dateLabel;
-    [cell updateWithJog:nil];
-    XCTAssert([cell.timeAndDistanceLabel.text isEqual:@"No jogs yet, go for a run!"]);
-    XCTAssert([cell.dateLabel.text isEqual:@""]);
+    
     Jog *jog = [[Jog alloc] init];
     jog.distance = @(12345);
     jog.time = @(1*60*60 + 23*60 + 45);
@@ -35,7 +33,6 @@
     [cell updateWithJog:jog];
     XCTAssert([cell.timeAndDistanceLabel.text isEqual:[jog description]]);
     XCTAssert([cell.dateLabel.text isEqual:[jog formattedDate]]);
-    
 }
 
 @end

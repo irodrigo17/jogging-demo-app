@@ -13,23 +13,14 @@
 
 
 static NSTimeInterval const kDefaultTimeout = 20.0f;
+static NSString * const kDefaultTestUserPassword = @"password";
 
 
 @interface SessionManagerTests : XCTestCase
 
-@property (strong, nonatomic) User *testUser;
-
 @end
 
 @implementation SessionManagerTests
-
-- (void)setUp
-{
-    self.testUser = [[User alloc] init];
-    self.testUser.username = [NSString stringWithFormat:@"session-manager-tests-%li", (long)[[NSDate date] timeIntervalSince1970]];
-    self.testUser.email = [NSString stringWithFormat:@"%@@test.com", self.testUser.username];
-    self.testUser.password = @"password";
-}
 
 - (void)tearDown
 {
@@ -60,7 +51,8 @@ static NSTimeInterval const kDefaultTimeout = 20.0f;
     
     XCTestExpectation *successExpectation = [self expectationWithDescription:@"Successful sign up"];
     
-    [[SessionManager sharedInstance] signUpWithUser:self.testUser success:^(User *user) {
+    user = [self randomTestUser];
+    [[SessionManager sharedInstance] signUpWithUser:user success:^(User *user) {
         XCTAssert(user.username);
         XCTAssert(user.email);
         XCTAssert(user == [SessionManager sharedInstance].user);
@@ -93,14 +85,19 @@ static NSTimeInterval const kDefaultTimeout = 20.0f;
     
     XCTestExpectation *successExpectation = [self expectationWithDescription:@"Successful sign in"];
     
-    user.username = @"testuser";
-    user.password = @"password";
-    [[SessionManager sharedInstance] signInWithUser:user success:^(User *user) {
-        XCTAssert(user.username);
-        XCTAssert(user.email);
-        XCTAssert(user.sessionToken);
-        XCTAssert(user == [SessionManager sharedInstance].user);
-        [successExpectation fulfill];
+    User *randomUser = [self randomTestUser];
+    [[SessionManager sharedInstance] signUpWithUser:randomUser success:^(User *user) {
+        user.password = kDefaultTestUserPassword;
+        [[SessionManager sharedInstance] signInWithUser:user success:^(User *user) {
+            XCTAssert(user.username);
+            XCTAssert(user.email);
+            XCTAssert(user.sessionToken);
+            XCTAssert(user == [SessionManager sharedInstance].user);
+            [successExpectation fulfill];
+        } fail:^(NSError *error) {
+            XCTFail(@"Expected success");
+            [successExpectation fulfill];
+        }];
     } fail:^(NSError *error) {
         XCTFail(@"Expected success");
         [successExpectation fulfill];
@@ -116,7 +113,8 @@ static NSTimeInterval const kDefaultTimeout = 20.0f;
 
 - (void)testSignOut
 {
-    [[SessionManager sharedInstance] setCurrentUser:self.testUser];
+    User *user = [self randomTestUser];
+    [[SessionManager sharedInstance] setCurrentUser:user];
     XCTAssert([SessionManager sharedInstance].user);
     [[SessionManager sharedInstance] signOut];
     XCTAssert(![SessionManager sharedInstance].user);
@@ -129,10 +127,12 @@ static NSTimeInterval const kDefaultTimeout = 20.0f;
     [[SessionManager sharedInstance] storeUser:nil];
     XCTAssert(![[SessionManager sharedInstance] loadUser]);
     
-    [[SessionManager sharedInstance] storeUser:self.testUser];
-    User *user = [[SessionManager sharedInstance] loadUser];
-    XCTAssert(user);
-    XCTAssert([[user dictionary] isEqualToDictionary:[self.testUser dictionary]]);
+    User *user = [self randomTestUser];
+    user.sessionToken = @"session-token";
+    [[SessionManager sharedInstance] storeUser:user];
+    User *loadedUser = [[SessionManager sharedInstance] loadUser];
+    XCTAssert(loadedUser);
+    XCTAssert([[loadedUser dictionary] isEqualToDictionary:[user dictionary]]);
 }
 
 
@@ -144,15 +144,22 @@ static NSTimeInterval const kDefaultTimeout = 20.0f;
     NSDictionary *headers = [APIManager sharedInstance].requestSerializer.HTTPRequestHeaders;
     XCTAssert(!headers[@"X-Parse-Session-Token"]);
     
-    User *user = [User new];
-    user.username = @"good-guy";
-    user.email = @"good-guy@email.com";
+    User *user = [self randomTestUser];
     user.sessionToken = @"one-super-cool-token!";
     [[SessionManager sharedInstance] setCurrentUser:user];
     XCTAssert([SessionManager sharedInstance].user == user);
     XCTAssert([[SessionManager sharedInstance] loadUser]);
     headers = [APIManager sharedInstance].requestSerializer.HTTPRequestHeaders;
     XCTAssert([headers[@"X-Parse-Session-Token"] isEqualToString:user.sessionToken]);
+}
+
+- (User*)randomTestUser
+{
+    User *user = [User new];
+    user.username = [NSString stringWithFormat:@"test-%li", (long)[[NSDate date] timeIntervalSince1970]];
+    user.password = kDefaultTestUserPassword;
+    user.email = [user.username stringByAppendingString:@"@email.com"];
+    return user;
 }
 
 @end
