@@ -26,3 +26,8 @@
 
 "SignInFormTitle" = "Sign In";
 "AuthErrorAlertMessage" = "The username and password you entered did not match our records. Please double-check and try again";
+
+"FilterButtonTitle" = "Filter";
+"StatsButtonTitle" = "Stats";
+"SignedInUsernameFormatString" = "Signed in as %@";
+

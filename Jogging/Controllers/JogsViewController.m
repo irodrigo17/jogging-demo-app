@@ -70,14 +70,14 @@ static const NSInteger kLimit = 50;
     [self.refreshControl addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
     
     // setup navigation
-    UIBarButtonItem *filter = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStylePlain target:self action:@selector(showFilters)];
-    UIBarButtonItem *stats = [[UIBarButtonItem alloc] initWithTitle:@"Stats" style:UIBarButtonItemStylePlain target:self action:@selector(showStats)];
+    UIBarButtonItem *filter = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"FilterButtonTitle", nil) style:UIBarButtonItemStylePlain target:self action:@selector(showFilters)];
+    UIBarButtonItem *stats = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"StatsButtonTitle", nil) style:UIBarButtonItemStylePlain target:self action:@selector(showStats)];
     self.navigationItem.leftBarButtonItems = @[filter, stats];
 }
 
 - (void)updateUsernameWithUser:(User *)user
 {
-    self.user.text = [NSString stringWithFormat:@"Signed in as %@", user.username];
+    self.user.text = [NSString stringWithFormat:NSLocalizedString(@"SignedInUsernameFormatString", nil), user.username];
 }
 
 #pragma mark - Loading jogs
