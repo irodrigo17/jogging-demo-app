@@ -62,7 +62,8 @@
 
 - (void)postJog:(Jog *)jog success:(void (^)(Jog *jog))success fail:(void (^)(NSError *error))fail
 {
-    [[APIManager sharedInstance] POST:@"classes/Jog" parameters:[jog dictionary] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSMutableDictionary *params = [jog dictionary];
+    [[APIManager sharedInstance] POST:@"classes/Jog" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [jog updateWithDictionary:responseObject];
         success(jog);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

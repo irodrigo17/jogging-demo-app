@@ -113,6 +113,7 @@
     }
     else{
         Jog *jog = [self newJogWithFormValues:formValues];
+        jog.userId = [SessionManager sharedInstance].user.objectId;
         [[JogManager sharedInstance] postJog:jog success:success fail:fail];
     }
 }

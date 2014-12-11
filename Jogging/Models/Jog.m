@@ -66,6 +66,7 @@
             @"className": @"_User",
             @"objectId": self.userId
         };
+        dictionary[@"ACL"] = @{self.userId: @{@"read": @YES, @"write": @YES}};
     }
     return dictionary;
 }
