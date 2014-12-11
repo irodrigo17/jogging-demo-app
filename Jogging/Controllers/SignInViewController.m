@@ -88,8 +88,8 @@
                     NSDictionary *responseDic = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
                     int code = [responseDic[@"code"] intValue];
                     if(code == 101){
-                        title = @"Please try again";
-                        message = @"The username and password you entered did not match our records. Please double-check and try again";
+                        title = NSLocalizedString(@"BadUserDataAlertTitle", nil);
+                        message = NSLocalizedString(@"AuthErrorAlertMessage", nil);
                     }
                 }
             }
@@ -101,7 +101,7 @@
                 message = NSLocalizedString(@"UnexpectedErrorAlertMessage", nil);
             }
         }
-        [[[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        [[[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:NSLocalizedString(@"OKButtonTitle", nil) otherButtonTitles:nil] show];
     }];
 }
 
@@ -109,22 +109,22 @@
 
 - (void)setupForm
 {
-    self.form = [XLFormDescriptor formDescriptorWithTitle:@"Sign In"];
+    self.form = [XLFormDescriptor formDescriptorWithTitle:NSLocalizedString(@"SignInFormTitle", nil)];
     self.form.assignFirstResponderOnShow = YES;
     
     XLFormSectionDescriptor *section = [XLFormSectionDescriptor formSection];
     [self.form addFormSection:section];
     
     XLFormRowDescriptor *usernameRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"username" rowType:XLFormRowDescriptorTypeText];
-    [usernameRow.cellConfigAtConfigure setObject:@"Username" forKey:@"textField.placeholder"];
+    [usernameRow.cellConfigAtConfigure setObject:NSLocalizedString(@"UserFormUsernamePlaceholder", nil) forKey:@"textField.placeholder"];
     usernameRow.required = YES;
-    usernameRow.requireMsg = @"Username can't be empty";
+    usernameRow.requireMsg = NSLocalizedString(@"UserFormUsernameRequiredMessage", nil);
     [section addFormRow:usernameRow];
     
     XLFormRowDescriptor *passwordRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"password" rowType:XLFormRowDescriptorTypePassword];
-    [passwordRow.cellConfigAtConfigure setObject:@"Password" forKey:@"textField.placeholder"];
+    [passwordRow.cellConfigAtConfigure setObject:NSLocalizedString(@"UserFormPasswordPlaceholder", nil) forKey:@"textField.placeholder"];
     passwordRow.required = YES;
-    passwordRow.requireMsg = @"Password can't be empty";
+    passwordRow.requireMsg = NSLocalizedString(@"UserFormPasswordRequiredMessage", nil);
     [section addFormRow:passwordRow];
 }
 

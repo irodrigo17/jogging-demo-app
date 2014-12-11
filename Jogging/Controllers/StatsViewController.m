@@ -47,7 +47,7 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 #warning Improve error handling
         [progressHUD dismissAnimated:YES];
-        [[[UIAlertView alloc] initWithTitle:@"Oops!" message:@"Can't get stats" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"UnexpectedErrorAlertTitle", nil) message:NSLocalizedString(@"UnexpectedErrorAlertMessage", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OKButtonTitle", nil) otherButtonTitles:nil] show];
         NSLog(@"Can't get stats: %@", error);
     }];
 }

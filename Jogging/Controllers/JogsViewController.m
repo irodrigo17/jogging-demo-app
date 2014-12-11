@@ -143,7 +143,7 @@ static const NSInteger kLimit = 50;
             message = NSLocalizedString(@"UnexpectedErrorAlertMessage", nil);
             
         }
-        [[[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        [[[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:NSLocalizedString(@"OKButtonTitle", nil) otherButtonTitles:nil] show];
         
         // reset jogs
         self.skip = 0;
@@ -193,7 +193,7 @@ static const NSInteger kLimit = 50;
             message = NSLocalizedString(@"UnexpectedErrorAlertMessage", nil);
             
         }
-        [[[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        [[[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:NSLocalizedString(@"OKButtonTitle", nil) otherButtonTitles:nil] show];
         
     }];
 }

@@ -12,12 +12,17 @@
 "NoConnectionAlertMessage" = "It seems like you are offline, please check your network connection status";
 "UnexpectedErrorAlertTitle" = "Oops!";
 "UnexpectedErrorAlertMessage" = "This is an unexpected error, we have been notified and are already working to fix it";
+"OKButtonTitle" = "OK";
 
-"SignUpFormTitle" = "Sign up";
+"SignUpFormTitle" = "Sign Up";
 "UserFormNamePlaceholder" = "Name";
 "UserFormUsernamePlaceholder" = "Username";
 "UserFormUsernameRequiredMessage" = "Username can't be empty";
 "UserFormEmailPlaceholder" = "E-Mail";
 "UserFormPasswordPlaceholder" = "Password";
 "UserFormPasswordRequiredMessage" = "Password can't be empty";
-"BadSignUpDataAlertTitle" = "Please check your sign up information";
+
+"BadUserDataAlertTitle" = "Please check your data";
+
+"SignInFormTitle" = "Sign In";
+"AuthErrorAlertMessage" = "The username and password you entered did not match our records. Please double-check and try again";

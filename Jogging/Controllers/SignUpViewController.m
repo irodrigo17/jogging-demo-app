@@ -86,7 +86,7 @@
                     NSDictionary *responseDic = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
                     int code = [responseDic[@"code"] intValue];
                     if(code == 202 || code == 203){
-                        title = NSLocalizedString(@"BadSignUpDataAlertTitle", nil);
+                        title = NSLocalizedString(@"BadUserDataAlertTitle", nil);
                         message = responseDic[@"error"];
                     }
                 }
@@ -99,7 +99,7 @@
                 message = NSLocalizedString(@"UnexpectedErrorAlertMessage", nil);
             }
         }
-        [[[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        [[[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:NSLocalizedString(@"OKButtonTitle", nil) otherButtonTitles:nil] show];
     }];
 }
 

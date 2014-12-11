@@ -102,7 +102,7 @@
             title = NSLocalizedString(@"UnexpectedErrorAlertTitle", nil);
             message = NSLocalizedString(@"UnexpectedErrorAlertMessage", nil);
         }
-        [[[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        [[[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:NSLocalizedString(@"OKButtonTitle", nil) otherButtonTitles:nil] show];
     };
     
     // create jog
