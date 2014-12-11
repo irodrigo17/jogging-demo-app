@@ -319,7 +319,6 @@ static const NSInteger kLimit = 50;
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(!self.noMoreJogs && indexPath.row == [self.jogs count] - 1){
-        NSLog(@"willDisplayCell");
         // load more jogs
         // TODO: show activity indicator?
         [self loadNextJogsForCurrentUser];
