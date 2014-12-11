@@ -25,7 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"Weekly Stats";
+    self.navigationItem.title = NSLocalizedString(@"StatsTitle", nil);
     [self loadStats];
 }
 
@@ -75,7 +75,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.stats count] ? 2 : 0;
+    return [self.stats count] ? 3 : 0;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -84,7 +84,7 @@
         return nil;
     }
     else if(![self.stats count]){
-        return @"No jogs yet, go for a run!";
+        return NSLocalizedString(@"NoJogsMessage", nil);
     }
     
     NSDictionary *stats = self.stats[section];
@@ -95,7 +95,7 @@
     NSDate *endDate = [DateHelper deserializeParseDate:stats[@"endDate"]];
     NSString *formattedEndDate = [[StatsViewController sharedDateFormatter] stringFromDate:endDate];
 
-    return [NSString stringWithFormat:@"From %@ to %@", formattedStartDate, formattedEndDate];
+    return [NSString stringWithFormat:NSLocalizedString(@"StatsHeaderFormatString", nil), formattedStartDate, formattedEndDate];
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -108,21 +108,27 @@
     NSDictionary *stats = self.stats[indexPath.section];
     int jogs = [stats[@"jogs"] intValue];
     
-    // TODO: improve stats (time and distance units, average speed)
     // TODO: sort weeks
+    // TODO: create a model for weekly stats and encapsulate logic there
     switch (indexPath.row) {
         case 0:
-            cell.textLabel.text = @"Avg Time";
+            cell.textLabel.text = NSLocalizedString(@"StatsAverageTime", nil);
             int time = [stats[@"time"] intValue];
-            int averageTime = time / jogs;
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"%i seconds", averageTime];
+            int averageTime = time / jogs / 60;
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%i minutes", averageTime];
             break;
             
         case 1:
-            cell.textLabel.text = @"Avg Distance";
+            cell.textLabel.text = NSLocalizedString(@"StatsAverageDistance", nil);
             int distance = [stats[@"distance"] intValue];
-            int averageDistance = distance / jogs;
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"%i meters", averageDistance];
+            float averageDistance = (float)distance / (float)jogs / 1000.0f;
+            cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"StatsDistanceFormatString", nil), averageDistance];
+            break;
+            
+        case 2:
+            cell.textLabel.text = NSLocalizedString(@"StatsAverageSpeed", nil);
+            float averageSpeed = ([stats[@"distance"] floatValue] / 1000.0f) / ([stats[@"time"] floatValue] / 60.0f / 60.0f);
+            cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"StatsSpeedFormatString", nil), averageSpeed];
             break;
             
         default:

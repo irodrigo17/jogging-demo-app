@@ -45,3 +45,11 @@
 "FiltersFormDatesSectionTitle" = "Dates";
 "FiltersFormInitialDateTitle" = "From";
 "FiltersFormEndDateTitle" = "To";
+
+"StatsTitle" = "Weekly Stats";
+"StatsHeaderFormatString" = "From %@ to %@";
+"StatsAverageTime" = "Avg Time";
+"StatsAverageDistance" = "Avg Distance";
+"StatsAverageSpeed" = "Avg Speed";
+"StatsDistanceFormatString" = "%.02f km";
+"StatsSpeedFormatString" = "%.02f km/h";
