@@ -21,7 +21,7 @@
     [self setupForm];
     [super viewDidLoad];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(saveJog)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(saveJog)];
 }
 
 - (void)setupForm
@@ -32,7 +32,9 @@
 - (XLFormDescriptor*)createForm
 {
     // form
-    XLFormDescriptor *form = [XLFormDescriptor formDescriptorWithTitle:@"Add Jog"];
+    NSString *title = self.jog ? NSLocalizedString(@"EditJogFormTitle", nil) : NSLocalizedString(@"NewJogFormTitle", nil);
+    
+    XLFormDescriptor *form = [XLFormDescriptor formDescriptorWithTitle:title];
     
     // section
     XLFormSectionDescriptor *section = [XLFormSectionDescriptor formSection];
@@ -40,25 +42,25 @@
     
     // time rows
     // TODO: use a picker
-    XLFormRowDescriptor *hoursRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"hours" rowType:XLFormRowDescriptorTypeInteger title:@"Hours"];
+    XLFormRowDescriptor *hoursRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"hours" rowType:XLFormRowDescriptorTypeInteger title:NSLocalizedString(@"JogFormHoursTitle", nil)];
     hoursRow.value = [self.jog hours] > 0 ? @([self.jog hours]) : nil;
     [section addFormRow:hoursRow];
-    XLFormRowDescriptor *minutesRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"minutes" rowType:XLFormRowDescriptorTypeInteger title:@"Minutes"];
+    XLFormRowDescriptor *minutesRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"minutes" rowType:XLFormRowDescriptorTypeInteger title:NSLocalizedString(@"JogFormMinutesTitle", nil)];
     minutesRow.value = [self.jog minutes] > 0 ? @([self.jog minutes]) : nil;
     [section addFormRow:minutesRow];
-    XLFormRowDescriptor *secondsRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"seconds" rowType:XLFormRowDescriptorTypeInteger title:@"Seconds"];
+    XLFormRowDescriptor *secondsRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"seconds" rowType:XLFormRowDescriptorTypeInteger title:NSLocalizedString(@"JogFormSecondsTitle", nil)];
     secondsRow.value = [self.jog seconds] ? @([self.jog seconds]) : nil;
     [section addFormRow:secondsRow];
     
     // distance row
-    XLFormRowDescriptor *distanceRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"distance" rowType:XLFormRowDescriptorTypeInteger title:@"Distance"];
-    [distanceRow.cellConfigAtConfigure setObject:@"in meters" forKey:@"textField.placeholder"];
+    XLFormRowDescriptor *distanceRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"distance" rowType:XLFormRowDescriptorTypeInteger title:NSLocalizedString(@"JogFormDistanceTitle", nil)];
+    [distanceRow.cellConfigAtConfigure setObject:NSLocalizedString(@"JogFormDistancePlaceholder", nil) forKey:@"textField.placeholder"];
     distanceRow.required = YES;
     distanceRow.value = self.jog.distance;
     [section addFormRow:distanceRow];
     
     // date row
-    XLFormRowDescriptor *dateRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"date" rowType:XLFormRowDescriptorTypeDateTimeInline title:@"Date"];
+    XLFormRowDescriptor *dateRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"date" rowType:XLFormRowDescriptorTypeDateTimeInline title:NSLocalizedString(@"JogFormDateTitle", nil)];
     dateRow.required = YES;
     dateRow.value = self.jog.date ?: [NSDate date];
     [section addFormRow:dateRow];

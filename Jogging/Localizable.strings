@@ -32,3 +32,11 @@
 "SignedInUsernameFormatString" = "Signed in as %@";
 "NoJogsMessage" = "No jogs yet, go for a run!";
 
+"EditJogFormTitle" = "Edit Jog";
+"NewJogFormTitle" = "New Jog";
+"JogFormHoursTitle" = "Hours";
+"JogFormMinutesTitle" = "Minutes";
+"JogFormSecondsTitle" = "Seconds";
+"JogFormDistanceTitle" = "Distance";
+"JogFormDistancePlaceholder" = "in meters";
+"JogFormDateTitle" = "Date";
