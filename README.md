@@ -92,3 +92,19 @@ The API should scale pretty well right now as it’s using [Parse](https://www.p
 ##### Documentation
 
 The app code, and most importantly the API interface should be really well documented on a real project.
+
+##### Social features
+
+Users like sharing stuff, it would be nice to have some very basic social features like following users to see their public jogs in your feed, giving kudos and commenting on a friend's jog, and sharing jogs on Facebook/Twitter.
+
+##### Challanges
+
+It would be nice to have some kind of challenges to keep the user engaged with the app, user created routes with ranking, and a global jogger ranking (maybe with the ability to split it by location) so users can compete against eachother.
+
+##### HealthKit
+
+Integrating the app with [HealthKit](https://developer.apple.com/healthkit/) would be awesome.
+
+##### Charts
+
+Charting weekly stats would be great, so the user can have a better overview of his progress. Also charting jog speed and elevation gain would be a killer feature, but GPS hast to be integrated first.
