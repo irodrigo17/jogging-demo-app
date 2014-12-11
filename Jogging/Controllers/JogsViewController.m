@@ -257,8 +257,7 @@ static const NSInteger kLimit = 50;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // if there are no jogs there is a cell to communicates it to the user
-    return self.jogs ? MAX([self.jogs count], 1) : 0;
+    return [self.jogs count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -268,25 +267,26 @@ static const NSInteger kLimit = 50;
         cell = [[JogCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kJogCellReuseIdentifier];
     }
     
-    if([self.jogs count]){
-        Jog *jog = self.jogs[indexPath.row];
-        [cell updateWithJog:jog];
-    }
-    else{
-        [cell updateWithJog:nil];
-    }
+    Jog *jog = self.jogs[indexPath.row];
+    [cell updateWithJog:jog];
     
     return cell;
 }
 
+- (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return self.jogs && [self.jogs count] == 0 ? NSLocalizedString(@"NoJogsMessage", nil) : nil;
+}
+
+
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [self.jogs count] > 0;
+    return YES;
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [self.jogs count] > 0 ? UITableViewCellEditingStyleDelete : UITableViewCellEditingStyleNone;
+    return UITableViewCellEditingStyleDelete;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -296,6 +296,9 @@ static const NSInteger kLimit = 50;
         [self deleteJog:cell.jog success:^{
             [self.jogs removeObject:cell.jog];
             [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            if([self.jogs count] == 0){
+                [self.tableView reloadData];
+            }
         }];
     }
 }

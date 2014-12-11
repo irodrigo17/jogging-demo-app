@@ -30,4 +30,5 @@
 "FilterButtonTitle" = "Filter";
 "StatsButtonTitle" = "Stats";
 "SignedInUsernameFormatString" = "Signed in as %@";
+"NoJogsMessage" = "No jogs yet, go for a run!";
 
