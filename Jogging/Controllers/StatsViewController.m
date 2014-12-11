@@ -75,7 +75,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.stats count] ? 3 : 0;
+    return [self.stats count] ? 4 : 0;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -129,6 +129,11 @@
             cell.textLabel.text = NSLocalizedString(@"StatsAverageSpeed", nil);
             float averageSpeed = ([stats[@"distance"] floatValue] / 1000.0f) / ([stats[@"time"] floatValue] / 60.0f / 60.0f);
             cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"StatsSpeedFormatString", nil), averageSpeed];
+            break;
+            
+        case 3:
+            cell.textLabel.text = NSLocalizedString(@"StatsTotalJogs", nil);
+            cell.detailTextLabel.text = [stats[@"jogs"] stringValue];
             break;
             
         default:
