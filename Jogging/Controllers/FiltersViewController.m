@@ -25,16 +25,16 @@
 - (void)setupFormWithFilters:(NSDictionary*)filters
 {
     // setup form
-    self.form = [XLFormDescriptor formDescriptorWithTitle:@"Filters"];
+    self.form = [XLFormDescriptor formDescriptorWithTitle:NSLocalizedString(@"FiltersFormTitle", nil)];
     
-    XLFormSectionDescriptor *section = [XLFormSectionDescriptor formSectionWithTitle:@"Dates"];
+    XLFormSectionDescriptor *section = [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"FiltersFormDatesSectionTitle", nil)];
     [self.form addFormSection:section];
     
-    XLFormRowDescriptor *fromRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"from" rowType:XLFormRowDescriptorTypeDateTimeInline title:@"From"];
+    XLFormRowDescriptor *fromRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"from" rowType:XLFormRowDescriptorTypeDateTimeInline title:NSLocalizedString(@"FiltersFormInitialDateTitle", nil)];
     fromRow.value = filters[@"from"];
     [section addFormRow:fromRow];
     
-    XLFormRowDescriptor *toRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"to" rowType:XLFormRowDescriptorTypeDateTime title:@"To"];
+    XLFormRowDescriptor *toRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"to" rowType:XLFormRowDescriptorTypeDateTime title:NSLocalizedString(@"FiltersFormEndDateTitle", nil)];
     toRow.value = filters[@"to"];
     [section addFormRow:toRow];
     

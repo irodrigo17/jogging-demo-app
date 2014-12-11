@@ -40,3 +40,8 @@
 "JogFormDistanceTitle" = "Distance";
 "JogFormDistancePlaceholder" = "in meters";
 "JogFormDateTitle" = "Date";
+
+"FiltersFormTitle" = "Filters";
+"FiltersFormDatesSectionTitle" = "Dates";
+"FiltersFormInitialDateTitle" = "From";
+"FiltersFormEndDateTitle" = "To";
