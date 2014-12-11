@@ -1,0 +1,48 @@
+
+/* Class = "IBUILabel"; text = "Mon, Dec 15, 2014, 08:30 PM"; ObjectID = "03P-qD-fDa"; */
+"03P-qD-fDa.text" = "Mon, Dec 15, 2014, 08:30 PM";
+
+/* Class = "IBUINavigationItem"; title = "Sign Up"; ObjectID = "A8X-s5-Hz0"; */
+"A8X-s5-Hz0.title" = "Sign Up";
+
+/* Class = "IBUIBarButtonItem"; title = "Sign In"; ObjectID = "Fgj-Rr-2DU"; */
+"Fgj-Rr-2DU.title" = "Sign In";
+
+/* Class = "IBUILabel"; text = "Title"; ObjectID = "MwK-M2-onA"; */
+"MwK-M2-onA.text" = "Title";
+
+/* Class = "IBUIBarButtonItem"; title = "Sign Up"; ObjectID = "P0c-KP-sL5"; */
+"P0c-KP-sL5.title" = "Sign Up";
+
+/* Class = "IBUIBarButtonItem"; title = "Back"; ObjectID = "UPj-Ms-x3I"; */
+"UPj-Ms-x3I.title" = "Back";
+
+/* Class = "IBUILabel"; text = "This is a demo app for Toptal"; ObjectID = "VOU-tt-XgJ"; */
+"VOU-tt-XgJ.text" = "This is a demo app for Toptal";
+
+/* Class = "IBUILabel"; text = "Signed in as username1234567890"; ObjectID = "XdT-6H-muT"; */
+"XdT-6H-muT.text" = "Signed in as username1234567890";
+
+/* Class = "IBUINavigationItem"; title = "Jogs"; ObjectID = "agH-yL-yPW"; */
+"agH-yL-yPW.title" = "Jogs";
+
+/* Class = "IBUILabel"; text = "Welcome to the Jogging App"; ObjectID = "gtR-rL-MYv"; */
+"gtR-rL-MYv.text" = "Welcome to the Jogging App";
+
+/* Class = "IBUIButton"; normalTitle = "Sign In"; ObjectID = "jbw-Ty-bhL"; */
+"jbw-Ty-bhL.normalTitle" = "Sign In";
+
+/* Class = "IBUILabel"; text = "Detail"; ObjectID = "lF8-2x-C5R"; */
+"lF8-2x-C5R.text" = "Detail";
+
+/* Class = "IBUIButton"; normalTitle = "Sign Up"; ObjectID = "qwR-wD-a7t"; */
+"qwR-wD-a7t.normalTitle" = "Sign Up";
+
+/* Class = "IBUIButton"; normalTitle = "Sign out"; ObjectID = "uvV-TV-uFw"; */
+"uvV-TV-uFw.normalTitle" = "Sign out";
+
+/* Class = "IBUILabel"; text = "10.00 km in 57:30, 10.20 km/h avg"; ObjectID = "xh7-Kh-tH5"; */
+"xh7-Kh-tH5.text" = "10.00 km in 57:30, 10.20 km/h avg";
+
+/* Class = "IBUINavigationItem"; title = "Sign In"; ObjectID = "z8y-KN-KDb"; */
+"z8y-KN-KDb.title" = "Sign In";

@@ -96,6 +96,7 @@
 		635529F81A2E951200750FFE /* JogManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JogManagerTests.m; sourceTree = "<group>"; };
 		635B39711A37D9A50034FC58 /* StatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsViewController.h; sourceTree = "<group>"; };
 		635B39721A37D9A50034FC58 /* StatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsViewController.m; sourceTree = "<group>"; };
+		635DECF11A39EC1A00E0D8FB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		636080591A2F30600070D527 /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
 		6360805A1A2F30600070D527 /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
 		6360805D1A2F38510070D527 /* JogsViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JogsViewControllerTests.m; sourceTree = "<group>"; };
@@ -553,6 +554,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				63C7AF111A2DDF5E00FB9EAE /* Base */,
+				635DECF11A39EC1A00E0D8FB /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
