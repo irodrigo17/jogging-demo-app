@@ -108,7 +108,6 @@
     NSDictionary *stats = self.stats[indexPath.section];
     int jogs = [stats[@"jogs"] intValue];
     
-    // TODO: sort weeks
     // TODO: create a model for weekly stats and encapsulate logic there
     switch (indexPath.row) {
         case 0:
