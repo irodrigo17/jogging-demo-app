@@ -8,22 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DateHelper : NSObject
-
-// TODO: Use an NSDate category instead
+@interface NSDate (Parse)
 
 /**
- * Desearileze the given date.
+ * Create a date with the given Parse dictionary representation.
  * @param date A Parse.com date dictionary, the value for the 'iso' key is deserialized as an ISO8601 formatted string as described in https://www.parse.com/docs/rest#objects-types
  * @return The deserialized date.
  */
-+ (NSDate*)deserializeParseDate:(NSDictionary*)dictionary;
++ (NSDate*)dateWithParseDictionary:(NSDictionary*)dictionary;
 
 /**
- * Serialize the given date.
- * @param date The date to serialize.
+ * Serialize the receiver to a Parse dictionary representation.
  * @return The serialized date dictionary for Parse.com, as described in https://www.parse.com/docs/rest#objects-types
  */
-+ (NSDictionary*)serializeParseDate:(NSDate*)date;
+- (NSDictionary*)parseDictionary;
 
 @end

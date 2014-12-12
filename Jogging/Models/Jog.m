@@ -7,7 +7,7 @@
 //
 
 #import "Jog.h"
-#import "DateHelper.h"
+#import "NSDate+Parse.h"
 #import "User.h"
 
 
@@ -27,7 +27,7 @@
     }
     NSDictionary *dateDic = dictionary[@"date"];
     if(dateDic && [dateDic isKindOfClass:[NSDictionary class]]){
-        NSDate *date = [DateHelper deserializeParseDate:dateDic];
+        NSDate *date = [NSDate dateWithParseDictionary:dateDic];
         if(date){
             self.date = date;
         }
@@ -52,7 +52,7 @@
         dictionary[@"time"] = self.time;
     }
     if(self.date){
-        NSDictionary *dateDic = [DateHelper serializeParseDate:self.date];
+        NSDictionary *dateDic = [self.date parseDictionary];
         if(dateDic){
             dictionary[@"date"] = dateDic;
         }

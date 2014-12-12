@@ -10,7 +10,7 @@
 #import "APIManager.h"
 #import "SessionManager.h"
 #import <JGProgressHUD/JGProgressHUD.h>
-#import "DateHelper.h"
+#import "NSDate+Parse.h"
 #import "NSError+AFNetworking.h"
 
 
@@ -89,10 +89,10 @@
     
     NSDictionary *stats = self.stats[section];
     
-    NSDate *startDate = [DateHelper deserializeParseDate:stats[@"startDate"]];
+    NSDate *startDate = [NSDate dateWithParseDictionary:stats[@"startDate"]];
     NSString *formattedStartDate = [[StatsViewController sharedDateFormatter] stringFromDate:startDate];
     
-    NSDate *endDate = [DateHelper deserializeParseDate:stats[@"endDate"]];
+    NSDate *endDate = [NSDate dateWithParseDictionary:stats[@"endDate"]];
     NSString *formattedEndDate = [[StatsViewController sharedDateFormatter] stringFromDate:endDate];
 
     return [NSString stringWithFormat:NSLocalizedString(@"StatsHeaderFormatString", nil), formattedStartDate, formattedEndDate];

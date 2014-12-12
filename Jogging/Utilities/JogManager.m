@@ -9,7 +9,7 @@
 #import "JogManager.h"
 #import "APIManager.h"
 #import <ISO8601/ISO8601.h>
-#import "DateHelper.h"
+#import "NSDate+Parse.h"
 
 
 @implementation JogManager
@@ -32,11 +32,11 @@
     NSMutableDictionary *date = [NSMutableDictionary dictionary];
     NSDate *from = filters[@"from"];
     if(from){
-        date[@"$gte"] = [DateHelper serializeParseDate:from];
+        date[@"$gte"] = [from parseDictionary];
     }
     NSDate *to = filters[@"to"];
     if(to){
-        date[@"$lte"] = [DateHelper serializeParseDate:to];
+        date[@"$lte"] = [to parseDictionary];
     }
     if([date count]){
         query[@"date"] = date;

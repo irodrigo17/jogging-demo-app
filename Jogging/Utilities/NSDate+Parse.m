@@ -6,22 +6,22 @@
 //  Copyright (c) 2014 Ignacio Rodrigo. All rights reserved.
 //
 
-#import "DateHelper.h"
 #import <ISO8601/ISO8601.h>
+#import "NSDate+Parse.h"
 
 
-@implementation DateHelper
+@implementation NSDate (Parse)
 
-+ (NSDate*)deserializeParseDate:(NSDictionary*)dictionary
++ (NSDate*)dateWithParseDictionary:(NSDictionary*)dictionary
 {
     NSString *ISO8601String = dictionary[@"iso"];
     return ISO8601String ? [NSDate dateWithISO8601String:ISO8601String] : nil;
 }
 
 
-+ (NSDictionary*)serializeParseDate:(NSDate*)date
+- (NSDictionary*)parseDictionary
 {
-    NSString *ISO8601String = [date ISO8601String];
+    NSString *ISO8601String = [self ISO8601String];
     return ISO8601String ? @{@"__type": @"Date", @"iso": ISO8601String} : nil;
 }
 

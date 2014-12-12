@@ -8,23 +8,24 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
-#import "DateHelper.h"
 #import <ISO8601/ISO8601.h>
+#import "NSDate+Parse.h"
 
 
-@interface DateHelperTests : XCTestCase
+@interface ParseDateTests : XCTestCase
 
 @end
 
-@implementation DateHelperTests
+@implementation ParseDateTests
 
 - (void)testDateSerialization
 {
-    NSDictionary *parseDate = [DateHelper serializeParseDate:nil];
+    NSDate *date = nil;
+    NSDictionary *parseDate = [date parseDictionary];
     XCTAssert(parseDate == nil);
     
-    NSDate *date = [NSDate date];
-    parseDate = [DateHelper serializeParseDate:date];
+    date = [NSDate date];
+    parseDate = [date parseDictionary];
     XCTAssert(parseDate != nil);
     XCTAssert([parseDate[@"__type"] isEqualToString:@"Date"]);
     XCTAssert([parseDate[@"iso"] isEqualToString:[date ISO8601String]]);
@@ -32,15 +33,15 @@
 
 - (void)testDateDeserialization
 {
-    XCTAssert([DateHelper deserializeParseDate:nil] == nil);
+    XCTAssert([NSDate dateWithParseDictionary:nil] == nil);
     
-    XCTAssert([DateHelper deserializeParseDate:@{}] == nil);
+    XCTAssert([NSDate dateWithParseDictionary:@{}] == nil);
     
     NSDictionary *parseDate = @{
         @"__type": @"Date",
         @"iso": @"2011-08-21T18:02:52.249Z"
     };
-    XCTAssert([DateHelper deserializeParseDate:parseDate] != nil);
+    XCTAssert([NSDate dateWithParseDictionary:parseDate] != nil);
 }
 
 @end
