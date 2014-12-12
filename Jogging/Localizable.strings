@@ -45,6 +45,7 @@
 "FiltersFormDatesSectionTitle" = "Dates";
 "FiltersFormInitialDateTitle" = "From";
 "FiltersFormEndDateTitle" = "To";
+"ClearFiltersTitle" = "Clear";
 
 "StatsTitle" = "Weekly Stats";
 "StatsHeaderFormatString" = "From %@ to %@";

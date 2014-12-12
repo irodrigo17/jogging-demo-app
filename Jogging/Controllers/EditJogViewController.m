@@ -41,7 +41,6 @@
     [form addFormSection:section];
     
     // time rows
-    // TODO: use a picker
     XLFormRowDescriptor *hoursRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"hours" rowType:XLFormRowDescriptorTypeInteger title:NSLocalizedString(@"JogFormHoursTitle", nil)];
     hoursRow.value = [self.jog hours] > 0 ? @([self.jog hours]) : nil;
     [section addFormRow:hoursRow];

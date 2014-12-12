@@ -17,10 +17,15 @@
 
 @implementation FiltersViewController
 
+#pragma mark - View lifecycle
+
 - (void)viewDidLoad {
     [self setupFormWithFilters:self.filters];
     [super viewDidLoad];
 }
+
+
+#pragma mark - Form setup
 
 - (void)setupFormWithFilters:(NSDictionary*)filters
 {
@@ -39,11 +44,13 @@
     [section addFormRow:toRow];
     
     // setup navigation
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)];
-    
-    // TODO: need a button to clear filters
-    
+    UIBarButtonItem *done = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)];
+    UIBarButtonItem *clear = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"ClearFiltersTitle", nil) style:UIBarButtonItemStylePlain target:self action:@selector(clear)];
+    self.navigationItem.rightBarButtonItems = @[done, clear];
 }
+
+
+#pragma mark - Navigation
 
 - (void)done
 {
@@ -52,6 +59,11 @@
     
     // notify delegate
     [self.delegate filtersViewController:self didApplyFilters:formValues];
+}
+
+- (void)clear
+{
+    [self.delegate filtersViewController:self didApplyFilters:nil];
 }
 
 
