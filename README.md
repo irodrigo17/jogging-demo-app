@@ -107,4 +107,4 @@ Integrating the app with [HealthKit](https://developer.apple.com/healthkit/) wou
 
 ##### Charts
 
-Charting weekly stats would be great, so the user can have a better overview of his progress. Also charting jog speed and elevation gain would be a killer feature, but GPS hast to be integrated first.
+Charting weekly stats would be great, so the user can have a better overview of his progress. Also charting jog speed and elevation gain would be a killer feature, but GPS has to be integrated first.
