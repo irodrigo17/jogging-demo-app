@@ -229,6 +229,29 @@ static const NSInteger kLimit = 50;
     [self.tableView insertRowsAtIndexPaths:indexes withRowAnimation:UITableViewRowAnimationNone];
 }
 
+- (NSString*)jogsSectionTitleWithFilters:(NSDictionary*)filters jogs:(NSArray*)jogs
+{
+    NSString *title = nil;
+    if(jogs && [jogs count] == 0){
+        if([filters count] == 0){
+            title = NSLocalizedString(@"NoJogsTitle", nil);
+        }
+        else{
+            title = NSLocalizedString(@"NoJogsMatchingFiltersTitle", nil);
+        }
+    }
+    else if([jogs count] > 0){
+        if([filters count] > 0){
+            title = NSLocalizedString(@"JogsMatchingFiltersTitle", nil);
+        }
+        else{
+            title = NSLocalizedString(@"AllJogsTitle", nil);
+        }
+    }
+    return title;
+}
+
+
 
 #pragma mark - Actions
 
@@ -275,9 +298,8 @@ static const NSInteger kLimit = 50;
 
 - (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return self.jogs && [self.jogs count] == 0 ? NSLocalizedString(@"NoJogsMessage", nil) : nil;
+    return [self jogsSectionTitleWithFilters:self.filters jogs:self.jogs];
 }
-
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {

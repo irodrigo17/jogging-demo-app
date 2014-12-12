@@ -30,7 +30,10 @@
 "FilterButtonTitle" = "Filter";
 "StatsButtonTitle" = "Stats";
 "SignedInUsernameFormatString" = "Signed in as %@";
-"NoJogsMessage" = "No jogs yet, go for a run!";
+"NoJogsTitle" = "No jogs yet, go for a run!";
+"NoJogsMatchingFiltersTitle" = "No jogs matching current filters";
+"JogsMatchingFiltersTitle" = "Filtered jogs";
+"AllJogsTitle" = "All jogs";
 
 "EditJogFormTitle" = "Edit Jog";
 "NewJogFormTitle" = "New Jog";
