@@ -84,7 +84,7 @@
         return nil;
     }
     else if(![self.stats count]){
-        return NSLocalizedString(@"NoJogsMessage", nil);
+        return NSLocalizedString(@"NoJogsTitle", nil);
     }
     
     NSDictionary *stats = self.stats[section];
