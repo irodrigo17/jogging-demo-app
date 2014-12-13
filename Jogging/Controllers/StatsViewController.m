@@ -12,6 +12,7 @@
 #import <JGProgressHUD/JGProgressHUD.h>
 #import "NSDate+Parse.h"
 #import "NSError+AFNetworking.h"
+#import "WeeklyStats.h"
 
 
 @interface StatsViewController ()
@@ -42,7 +43,12 @@
     params[@"user"] = [user parsePointerDictionary];
     [[APIManager sharedInstance] POST:@"functions/report" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [progressHUD dismissAnimated:YES];
-        self.stats = responseObject[@"result"];
+        self.stats = [NSMutableArray array];
+        for(NSDictionary *week in responseObject[@"result"]){
+            WeeklyStats *stats = [WeeklyStats new];
+            [stats updateWithDictionary:week];
+            [self.stats addObject:stats];
+        }
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 
@@ -86,15 +92,8 @@
         return NSLocalizedString(@"NoJogsTitle", nil);
     }
     
-    NSDictionary *stats = self.stats[section];
-    
-    NSDate *startDate = [NSDate dateWithParseDictionary:stats[@"startDate"]];
-    NSString *formattedStartDate = [[StatsViewController sharedDateFormatter] stringFromDate:startDate];
-    
-    NSDate *endDate = [NSDate dateWithParseDictionary:stats[@"endDate"]];
-    NSString *formattedEndDate = [[StatsViewController sharedDateFormatter] stringFromDate:endDate];
-
-    return [NSString stringWithFormat:NSLocalizedString(@"StatsHeaderFormatString", nil), formattedStartDate, formattedEndDate];
+    WeeklyStats *stats = self.stats[section];
+    return [stats formattedDates];
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -104,34 +103,27 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"StatsCell"];
     }
     
-    NSDictionary *stats = self.stats[indexPath.section];
-    int jogs = [stats[@"jogs"] intValue];
+    WeeklyStats *stats = self.stats[indexPath.section];
     
-    // TODO: create a model for weekly stats and encapsulate logic there
     switch (indexPath.row) {
         case 0:
             cell.textLabel.text = NSLocalizedString(@"StatsAverageTime", nil);
-            int time = [stats[@"time"] intValue];
-            int averageTime = time / jogs / 60;
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"%i minutes", averageTime];
+            cell.detailTextLabel.text = [stats formattedAverageTime];
             break;
             
         case 1:
             cell.textLabel.text = NSLocalizedString(@"StatsAverageDistance", nil);
-            int distance = [stats[@"distance"] intValue];
-            float averageDistance = (float)distance / (float)jogs / 1000.0f;
-            cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"StatsDistanceFormatString", nil), averageDistance];
+            cell.detailTextLabel.text = [stats formattedAverageDistance];
             break;
             
         case 2:
             cell.textLabel.text = NSLocalizedString(@"StatsAverageSpeed", nil);
-            float averageSpeed = ([stats[@"distance"] floatValue] / 1000.0f) / ([stats[@"time"] floatValue] / 60.0f / 60.0f);
-            cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"StatsSpeedFormatString", nil), averageSpeed];
+            cell.detailTextLabel.text = [stats formattedAverageSpeed];
             break;
             
         case 3:
             cell.textLabel.text = NSLocalizedString(@"StatsTotalJogs", nil);
-            cell.detailTextLabel.text = [stats[@"jogs"] stringValue];
+            cell.detailTextLabel.text = [stats.jogs stringValue];
             break;
             
         default:
@@ -148,21 +140,6 @@
 {
     // Avoid getting extra lines on the screen
     return [UIView new];
-}
-
-
-#pragma mark - Helpers
-
-+ (NSDateFormatter*)sharedDateFormatter
-{
-    static dispatch_once_t onceToken;
-    static NSDateFormatter *sharedInstance;
-    dispatch_once(&onceToken, ^{
-        sharedInstance = [[NSDateFormatter alloc] init];
-        sharedInstance.dateStyle = NSDateFormatterShortStyle;
-        sharedInstance.timeStyle = NSDateFormatterNoStyle;
-    });
-    return sharedInstance;
 }
 
 @end

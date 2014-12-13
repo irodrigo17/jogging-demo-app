@@ -11,6 +11,6 @@
 
 @interface StatsViewController : UITableViewController
 
-@property (strong, nonatomic) NSArray *stats;
+@property (strong, nonatomic) NSMutableArray *stats;
 
 @end
