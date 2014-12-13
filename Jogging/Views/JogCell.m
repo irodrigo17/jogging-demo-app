@@ -17,7 +17,6 @@ NSString * const kJogCellReuseIdentifier = @"JogCell";
     _jog = jog;
     self.timeAndDistanceLabel.text = [jog description];
     self.dateLabel.text = [jog formattedDate];
-    
 }
 
 @end
