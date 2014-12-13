@@ -80,6 +80,7 @@ static NSString * const kDefaultTestUserPassword = @"password";
         XCTFail(@"Expected fail");
         [failExpectation fulfill];
     } fail:^(NSError *error) {
+        XCTAssert([SessionManager sharedInstance].user == nil);
         [failExpectation fulfill];
     }];
     

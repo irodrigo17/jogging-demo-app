@@ -41,6 +41,7 @@ static NSString * const kUserKey = @"kUserKey";
         [self setCurrentUser:user];
         success(user);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self setCurrentUser:nil];
         fail(error);
     }];
     
@@ -54,6 +55,7 @@ static NSString * const kUserKey = @"kUserKey";
         [self setCurrentUser:user];
         success(user);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self setCurrentUser:nil];
         fail(error);
     }];
 }
