@@ -19,6 +19,7 @@
 		6348BA5A1A388783002309F2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6348BA581A388783002309F2 /* Localizable.strings */; };
 		6350B8C91A3C57D40048ACE7 /* WeeklyStats.m in Sources */ = {isa = PBXBuildFile; fileRef = 6350B8C81A3C57D40048ACE7 /* WeeklyStats.m */; };
 		6350B8CA1A3C57D40048ACE7 /* WeeklyStats.m in Sources */ = {isa = PBXBuildFile; fileRef = 6350B8C81A3C57D40048ACE7 /* WeeklyStats.m */; };
+		6350B8D51A3C85830048ACE7 /* XLFormDictionaryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6350B8D41A3C85830048ACE7 /* XLFormDictionaryTests.m */; };
 		63511B7A1A347A3700F3766C /* ReplaceRootViewControllerSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 63511B791A347A3700F3766C /* ReplaceRootViewControllerSegue.m */; };
 		63511B7B1A347A3700F3766C /* ReplaceRootViewControllerSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 63511B791A347A3700F3766C /* ReplaceRootViewControllerSegue.m */; };
 		635529EC1A2E6D8500750FFE /* JogCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 635529EB1A2E6D8500750FFE /* JogCell.m */; };
@@ -88,6 +89,7 @@
 		6348BA581A388783002309F2 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		6350B8C71A3C57D40048ACE7 /* WeeklyStats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeeklyStats.h; sourceTree = "<group>"; };
 		6350B8C81A3C57D40048ACE7 /* WeeklyStats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeeklyStats.m; sourceTree = "<group>"; };
+		6350B8D41A3C85830048ACE7 /* XLFormDictionaryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLFormDictionaryTests.m; sourceTree = "<group>"; };
 		63511B781A347A3700F3766C /* ReplaceRootViewControllerSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReplaceRootViewControllerSegue.h; path = ../Utilities/ReplaceRootViewControllerSegue.h; sourceTree = "<group>"; };
 		63511B791A347A3700F3766C /* ReplaceRootViewControllerSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReplaceRootViewControllerSegue.m; path = ../Utilities/ReplaceRootViewControllerSegue.m; sourceTree = "<group>"; };
 		635529EA1A2E6D8500750FFE /* JogCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JogCell.h; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				633F21611A3097B500D3F8FC /* ParseDateTests.m */,
 				63855B471A314B66003998BD /* EditJogViewControllerTests.m */,
 				637157421A366D7200E7F5A6 /* StressTests.m */,
+				6350B8D41A3C85830048ACE7 /* XLFormDictionaryTests.m */,
 			);
 			path = JoggingTests;
 			sourceTree = "<group>";
@@ -519,6 +522,7 @@
 				6350B8CA1A3C57D40048ACE7 /* WeeklyStats.m in Sources */,
 				635529F51A2E939700750FFE /* APIManagerTests.m in Sources */,
 				6377E2A41A2E2EF700220671 /* Jog.m in Sources */,
+				6350B8D51A3C85830048ACE7 /* XLFormDictionaryTests.m in Sources */,
 				63C7AF401A2DEDA600FB9EAE /* User.m in Sources */,
 				6360805C1A2F30600070D527 /* SignInViewController.m in Sources */,
 				63815CC91A38A87B002B8794 /* NSError+AFNetworking.m in Sources */,
