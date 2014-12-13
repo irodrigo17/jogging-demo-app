@@ -57,5 +57,5 @@
 "StatsAverageSpeed" = "Avg Speed";
 "StatsDistanceFormatString" = "%.02f km";
 "StatsSpeedFormatString" = "%.02f km/h";
-"StatsAverageTimeFormatString" = "%li minutes";
+"StatsAverageTimeFormatString" = "%li min";
 "StatsTotalJogs" = "Jogs";

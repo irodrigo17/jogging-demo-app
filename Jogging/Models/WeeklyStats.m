@@ -43,6 +43,10 @@
 
 - (NSString*)formattedDates
 {
+    if(!self.startDate || !self.endDate){
+        return nil;
+    }
+    
     NSString *formattedStartDate = [[WeeklyStats sharedDateFormatter] stringFromDate:self.startDate];
     NSString *formattedEndDate = [[WeeklyStats sharedDateFormatter] stringFromDate:self.endDate];
     return [NSString stringWithFormat:NSLocalizedString(@"StatsHeaderFormatString", nil), formattedStartDate, formattedEndDate];
@@ -50,6 +54,10 @@
 
 - (NSString*)formattedAverageTime
 {
+    if(!self.time || ![self.jogs integerValue]){
+        return nil;
+    }
+    
     NSInteger jogs = [self jogsValue];
     NSInteger time = [self.time integerValue];
     NSInteger averageTime = jogs > 0 ? time / jogs / 60 : 0;
@@ -58,6 +66,10 @@
 
 - (NSString*)formattedAverageDistance
 {
+    if(!self.distance || ![self.jogs integerValue]){
+        return nil;
+    }
+    
     float jogs = (float)[self jogsValue];
     float distance = [self.distance floatValue];
     float averageDistance = jogs > 0.0f ? (float)distance / jogs / 1000.0f : 0;
@@ -66,7 +78,11 @@
 
 - (NSString*)formattedAverageSpeed
 {
-    float averageSpeed = ([self.distance floatValue] / 1000.0f) / ([self.time floatValue] / 60.0f / 60.0f);
+    if(![self.time integerValue] || !self.distance || ![self.jogs integerValue]){
+        return nil;
+    }
+    
+    float averageSpeed = ([self.distance floatValue] / 1000.0f) / ([self.time floatValue] / 60.0f / 60.0f) / [self.jogs floatValue];
     return [NSString stringWithFormat:NSLocalizedString(@"StatsSpeedFormatString", nil), averageSpeed];
 }
 
