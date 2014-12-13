@@ -28,7 +28,7 @@
 {
     // create query JSON
     NSMutableDictionary *query = [NSMutableDictionary dictionary];
-    query[@"user"] = @{@"__type": @"Pointer", @"className": @"_User", @"objectId": user.objectId};
+    query[@"user"] = [user parsePointerDictionary];
     NSMutableDictionary *date = [NSMutableDictionary dictionary];
     NSDate *from = filters[@"from"];
     if(from){

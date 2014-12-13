@@ -39,8 +39,7 @@
     
     User *user = [SessionManager sharedInstance].user;
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    // TODO: Encapsulate Parse User dictionary creation
-    params[@"user"] = @{@"__type": @"Pointer", @"className": @"_User", @"objectId": user.objectId};
+    params[@"user"] = [user parsePointerDictionary];
     [[APIManager sharedInstance] POST:@"functions/report" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [progressHUD dismissAnimated:YES];
         self.stats = responseObject[@"result"];

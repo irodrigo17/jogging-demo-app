@@ -19,4 +19,15 @@
 @property (strong) NSString *sessionToken;
 @property (strong) NSString *objectId;
 
+
+/**
+ * Creates a Parse.com dictionary representation of the receiver to use in relationships queries.
+ */
+- (NSDictionary*)parsePointerDictionary;
+
+/**
+ * Creates a Parse.com dictionary representation with the given user ID to use in relationships queries.
+ */
++ (NSDictionary*)parsePointerDictionaryWithUserId:(NSString*)userId;
+
 @end

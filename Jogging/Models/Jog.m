@@ -61,11 +61,7 @@
         dictionary[@"objectId"] = self.objectId;
     }
     if(self.userId){
-        dictionary[@"user"] = @{
-            @"__type": @"Pointer",
-            @"className": @"_User",
-            @"objectId": self.userId
-        };
+        dictionary[@"user"] = [User parsePointerDictionaryWithUserId:self.userId];
         dictionary[@"ACL"] = @{self.userId: @{@"read": @YES, @"write": @YES}};
     }
     return dictionary;
