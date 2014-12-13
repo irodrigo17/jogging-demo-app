@@ -69,4 +69,19 @@
     XCTAssert([[user dictionary] isEqual:expectedDic]);
 }
 
+- (void)testParsePointerDictionary
+{
+    User *user = [User new];
+    XCTAssert(![user parsePointerDictionary]);
+    
+    user.objectId = @"my-id";
+    NSDictionary *dictionary = [user parsePointerDictionary];
+    NSDictionary *expectedDictionary = @{
+        @"__type": @"Pointer",
+        @"className": @"_User",
+        @"objectId": user.objectId};
+    XCTAssert([dictionary isEqualToDictionary:expectedDictionary]);
+    XCTAssert([dictionary isEqualToDictionary:[User parsePointerDictionaryWithUserId:user.objectId]]);
+}
+
 @end

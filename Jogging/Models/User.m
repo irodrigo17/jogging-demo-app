@@ -71,7 +71,7 @@
 
 + (NSDictionary*)parsePointerDictionaryWithUserId:(NSString*)userId
 {
-    return @{@"__type": @"Pointer", @"className": @"_User", @"objectId": userId};
+    return userId ? @{@"__type": @"Pointer", @"className": @"_User", @"objectId": userId} : nil;
 }
 
 @end
