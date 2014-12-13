@@ -20,6 +20,8 @@
 		6350B8C91A3C57D40048ACE7 /* WeeklyStats.m in Sources */ = {isa = PBXBuildFile; fileRef = 6350B8C81A3C57D40048ACE7 /* WeeklyStats.m */; };
 		6350B8CA1A3C57D40048ACE7 /* WeeklyStats.m in Sources */ = {isa = PBXBuildFile; fileRef = 6350B8C81A3C57D40048ACE7 /* WeeklyStats.m */; };
 		6350B8CC1A3C6A6D0048ACE7 /* WeeklyStatsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6350B8CB1A3C6A6D0048ACE7 /* WeeklyStatsTests.m */; };
+		6350B8D51A3C85830048ACE7 /* XLFormDictionaryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6350B8D41A3C85830048ACE7 /* XLFormDictionaryTests.m */; };
+		6350B8D71A3C867C0048ACE7 /* AFNetworkingErrorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6350B8D61A3C867C0048ACE7 /* AFNetworkingErrorTests.m */; };
 		63511B7A1A347A3700F3766C /* ReplaceRootViewControllerSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 63511B791A347A3700F3766C /* ReplaceRootViewControllerSegue.m */; };
 		63511B7B1A347A3700F3766C /* ReplaceRootViewControllerSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 63511B791A347A3700F3766C /* ReplaceRootViewControllerSegue.m */; };
 		635529EC1A2E6D8500750FFE /* JogCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 635529EB1A2E6D8500750FFE /* JogCell.m */; };
@@ -90,6 +92,8 @@
 		6350B8C71A3C57D40048ACE7 /* WeeklyStats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeeklyStats.h; sourceTree = "<group>"; };
 		6350B8C81A3C57D40048ACE7 /* WeeklyStats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeeklyStats.m; sourceTree = "<group>"; };
 		6350B8CB1A3C6A6D0048ACE7 /* WeeklyStatsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeeklyStatsTests.m; sourceTree = "<group>"; };
+		6350B8D41A3C85830048ACE7 /* XLFormDictionaryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLFormDictionaryTests.m; sourceTree = "<group>"; };
+		6350B8D61A3C867C0048ACE7 /* AFNetworkingErrorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkingErrorTests.m; sourceTree = "<group>"; };
 		63511B781A347A3700F3766C /* ReplaceRootViewControllerSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReplaceRootViewControllerSegue.h; path = ../Utilities/ReplaceRootViewControllerSegue.h; sourceTree = "<group>"; };
 		63511B791A347A3700F3766C /* ReplaceRootViewControllerSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReplaceRootViewControllerSegue.m; path = ../Utilities/ReplaceRootViewControllerSegue.m; sourceTree = "<group>"; };
 		635529EA1A2E6D8500750FFE /* JogCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JogCell.h; sourceTree = "<group>"; };
@@ -226,6 +230,8 @@
 				63855B471A314B66003998BD /* EditJogViewControllerTests.m */,
 				637157421A366D7200E7F5A6 /* StressTests.m */,
 				6350B8CB1A3C6A6D0048ACE7 /* WeeklyStatsTests.m */,
+				6350B8D41A3C85830048ACE7 /* XLFormDictionaryTests.m */,
+				6350B8D61A3C867C0048ACE7 /* AFNetworkingErrorTests.m */,
 			);
 			path = JoggingTests;
 			sourceTree = "<group>";
@@ -522,6 +528,7 @@
 				6350B8CA1A3C57D40048ACE7 /* WeeklyStats.m in Sources */,
 				635529F51A2E939700750FFE /* APIManagerTests.m in Sources */,
 				6377E2A41A2E2EF700220671 /* Jog.m in Sources */,
+				6350B8D51A3C85830048ACE7 /* XLFormDictionaryTests.m in Sources */,
 				63C7AF401A2DEDA600FB9EAE /* User.m in Sources */,
 				6360805C1A2F30600070D527 /* SignInViewController.m in Sources */,
 				63815CC91A38A87B002B8794 /* NSError+AFNetworking.m in Sources */,
@@ -533,6 +540,7 @@
 				635529F11A2E7A3500750FFE /* JogCellTests.m in Sources */,
 				635529F71A2E93DD00750FFE /* SessionManagerTests.m in Sources */,
 				6377E29C1A2E23B200220671 /* JogsViewController.m in Sources */,
+				6350B8D71A3C867C0048ACE7 /* AFNetworkingErrorTests.m in Sources */,
 				633F21621A3097B500D3F8FC /* ParseDateTests.m in Sources */,
 				6350B8CC1A3C6A6D0048ACE7 /* WeeklyStatsTests.m in Sources */,
 				637157431A366D7200E7F5A6 /* StressTests.m in Sources */,
