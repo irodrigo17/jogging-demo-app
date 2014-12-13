@@ -115,4 +115,8 @@ Listening to music while jogging is the most common thing to do, so having playl
 
 ##### Voice indications
 
-It would be great if the app could tell you about your speed, time and distance while you are running.
+It would be great if the app could tell you about your speed, time and distance while you are running, it can be done using [AVSpeechSynthesizer](https://developer.apple.com/library/ios/documentation/AVFoundation/Reference/AVSpeechSynthesizer_Ref/index.html).
+
+##### Continuous integration
+
+Automating the test process with [continuous integration](https://developer.apple.com/library/prerelease/ios/documentation/DeveloperTools/Conceptual/testing_with_xcode/testing_6_automating_with_continuous_integration/testing_6_automating_with_continuous_integration.html#//apple_ref/doc/uid/TP40014132-CH7-SW5), need to setup [Xcode Server and OS X Server](https://developer.apple.com/library/prerelease/ios/documentation/IDEs/Conceptual/xcode_guide-continuous_integration/200-Adopting_a_Continuous_Integration_Workflow/adopt_continuous_integration.html#//apple_ref/doc/uid/TP40013292-CH3).
