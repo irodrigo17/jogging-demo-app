@@ -162,4 +162,65 @@
     XCTAssert([[jog dictionary] isEqual:expectedDic]);
 }
 
+
+- (void)testHours
+{
+    Jog *jog = [Jog new];
+    XCTAssert([jog hours] == 0);
+    
+    jog.time = @(1);
+    XCTAssert([jog hours] == 0);
+    
+    jog.time = @(59*60);
+    XCTAssert([jog hours] == 0);
+    
+    jog.time = @(1*60*60);
+    XCTAssert([jog hours] == 1);
+    
+    jog.time = @(21*60*60 + 59*60 + 59);
+    XCTAssert([jog hours] == 21);
+}
+
+- (void)testMinutes
+{
+    Jog *jog = [Jog new];
+    XCTAssert([jog minutes] == 0);
+    
+    jog.time = @(1);
+    XCTAssert([jog minutes] == 0);
+    
+    jog.time = @(59);
+    XCTAssert([jog minutes] == 0);
+    
+    jog.time = @(60);
+    XCTAssert([jog minutes] == 1);
+    
+    jog.time = @(21*60*60 + 59*60 + 59);
+    XCTAssert([jog minutes] == 59);
+    
+    jog.time = @(21*60*60 + 59);
+    XCTAssert([jog minutes] == 0);
+}
+
+- (void)testSeconds
+{
+    Jog *jog = [Jog new];
+    XCTAssert([jog seconds] == 0);
+    
+    jog.time = @(1);
+    XCTAssert([jog seconds] == 1);
+    
+    jog.time = @(59);
+    XCTAssert([jog seconds] == 59);
+    
+    jog.time = @(60);
+    XCTAssert([jog seconds] == 0);
+    
+    jog.time = @(21*60*60 + 59*60 + 59);
+    XCTAssert([jog seconds] == 59);
+    
+    jog.time = @(21*60*60 + 59*60);
+    XCTAssert([jog seconds] == 0);
+}
+
 @end
