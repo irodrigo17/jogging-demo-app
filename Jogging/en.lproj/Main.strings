@@ -17,8 +17,8 @@
 /* Class = "IBUIBarButtonItem"; title = "Back"; ObjectID = "UPj-Ms-x3I"; */
 "UPj-Ms-x3I.title" = "Back";
 
-/* Class = "IBUILabel"; text = "This is a demo app for Toptal"; ObjectID = "VOU-tt-XgJ"; */
-"VOU-tt-XgJ.text" = "This is a demo app for Toptal";
+/* Class = "IBUILabel"; text = "This is a demo application"; ObjectID = "VOU-tt-XgJ"; */
+"VOU-tt-XgJ.text" = "This is a demo application";
 
 /* Class = "IBUILabel"; text = "Signed in as username1234567890"; ObjectID = "XdT-6H-muT"; */
 "XdT-6H-muT.text" = "Signed in as username1234567890";
