@@ -12,4 +12,6 @@
 
 - (BOOL)isNetworkError;
 
+- (NSInteger)HTTPStatus;
+
 @end

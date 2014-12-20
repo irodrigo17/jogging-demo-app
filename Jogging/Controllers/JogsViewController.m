@@ -179,6 +179,11 @@ static const NSInteger kLimit = 50;
         
         [progressHUD dismissAnimated:YES];
         
+        if([error HTTPStatus] == 404){
+            success();
+            return;
+        }
+        
         NSLog(@"Can't delete jog: %@", error);
 
         // check error

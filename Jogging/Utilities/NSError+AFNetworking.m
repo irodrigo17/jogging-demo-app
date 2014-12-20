@@ -7,12 +7,20 @@
 //
 
 #import "NSError+AFNetworking.h"
+#import <AFNetworking/AFURLResponseSerialization.h>
+
 
 @implementation NSError (AFNetworking)
 
 - (BOOL)isNetworkError
 {
     return [self.domain isEqualToString:NSURLErrorDomain] && self.code == NSURLErrorNotConnectedToInternet;
+}
+
+- (NSInteger)HTTPStatus
+{
+    NSHTTPURLResponse *response = [self userInfo][AFNetworkingOperationFailingURLResponseErrorKey];
+    return response.statusCode;
 }
 
 @end
