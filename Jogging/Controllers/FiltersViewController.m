@@ -39,7 +39,7 @@
     fromRow.value = filters[@"from"];
     [section addFormRow:fromRow];
     
-    XLFormRowDescriptor *toRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"to" rowType:XLFormRowDescriptorTypeDateTime title:NSLocalizedString(@"FiltersFormEndDateTitle", nil)];
+    XLFormRowDescriptor *toRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"to" rowType:XLFormRowDescriptorTypeDateTimeInline title:NSLocalizedString(@"FiltersFormEndDateTitle", nil)];
     toRow.value = filters[@"to"];
     [section addFormRow:toRow];
     
