@@ -13,6 +13,7 @@
 #import "NSDictionary+XLForm.h"
 #import "NSError+AFNetworking.h"
 #import <AFNetworking/AFURLResponseSerialization.h>
+#import "Logging.h"
 
 
 @interface SignInViewController ()
@@ -66,7 +67,7 @@
         [selfBlockRef performSegueWithIdentifier:@"ShowJogsFromSignIn" sender:nil];
     } fail:^(NSError *error) {
         
-        NSLog(@"Can't sign in: %@", error);
+        DDLogError(@"Can't sign in: %@", error);
         
         [progressHUD dismissAnimated:YES];
         

@@ -12,6 +12,7 @@
 #import "NSDictionary+XLForm.h"
 #import "NSError+AFNetworking.h"
 #import <AFNetworking/AFURLResponseSerialization.h>
+#import "Logging.h"
 
 
 @interface SignUpViewController ()
@@ -64,7 +65,7 @@
         [selfBlockRef performSegueWithIdentifier:@"ShowJogsFromSignUp" sender:nil];
     } fail:^(NSError *error) {
         
-        NSLog(@"Can't sign up: %@", error);
+        DDLogError(@"Can't sign up: %@", error);
         
         [progressHUD dismissAnimated:YES];
         

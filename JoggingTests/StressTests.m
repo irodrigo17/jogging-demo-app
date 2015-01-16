@@ -10,7 +10,10 @@
 #import <XCTest/XCTest.h>
 #import "JogManager.h"
 #import "SessionManager.h"
+#import "Logging.h"
 
+
+static BOOL const kRunStressTests = NO;
 
 static NSTimeInterval const kDefaultTimeout = 120.0f;
 static NSInteger const kJogCount = 100;
@@ -29,6 +32,11 @@ static NSInteger const kJogDateMaxDaysAgo = 30;
 @implementation StressTests
 
 - (void)testCreateJogs{
+
+    if(!kRunStressTests){
+        return;
+    }
+
     [self measureBlock:^{
         XCTestExpectation *expectation = [self expectationWithDescription:@"Successful sign up"];
         
@@ -62,7 +70,7 @@ static NSInteger const kJogDateMaxDaysAgo = 30;
                 XCTFail(@"error: %@", error);
             }
             else{
-                NSLog(@"Created %li jogs for user: %@", kJogCount, user.username);
+                DDLogInfo(@"Created %li jogs for user: %@", (long)kJogCount, user.username);
             }
         }];
     }];

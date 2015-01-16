@@ -12,6 +12,7 @@
 #import <JGProgressHUD/JGProgressHUD.h>
 #import "NSError+AFNetworking.h"
 #import <AFNetworking/AFURLResponseSerialization.h>
+#import "Logging.h"
 
 
 @implementation EditJogViewController
@@ -91,7 +92,7 @@
         
         [progressHUD dismissAnimated:YES];
         
-        NSLog(@"Can't save jog: %@", error);
+        DDLogError(@"Can't save jog: %@", error);
         
         NSString *title = nil;
         NSString *message = nil;

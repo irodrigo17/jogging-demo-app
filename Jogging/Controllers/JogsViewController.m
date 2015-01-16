@@ -13,6 +13,7 @@
 #import <JGProgressHUD/JGProgressHUD.h>
 #import "AppDelegate.h"
 #import "NSError+AFNetworking.h"
+#import "Logging.h"
 
 
 static const NSInteger kLimit = 50;
@@ -124,7 +125,7 @@ static const NSInteger kLimit = 50;
         
     } fail:^(NSError *error) {
         
-        NSLog(@"Can't get jogs: %@", error);
+        DDLogError(@"Can't get jogs: %@", error);
         
         // end refreshing if needed
         if(self.refreshControl.refreshing){
@@ -172,7 +173,7 @@ static const NSInteger kLimit = 50;
     [progressHUD showInView:self.view animated:YES];
     
     [[JogManager sharedInstance] deleteJog:jog success:^(Jog *jog){
-        NSLog(@"Deleted jog: %@", jog);
+        DDLogInfo(@"Deleted jog: %@", jog);
         [progressHUD dismissAnimated:YES];
         success();
     } fail:^(NSError *error){
@@ -184,7 +185,7 @@ static const NSInteger kLimit = 50;
             return;
         }
         
-        NSLog(@"Can't delete jog: %@", error);
+        DDLogError(@"Can't delete jog: %@", error);
 
         // check error
         NSString *title = nil;

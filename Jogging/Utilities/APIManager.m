@@ -8,6 +8,7 @@
 
 #import "APIManager.h"
 #import <FormatterKit/TTTURLRequestFormatter.h>
+#import "Logging.h"
 
 
 @implementation APIManager
@@ -43,12 +44,12 @@
                                                     failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 {
     // log request
-    NSLog(@"request: %@", [TTTURLRequestFormatter cURLCommandFromURLRequest:request]);
+    DDLogVerbose(@"request: %@", [TTTURLRequestFormatter cURLCommandFromURLRequest:request]);
     
     // add response logging
     void (^logResponse)(AFHTTPRequestOperation *) = ^void(AFHTTPRequestOperation *operation){
         NSString *response = [[TTTHTTPURLResponseFormatter new] stringFromHTTPURLResponse:operation.response];
-        NSLog(@"response: %@\nheaders: %@\nbody: %@", response, operation.response.allHeaderFields, operation.responseString);
+        DDLogVerbose(@"response: %@\nheaders: %@\nbody: %@", response, operation.response.allHeaderFields, operation.responseString);
     };
     
     void (^successWithLogging)(AFHTTPRequestOperation *, id) = ^void(AFHTTPRequestOperation *operation, id responseObject) {

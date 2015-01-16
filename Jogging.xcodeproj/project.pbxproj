@@ -64,6 +64,8 @@
 		63C7AF3C1A2DED7C00FB9EAE /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C7AF3A1A2DED7C00FB9EAE /* SessionManager.m */; };
 		63C7AF3F1A2DEDA600FB9EAE /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C7AF3E1A2DEDA600FB9EAE /* User.m */; };
 		63C7AF401A2DEDA600FB9EAE /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C7AF3E1A2DEDA600FB9EAE /* User.m */; };
+		63CB02711A69857E0021A6AC /* Logging.m in Sources */ = {isa = PBXBuildFile; fileRef = 63CB02701A69857E0021A6AC /* Logging.m */; };
+		63CB02721A69857E0021A6AC /* Logging.m in Sources */ = {isa = PBXBuildFile; fileRef = 63CB02701A69857E0021A6AC /* Logging.m */; };
 		CBAACB64DC8D5930A4CA2989 /* libPods-JoggingTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F91709DCF721D74FA614069 /* libPods-JoggingTests.a */; };
 /* End PBXBuildFile section */
 
@@ -145,6 +147,8 @@
 		63C7AF3A1A2DED7C00FB9EAE /* SessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionManager.m; sourceTree = "<group>"; };
 		63C7AF3D1A2DEDA600FB9EAE /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		63C7AF3E1A2DEDA600FB9EAE /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		63CB026F1A69857E0021A6AC /* Logging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Logging.h; sourceTree = "<group>"; };
+		63CB02701A69857E0021A6AC /* Logging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Logging.m; sourceTree = "<group>"; };
 		69C850E8144CA5E52D507333 /* Pods-JoggingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JoggingTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JoggingTests/Pods-JoggingTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -294,6 +298,8 @@
 				6348BA551A388572002309F2 /* NSDictionary+XLForm.m */,
 				63815CC61A38A87B002B8794 /* NSError+AFNetworking.h */,
 				63815CC71A38A87B002B8794 /* NSError+AFNetworking.m */,
+				63CB026F1A69857E0021A6AC /* Logging.h */,
+				63CB02701A69857E0021A6AC /* Logging.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -518,6 +524,7 @@
 				6377E2961A2E018A00220671 /* APIManager.m in Sources */,
 				63C7AF371A2DE90600FB9EAE /* SignUpViewController.m in Sources */,
 				63C7AF091A2DDF5E00FB9EAE /* main.m in Sources */,
+				63CB02711A69857E0021A6AC /* Logging.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,6 +543,7 @@
 				635529ED1A2E6D8500750FFE /* JogCell.m in Sources */,
 				635B39741A37D9A50034FC58 /* StatsViewController.m in Sources */,
 				6360805E1A2F38510070D527 /* JogsViewControllerTests.m in Sources */,
+				63CB02721A69857E0021A6AC /* Logging.m in Sources */,
 				63511B7B1A347A3700F3766C /* ReplaceRootViewControllerSegue.m in Sources */,
 				635529F11A2E7A3500750FFE /* JogCellTests.m in Sources */,
 				635529F71A2E93DD00750FFE /* SessionManagerTests.m in Sources */,

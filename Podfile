@@ -7,6 +7,7 @@ def shared_pods
 	pod 'FormatterKit/URLRequestFormatter', '~> 1.7'
 	pod 'ISO8601', '~> 0.1'
 	pod 'XLForm', '~> 2.1'
+	pod 'CocoaLumberjack', '~> 2.0.0-rc'
 end
 
 target 'Jogging' do
@@ -17,4 +18,3 @@ end
 target 'JoggingTests' do
 	shared_pods
 end
-

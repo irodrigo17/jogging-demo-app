@@ -13,6 +13,7 @@
 #import "NSDate+Parse.h"
 #import "NSError+AFNetworking.h"
 #import "WeeklyStats.h"
+#import "Logging.h"
 
 
 @interface StatsViewController ()
@@ -54,7 +55,7 @@
 
         [progressHUD dismissAnimated:YES];
         
-        NSLog(@"Can't get stats: %@", error);
+        DDLogError(@"Can't get stats: %@", error);
         
         NSString *title = nil;
         NSString *message = nil;
