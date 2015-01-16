@@ -1,5 +1,7 @@
 # Jogging App
 
+![TravisCI build image](https://travis-ci.org/irodrigo17/jogging-demo-app.svg?branch=master)
+
 This is a demo app created for showcasing purposes only.
 
 It's a very basic jog logging iOS application that stores user's jogs in the cloud, and provides some basic filtering and reporting functionalities.
@@ -61,7 +63,7 @@ Normally, I would setup beta build distribution from the first sprint and start 
 
 [Accessibility](https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/iPhoneAccessibility/Introduction/Introduction.html) is one of the greatest things about iOS, and yet it’s overlooked by many apps.
 
-##### UI/UX 
+##### UI/UX
 
 Default iOS controls are great, but an app with good graphics and [animations](https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreAnimation_guide/Introduction/Introduction.html) truly stands out from the crowd.
 
